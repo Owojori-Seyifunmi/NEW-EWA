@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yearly Conference — Ethical Wealth Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:      #0a0d11;
+      --white:      #ffffff;
+      --gold:       #c9a84c;
+      --gold-dark:  #a8863a;
+      --gold-dim:   rgba(201,168,76,0.5);
+      --gold-faint: rgba(201,168,76,0.07);
+      --light:      #f8f6f2;
+      --navy:       #041832;
+      --navy-mid:   #0a2847;
+      --bar-bg:     #1a1a1a;
+      --text-muted: rgba(4,24,50,0.6);
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans:  'Montserrat', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); background: var(--light); color: var(--navy); overflow-x: hidden; }
+
+    /* ── GRAIN MIXIN ── */
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .grain--multiply { mix-blend-mode: multiply; opacity: 0.06; }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--bar-bg); color: #ccc;
+      font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+      display: flex; justify-content: space-between; align-items: center; padding: 7px 40px;
+    }
+    .top-bar .quality strong { font-weight: 500; color: #fff; }
+    .top-bar .info { display: flex; gap: 28px; align-items: center; }
+    .top-bar .info span { display: flex; align-items: center; gap: 6px; }
+    .top-bar .info svg { width: 11px; height: 11px; fill: var(--gold); }
+
+   .top-bar {
+      background: var(--bar-bg);
+      color: #ccc;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 40px;
+    }
+    .top-bar .quality { font-weight: 300; }
+    .top-bar .quality strong { font-weight: 500; color: #fff; }
+    .top-bar .info { display: flex; gap: 28px; align-items: center; }
+    .top-bar .info span { display: flex; align-items: center; gap: 6px; }
+    .top-bar .info svg { width: 11px; height: 11px; fill: var(--gold); flex-shrink: 0; }
+
+    .navbar {
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 72px;
+      border-bottom: 1px solid #e8e6e2;
+      z-index: 1000;
+      position: sticky;
+      top: 0;
+      transition: box-shadow 0.3s ease;
+    }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    .nav-group { display: flex; align-items: center; gap: 36px; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+
+    .nav-link {
+      font-size: 10.5px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--text-nav); text-decoration: none;
+      position: relative; padding-bottom: 2px; transition: color 0.25s ease; white-space: nowrap;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: var(--black); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--black); font-weight: 500; }
+    .nav-link.active::after { width: 100%; }
+
+    .logo-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      line-height: 1; text-decoration: none; padding: 0 32px; flex-shrink: 0;
+      position: relative; height: 72px; justify-content: center;
+    }
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400;
+      letter-spacing: 0.28em; color: var(--black); text-transform: uppercase; white-space: nowrap;
+    }
+    .logo-sub {
+      font-family: 'Montserrat', sans-serif; font-size: 7px; font-weight: 300;
+      letter-spacing: 0.5em; color: #999; text-transform: uppercase;
+      margin-top: 4px; padding-left: 0.5em; white-space: nowrap;
+    }
+    .logo-text-group {
+      display: flex; flex-direction: column; align-items: center;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .logo-img-group {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 8px));
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .logo-img-group img { height: 42px; width: auto; display: block; }
+    .navbar.scrolled .logo-text-group { opacity: 0; transform: translateY(-8px); }
+    .navbar.scrolled .logo-img-group { opacity: 1; transform: translate(-50%, -50%); }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 44px; height: 44px; cursor: pointer; background: none; border: none;
+      padding: 0; z-index: 1100; position: relative; flex-shrink: 0;
+    }
+    .hamburger .line {
+      display: block; width: 26px; height: 1.5px; background: var(--black);
+      transition: transform 0.55s cubic-bezier(0.77,0,0.175,1), opacity 0.4s ease, width 0.4s ease, background 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger .line:nth-child(1) { margin-bottom: 6px; }
+    .hamburger .line:nth-child(3) { margin-top: 6px; width: 16px; }
+    .hamburger.open .line { background: var(--white); }
+    .hamburger.open .line:nth-child(1) { transform: translateY(7.5px) rotate(45deg); width: 26px; }
+    .hamburger.open .line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .line:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); width: 26px; }
+
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; pointer-events: none; }
+    .mobile-menu__curtain { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
+    .curtain-half { background: #0e0e0e; transform: scaleY(0); transition: transform 0.7s cubic-bezier(0.77,0,0.175,1); }
+    .curtain-half:nth-child(1) { transform-origin: top; }
+    .curtain-half:nth-child(2) { transform-origin: bottom; }
+    .curtain-seam {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent);
+      transform: scaleY(0); transform-origin: center; transition: transform 0.5s ease 0.5s;
+    }
+    .mobile-menu__accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 0.7s cubic-bezier(0.77,0,0.175,1) 0.4s; opacity: 0.9;
+    }
+    .menu-orb {
+      position: absolute; width: 450px; height: 450px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; animation: orbPulse 5s ease-in-out infinite;
+    }
+    @keyframes orbPulse {
+      0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(0.95); }
+      50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
+    }
+    .mobile-menu__inner {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 80px 40px 48px; overflow-y: auto;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+    }
+    .mobile-menu.is-open { pointer-events: all; }
+    .mobile-menu.is-open .curtain-half { transform: scaleY(1); }
+    .mobile-menu.is-open .curtain-seam { transform: scaleY(1); }
+    .mobile-menu.is-open .mobile-menu__accent { transform: scaleX(1); }
+    .mobile-menu.is-open .mobile-menu__inner { opacity: 1; transform: translateY(0); }
+    .mobile-logo { margin-bottom: 40px; text-align: center; }
+    .mobile-logo .logo-name { color: var(--white); font-size: 17px; letter-spacing: 0.28em; }
+    .mobile-logo .logo-sub { color: rgba(255,255,255,0.3); display: block; margin-top: 8px; }
+    .mobile-logo-rule { width: 36px; height: 1px; background: var(--gold); margin: 14px auto 0; opacity: 0.6; }
+    .mobile-nav-list { list-style: none; width: 100%; max-width: 360px; }
+    .mobile-nav-item + .mobile-nav-item { border-top: 1px solid rgba(255,255,255,0.06); }
+    .mobile-nav-item { opacity: 0; transform: translateX(-20px); transition: none; }
+    .mobile-menu.is-open .mobile-nav-item { opacity: 1; transform: translateX(0); }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(1) { transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(2) { transition: opacity 0.5s ease 0.65s, transform 0.5s ease 0.65s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(3) { transition: opacity 0.5s ease 0.75s, transform 0.5s ease 0.75s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(4) { transition: opacity 0.5s ease 0.85s, transform 0.5s ease 0.85s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(5) { transition: opacity 0.5s ease 0.95s, transform 0.5s ease 0.95s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(6) { transition: opacity 0.5s ease 1.05s, transform 0.5s ease 1.05s; }
+    .mobile-nav-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 4px; font-family: 'Cormorant Garamond', serif;
+      font-size: 30px; font-weight: 400; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.65); text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: color 0.3s ease, padding-left 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .mobile-nav-link .link-num {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
+      letter-spacing: 0.22em; color: rgba(201,168,76,0.5);
+      margin-right: 16px; transition: color 0.3s ease; padding-top: 2px; flex-shrink: 0;
+    }
+    .mobile-nav-link .link-text { flex: 1; }
+    .mobile-nav-link .link-arrow {
+      width: 18px; height: 18px;
+      border-right: 1.5px solid var(--gold); border-top: 1.5px solid var(--gold);
+      transform: rotate(45deg) scale(0);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+      opacity: 0; flex-shrink: 0;
+    }
+    .mobile-nav-link::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.06), transparent);
+      transition: left 0.6s ease;
+    }
+    .mobile-nav-link:hover { color: var(--white); padding-left: 8px; }
+    .mobile-nav-link:hover .link-num { color: var(--gold); }
+    .mobile-nav-link:hover .link-arrow { transform: rotate(45deg) scale(1); opacity: 1; }
+    .mobile-nav-link:hover::after { left: 120%; }
+    .mobile-menu__footer {
+      margin-top: 40px; width: 100%; max-width: 360px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px; text-align: center; opacity: 0; transition: none;
+    }
+    .mobile-menu.is-open .mobile-menu__footer { opacity: 1; transition: opacity 0.5s ease 1.15s; }
+    .mobile-menu__footer p { font-size: 8px; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 10px; }
+    .mobile-menu__footer a { display: block; font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; letter-spacing: 0.06em; margin-bottom: 4px; transition: color 0.25s; }
+    .mobile-menu__footer a:hover { color: var(--gold); }
+    .mobile-menu__cta { margin-top: 28px; opacity: 0; transition: none; }
+    .mobile-menu.is-open .mobile-menu__cta { opacity: 1; transition: opacity 0.5s ease 1.25s; }
+
+    /* ── HERO ── */
+    /* ══════════════════════════════════════════
+       HERO — ABOUT US
+    ══════════════════════════════════════════ */
+    .hero-about {
+      position: relative; width: 100%; height: 88vh; min-height: 560px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-about__bg {
+      position: absolute; inset: 0;
+      background-image: url('images/hero-property.jpg');
+      background-size: cover; background-position: center 30%;
+      transform: scale(1.04); animation: slowZoom 12s ease forwards;
+    }
+    @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
+    .hero-about__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(155deg, rgba(0,0,0,0.94) 0%, rgba(4,24,50,0.7) 50%, rgba(0,0,0,0.75) 100%);
+    }
+    .hero-about__content {
+      position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 800px;
+    }
+    .hero-about__rule { display: block; width: 48px; height: 1px; background: var(--gold); margin: 0 auto 28px; opacity: 0; animation: fadeUp 0.8s 0.4s ease forwards; }
+    .hero-about__eyebrow {
+      font-family: var(--font-display); font-size: 10px; font-weight: 400;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold);
+      opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards; margin-bottom: 20px; display: block;
+    }
+    .hero-about__heading {
+      font-family: var(--font-serif); font-size: clamp(44px, 6.5vw, 78px); font-weight: 500;
+      line-height: 1.06; color: var(--white); letter-spacing: 0.02em; margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.9s 0.45s ease forwards;
+    }
+    .hero-about__heading em { color: var(--gold); font-style: italic; font-weight: 300; }
+    .hero-about__body {
+      font-family: var(--font-display); font-size: 14px; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.72); letter-spacing: 0.04em; max-width: 560px;
+      margin: 0 auto 0; opacity: 0; animation: fadeUp 0.9s 0.65s ease forwards;
+    }
+    /* Breadcrumb strip at bottom of hero */
+    .hero-about__breadcrumb {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+      background: rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(201,168,76,0.25);
+      backdrop-filter: blur(4px);
+      padding: 14px 56px;
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0; animation: fadeUp 0.8s 1s ease forwards;
+    }
+    .hero-about__breadcrumb a, .hero-about__breadcrumb span {
+      font-family: var(--font-display); font-size: 9px; font-weight: 300;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: rgba(255,255,255,0.4); transition: color 0.25s;
+    }
+    .hero-about__breadcrumb a:hover { color: var(--gold); }
+    .hero-about__breadcrumb .sep { color: rgba(201,168,76,0.4); }
+    .hero-about__breadcrumb .current { color: rgba(255,255,255,0.65); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    
+    /* Event detail strip */
+    .hero__details {
+      display: flex; align-items: center; gap: 0;
+      border: 1px solid rgba(255,255,255,0.1); margin-bottom: 48px;
+      opacity: 0; animation: fadeUp 0.9s 0.85s ease forwards;
+    }
+    .detail-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 18px 36px; border-right: 1px solid rgba(255,255,255,0.08);
+      position: relative; transition: background 0.3s ease;
+    }
+    .detail-item:last-child { border-right: none; }
+    .detail-item:hover { background: rgba(201,168,76,0.05); }
+    .detail-item__icon { margin-bottom: 7px; }
+    .detail-item__icon svg { width: 14px; height: 14px; fill: var(--gold); opacity: 0.8; }
+    .detail-item__val {
+      font-family: var(--font-serif); font-size: 15px; font-weight: 400;
+      color: var(--white); letter-spacing: 0.04em; line-height: 1.2; white-space: nowrap;
+    }
+    .detail-item__label {
+      font-family: var(--font-sans); font-size: 7px; font-weight: 300;
+      letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-top: 4px;
+    }
+    .hero__ctas {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 1s ease forwards;
+    }
+    .btn-primary {
+      position: relative; display: inline-block; padding: 16px 44px;
+      font-family: var(--font-sans); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: var(--navy); background: var(--gold); border: 1px solid var(--gold);
+      overflow: hidden; cursor: pointer; transition: color 0.4s ease, border-color 0.4s ease;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; top: -100%; left: 0;
+      width: 100%; height: 100%; background: var(--white);
+      transition: top 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 0;
+    }
+    .btn-primary:hover::before { top: 0; }
+    .btn-primary:hover { border-color: var(--white); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost-light {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+      color: rgba(255,255,255,0.35); display: inline-flex; align-items: center; gap: 10px;
+      transition: color 0.3s ease; padding: 16px 0;
+    }
+    .btn-ghost-light::after { content: ''; display: block; width: 24px; height: 1px; background: currentColor; transition: width 0.35s ease; }
+    .btn-ghost-light:hover { color: var(--gold); }
+    .btn-ghost-light:hover::after { width: 42px; }
+
+    /* ── Hero stat bar ── */
+    .hero__stats {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 6;
+      display: flex; background: rgba(4,24,50,0.75);
+      backdrop-filter: blur(12px); border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .hstat {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 20px; border-right: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.3s ease; cursor: default;
+    }
+    .hstat:last-child { border-right: none; }
+    .hstat:hover { background: rgba(201,168,76,0.05); }
+    .hstat__num {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 400;
+      color: var(--gold); line-height: 1; letter-spacing: -0.01em;
+    }
+    .hstat__label {
+      font-family: var(--font-sans); font-size: 7px; font-weight: 300;
+      letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 5px;
+    }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── SECTION UTILITY ── */
+    .section-dark {
+      position: relative; background: var(--navy); overflow: hidden; padding: 120px 0 130px;
+    }
+    .section-dark::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(ellipse 60% 70% at 15% 20%, rgba(201,168,76,0.055) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 85% 80%, rgba(201,168,76,0.04) 0%, transparent 55%);
+    }
+    .section-rule {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim) 30%, var(--gold-dim) 70%, transparent);
+    }
+    .section-light {
+      position: relative; background: var(--light); overflow: hidden; padding: 120px 0 130px;
+    }
+    .section-light::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(ellipse 65% 90% at 85% 50%, rgba(201,168,76,0.055) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 10% 85%, rgba(4,24,50,0.03) 0%, transparent 60%);
+    }
+    .inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+
+    /* ── TAG ── */
+    .tag { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+    .tag__line { width: 36px; height: 1px; background: var(--gold); opacity: 0.7; }
+    .tag__text {
+      font-family: var(--font-sans); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.85;
+    }
+    .tag--dark .tag__text { color: var(--gold-dark); opacity: 1; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════
+       MOVEMENT SECTION
+    ══════════════════════════ */
+    .movement__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center; margin-top: 16px;
+    }
+    .movement__heading {
+      font-family: var(--font-serif); font-size: clamp(38px, 4vw, 58px);
+      font-weight: 400; line-height: 1.08; color: var(--white); letter-spacing: 0.01em;
+    }
+    .movement__heading em { font-style: italic; font-weight: 300; color: var(--gold); }
+    .movement__body {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: rgba(255,255,255,0.45); margin-bottom: 32px;
+    }
+    .movement__quote {
+      font-family: var(--font-serif); font-size: 17px; font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.5); line-height: 1.65; padding-left: 20px;
+      border-left: 2px solid var(--gold-dim);
+    }
+    .movement__stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .mstat {
+      background: rgba(255,255,255,0.025); padding: 36px 28px; text-align: center;
+      position: relative; overflow: hidden; transition: background 0.35s ease; cursor: default;
+    }
+    .mstat:hover { background: rgba(201,168,76,0.06); }
+    .mstat::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center; transition: transform 0.5s ease;
+    }
+    .mstat:hover::before { transform: scaleX(1); }
+    .mstat__num {
+      font-family: var(--font-serif); font-size: 48px; font-weight: 300;
+      color: var(--gold); line-height: 1; letter-spacing: -0.02em; display: block;
+    }
+    .mstat__label {
+      font-family: var(--font-sans); font-size: 8px; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-top: 8px; display: block;
+    }
+
+    /* ══════════════════════════
+       CHARITY SECTION
+    ══════════════════════════ */
+    .charity {
+      position: relative; background: var(--light); padding: 100px 0; overflow: hidden;
+      text-align: center;
+    }
+    .charity::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 65%);
+    }
+    .charity__heart {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border: 1px solid rgba(201,168,76,0.4);
+      margin: 0 auto 28px;
+    }
+    .charity__heart svg { width: 28px; height: 28px; fill: var(--gold); }
+    .charity__heading {
+      font-family: var(--font-serif); font-size: clamp(34px, 4vw, 54px);
+      font-weight: 400; line-height: 1.1; color: var(--navy); max-width: 640px; margin: 0 auto 20px;
+    }
+    .charity__heading em { font-style: italic; color: var(--gold-dark); }
+    .charity__body {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: var(--text-muted); max-width: 500px; margin: 0 auto 40px;
+    }
+    .charity__pill {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--navy); color: var(--gold);
+      padding: 14px 32px;
+      font-family: var(--font-sans); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase;
+    }
+    .charity__pill svg { width: 14px; height: 14px; fill: var(--gold); }
+
+    /* ══════════════════════════
+       SPEAKERS
+    ══════════════════════════ */
+    .speakers__intro {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+      line-height: 1.85; color: rgba(255,255,255,0.4); max-width: 480px;
+    }
+    .speakers__header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 48px; margin-bottom: 72px; flex-wrap: wrap;
+    }
+    .speakers__heading {
+      font-family: var(--font-serif); font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400; line-height: 1.08; color: var(--white);
+    }
+    .speakers__heading em { font-style: italic; color: var(--gold); }
+    .speakers__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px;
+    }
+    .speakers__grid--bottom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    .speaker-card {
+      position: relative; background: rgba(255,255,255,0.025); overflow: hidden;
+      cursor: default; opacity: 0; transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease, background 0.4s ease;
+    }
+    .speaker-card.visible { opacity: 1; transform: translateY(0); }
+    .speaker-card:nth-child(1) { transition-delay: 0.05s; }
+    .speaker-card:nth-child(2) { transition-delay: 0.18s; }
+    .speaker-card:nth-child(3) { transition-delay: 0.31s; }
+    .speaker-card:nth-child(4) { transition-delay: 0.44s; }
+    .speaker-card:nth-child(5) { transition-delay: 0.57s; }
+    .speaker-card:hover { background: rgba(201,168,76,0.04); }
+    .speaker-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center; transition: transform 0.5s ease; z-index: 3;
+    }
+    .speaker-card:hover::before { transform: scaleX(1); }
+    .speaker-card::after {
+      content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent);
+      transition: left 0.7s ease; pointer-events: none; z-index: 1;
+    }
+    .speaker-card:hover::after { left: 130%; }
+    .speaker-portrait {
+      position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden;
+      background: var(--navy-mid);
+    }
+    .speaker-portrait img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+      filter: brightness(0.72) saturate(0.7) sepia(0.1);
+      transition: transform 7s ease, filter 0.5s ease;
+    }
+    .speaker-card:hover .speaker-portrait img { transform: scale(1.04); filter: brightness(0.82) saturate(0.85); }
+    .speaker-portrait::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(4,24,50,0.5) 70%, rgba(4,24,50,0.92) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .speaker-portrait__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy-mid), #0f2a4a);
+    }
+    .speaker-portrait__placeholder svg { width: 56px; height: 56px; fill: rgba(201,168,76,0.2); }
+    .speaker-index {
+      position: absolute; top: 18px; left: 18px;
+      font-family: var(--font-sans); font-size: 8.5px; font-weight: 400;
+      letter-spacing: 0.25em; color: rgba(255,255,255,0.3); z-index: 2; text-transform: uppercase;
+    }
+    .speaker-role-badge {
+      position: absolute; bottom: 18px; right: 18px; z-index: 2;
+      font-family: var(--font-sans); font-size: 7px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.85;
+      writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity 0.3s ease;
+    }
+    .speaker-card:hover .speaker-role-badge { opacity: 1; }
+    .speaker-info { padding: 28px 32px 36px; position: relative; z-index: 2; }
+    .speaker-name {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 400;
+      letter-spacing: 0.04em; color: var(--white); margin-bottom: 4px; line-height: 1.1;
+    }
+    .speaker-title {
+      font-family: var(--font-sans); font-size: 8px; font-weight: 500;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);
+      opacity: 0.75; margin-bottom: 16px; display: block;
+    }
+    .speaker-rule {
+      width: 28px; height: 1px; background: var(--gold); opacity: 0.4; margin-bottom: 14px;
+      transition: width 0.4s ease, opacity 0.4s ease;
+    }
+    .speaker-card:hover .speaker-rule { width: 52px; opacity: 0.7; }
+    .speaker-bio {
+      font-family: var(--font-sans); font-size: 12px; font-weight: 300;
+      line-height: 1.78; color: rgba(255,255,255,0.42); margin-bottom: 16px;
+      transition: color 0.35s ease;
+    }
+    .speaker-card:hover .speaker-bio { color: rgba(255,255,255,0.6); }
+    .speaker-topic {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .topic-dot {
+      flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); opacity: 0.6; margin-top: 6px;
+    }
+    .topic-text {
+      font-family: var(--font-sans); font-size: 11.5px; font-weight: 300;
+      font-style: italic; color: rgba(255,255,255,0.35); line-height: 1.6;
+      transition: color 0.35s ease;
+    }
+    .speaker-card:hover .topic-text { color: rgba(255,255,255,0.5); }
+
+    /* ══════════════════════════
+       SCHEDULE
+    ══════════════════════════ */
+    .schedule__heading {
+      font-family: var(--font-serif); font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400; line-height: 1.08; color: var(--navy); margin-bottom: 10px;
+    }
+    .schedule__heading em { font-style: italic; color: var(--gold-dark); }
+    .schedule__subline {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 400;
+      letter-spacing: 0.14em; text-transform: uppercase; color: rgba(4,24,50,0.35);
+      margin-bottom: 60px;
+    }
+    .schedule__timeline { display: flex; flex-direction: column; max-width: 760px; margin: 0 auto; }
+    .sched-item {
+      display: grid; grid-template-columns: 100px 1fr; gap: 40px;
+      padding: 28px 0; border-bottom: 1px solid rgba(4,24,50,0.08);
+      opacity: 0; transform: translateX(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .sched-item.visible { opacity: 1; transform: translateX(0); }
+    .sched-item:nth-child(1) { transition-delay: 0.05s; }
+    .sched-item:nth-child(2) { transition-delay: 0.12s; }
+    .sched-item:nth-child(3) { transition-delay: 0.19s; }
+    .sched-item:nth-child(4) { transition-delay: 0.26s; }
+    .sched-item:nth-child(5) { transition-delay: 0.33s; }
+    .sched-item:nth-child(6) { transition-delay: 0.40s; }
+    .sched-item:nth-child(7) { transition-delay: 0.47s; }
+    .sched-item:nth-child(8) { transition-delay: 0.54s; }
+    .sched-item:last-child { border-bottom: none; }
+    .sched-item--special { background: rgba(201,168,76,0.04); padding: 28px 24px; margin: 0 -24px; }
+    .sched-time {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 400;
+      color: var(--gold-dark); letter-spacing: 0.04em; padding-top: 2px; white-space: nowrap;
+    }
+    .sched-content {}
+    .sched-speaker {
+      font-family: var(--font-sans); font-size: 8.5px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-dark);
+      opacity: 0.8; margin-bottom: 6px; display: block;
+    }
+    .sched-title {
+      font-family: var(--font-serif); font-size: 20px; font-weight: 400;
+      color: var(--navy); margin-bottom: 6px; line-height: 1.2;
+    }
+    .sched-desc {
+      font-family: var(--font-sans); font-size: 12px; font-weight: 300;
+      line-height: 1.7; color: var(--text-muted);
+    }
+    .sched-item--special .sched-title { color: var(--navy); }
+    .sched-special-pill {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+      border: 1px solid rgba(201,168,76,0.5); padding: 4px 12px;
+    }
+    .sched-special-pill span {
+      font-family: var(--font-sans); font-size: 7.5px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dark);
+    }
+
+    /* ══════════════════════════
+       WHY ATTEND
+    ══════════════════════════ */
+    .why__heading {
+      font-family: var(--font-serif); font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400; line-height: 1.08; color: var(--white); margin-bottom: 64px; text-align: center;
+    }
+    .why__heading em { font-style: italic; color: var(--gold); }
+    .why__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .why-card {
+      background: rgba(255,255,255,0.025); padding: 44px 36px;
+      position: relative; overflow: hidden; transition: background 0.35s ease;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.35s ease;
+    }
+    .why-card.visible { opacity: 1; transform: translateY(0); }
+    .why-card:nth-child(1) { transition-delay: 0.05s; }
+    .why-card:nth-child(2) { transition-delay: 0.15s; }
+    .why-card:nth-child(3) { transition-delay: 0.25s; }
+    .why-card:nth-child(4) { transition-delay: 0.35s; }
+    .why-card:nth-child(5) { transition-delay: 0.45s; }
+    .why-card:nth-child(6) { transition-delay: 0.55s; }
+    .why-card:hover { background: rgba(201,168,76,0.05); }
+    .why-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center; transition: transform 0.5s ease;
+    }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-icon {
+      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .why-icon svg { width: 16px; height: 16px; fill: none; stroke: rgba(255,255,255,0.5); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s ease; }
+    .why-card:hover .why-icon { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.07); }
+    .why-card:hover .why-icon svg { stroke: var(--gold); }
+    .why-title {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      color: var(--white); margin-bottom: 12px; letter-spacing: 0.02em;
+    }
+    .why-desc {
+      font-family: var(--font-sans); font-size: 12.5px; font-weight: 300;
+      line-height: 1.78; color: rgba(255,255,255,0.4); transition: color 0.35s ease;
+    }
+    .why-card:hover .why-desc { color: rgba(255,255,255,0.6); }
+
+    /* ══════════════════════════
+       TICKET SECTION
+    ══════════════════════════ */
+    .ticket__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .ticket__heading {
+      font-family: var(--font-serif); font-size: clamp(34px, 3.5vw, 52px);
+      font-weight: 400; line-height: 1.1; color: var(--navy); margin-bottom: 10px;
+    }
+    .ticket__heading em { font-style: italic; color: var(--gold-dark); }
+    .ticket__subline {
+      font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(4,24,50,0.35); margin-bottom: 32px;
+    }
+    .ticket__body {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.82; color: var(--text-muted); margin-bottom: 36px;
+    }
+    .includes-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 44px; }
+    .includes-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 0; border-bottom: 1px solid rgba(4,24,50,0.08);
+    }
+    .inc-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border: 1px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center;
+    }
+    .inc-icon svg { width: 11px; height: 11px; fill: var(--gold-dark); }
+    .inc-text {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+      color: var(--text-muted);
+    }
+    .ticket__card {
+      background: var(--navy); padding: 52px 48px; position: relative; overflow: hidden;
+    }
+    .ticket__card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .ticket__card-tag {
+      font-family: var(--font-sans); font-size: 8px; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.85;
+      margin-bottom: 20px; display: block;
+    }
+    .ticket__card-title {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 400;
+      color: var(--white); margin-bottom: 32px;
+    }
+    .ticket__price-wrap { margin-bottom: 32px; }
+    .ticket__price-label {
+      font-family: var(--font-sans); font-size: 8px; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+      display: block; margin-bottom: 8px;
+    }
+    .ticket__price {
+      font-family: var(--font-serif); font-size: 72px; font-weight: 300;
+      color: var(--gold); line-height: 1; letter-spacing: -0.02em;
+    }
+    .ticket__price sup { font-size: 0.4em; vertical-align: super; }
+    .ticket__urgency {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-sans); font-size: 9px; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-bottom: 32px;
+    }
+    .urgency-dot { width: 6px; height: 6px; border-radius: 50%; background: #e8a020; animation: urgencyPulse 2s ease-in-out infinite; }
+    @keyframes urgencyPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+    .ticket__btn {
+      display: block; width: 100%; padding: 16px; text-align: center;
+      font-family: var(--font-sans); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: var(--navy); background: var(--gold); border: 1px solid var(--gold);
+      position: relative; overflow: hidden; transition: color 0.4s ease;
+      margin-bottom: 16px;
+    }
+    .ticket__btn::before {
+      content: ''; position: absolute; top: -100%; left: 0;
+      width: 100%; height: 100%; background: var(--white);
+      transition: top 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 0;
+    }
+    .ticket__btn:hover::before { top: 0; }
+    .ticket__btn span { position: relative; z-index: 1; }
+    .ticket__charity-note {
+      font-family: var(--font-sans); font-size: 9px; font-weight: 300;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.25); text-align: center; display: block;
+    }
+    .ticket__divider {
+      width: 100%; height: 1px; background: rgba(255,255,255,0.07); margin: 28px 0;
+    }
+    .ticket__value-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ticket__value-row:last-child { border-bottom: none; }
+    .tv-label {
+      font-family: var(--font-sans); font-size: 11.5px; font-weight: 300;
+      color: rgba(255,255,255,0.4);
+    }
+    .tv-val {
+      font-family: var(--font-serif); font-size: 15px; font-weight: 400;
+      color: rgba(255,255,255,0.35); letter-spacing: 0.04em;
+    }
+    .tv-val--gold { color: var(--gold); }
+
+    /* ══════════════════════════
+       SPONSORS
+    ══════════════════════════ */
+    .sponsors__heading {
+      font-family: var(--font-serif); font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400; color: var(--white); text-align: center; margin-bottom: 8px;
+    }
+    .sponsors__heading em { font-style: italic; color: var(--gold); }
+    .sponsors__sub {
+      font-family: var(--font-sans); font-size: 12px; font-weight: 300;
+      color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 56px;
+    }
+    .sponsors__grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2px;
+    }
+    .sponsor-pill {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.025); padding: 18px 32px;
+      transition: background 0.3s ease;
+    }
+    .sponsor-pill:hover { background: rgba(201,168,76,0.05); }
+    .sponsor-icon {
+      width: 30px; height: 30px; border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .sponsor-icon svg { width: 13px; height: 13px; fill: var(--gold); opacity: 0.75; }
+    .sponsor-name {
+      font-family: var(--font-serif); font-size: 16px; font-weight: 400;
+      color: rgba(255,255,255,0.55); letter-spacing: 0.08em;
+    }
+
+    /* ══════════════════════════
+       CLOSING CTA
+    ══════════════════════════ */
+    .closing {
+      position: relative; background: var(--black); overflow: hidden;
+      padding: 130px 0 140px; text-align: center;
+    }
+    .closing::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 65%);
+    }
+    .closing__rule { width: 1px; height: 56px; background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent); margin: 0 auto 44px; }
+    .closing__heading {
+      font-family: var(--font-serif); font-size: clamp(40px, 6vw, 80px);
+      font-weight: 300; line-height: 0.95; color: var(--white); margin-bottom: 12px;
+    }
+    .closing__heading em { display: block; font-style: italic; color: var(--gold); }
+    .closing__body {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+      line-height: 1.85; color: rgba(255,255,255,0.38); max-width: 440px; margin: 0 auto 44px;
+    }
+    .closing__ctas { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .closing__meta {
+      font-family: var(--font-sans); font-size: 9px; font-weight: 300;
+      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    .closing__meta-sep { color: rgba(201,168,76,0.3); }
+    .closing__charity {
+      margin-top: 24px; font-family: var(--font-sans); font-size: 9px; font-weight: 300;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.6;
+    }
+
+    /* ══════════════════════════
+       FOOTER
+    ══════════════════════════ */
+    .site-footer { position: relative; background: #060e1a; overflow: hidden; }
+    .footer__rule { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6) 25%, rgba(201,168,76,0.6) 75%, transparent); z-index: 3; }
+    .footer__inner {
+      position: relative; z-index: 2; max-width: 1280px; margin: 0 auto;
+      padding: 80px 64px 64px;
+      display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: start;
+    }
+    .footer__logo { text-decoration: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .footer__logo-name { font-family: var(--font-serif); font-size: 18px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; transition: color 0.3s; }
+    .footer__logo:hover .footer__logo-name { color: var(--gold); }
+    .footer__logo-sub { font-family: var(--font-sans); font-size: 7px; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+    .footer__logo-rule { width: 36px; height: 1px; background: var(--gold); opacity: 0.5; margin-bottom: 18px; }
+    .footer__strapline { font-family: var(--font-sans); font-size: 12px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.35); margin-bottom: 0; }
+    .footer__nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .footer__nav-heading { font-family: var(--font-sans); font-size: 8px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 20px; position: relative; padding-bottom: 12px; }
+    .footer__nav-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 20px; height: 1px; background: var(--gold); opacity: 0.4; }
+    .footer__nav-list { list-style: none; display: flex; flex-direction: column; gap: 1px; }
+    .footer__nav-link { font-family: var(--font-sans); font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-decoration: none; padding: 5px 0; display: inline-block; transition: color 0.25s, padding-left 0.3s; }
+    .footer__nav-link:hover { color: rgba(255,255,255,0.75); padding-left: 10px; }
+    .footer__base { position: relative; z-index: 2; background: rgba(0,0,0,0.35); padding: 22px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer__copy { font-family: var(--font-sans); font-size: 10px; font-weight: 300; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); }
+    .footer__legal { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .footer__legal a { font-family: var(--font-sans); font-size: 9.5px; font-weight: 300; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.25s; }
+    .footer__legal a:hover { color: var(--gold); }
+    .footer__legal-sep { color: rgba(255,255,255,0.12); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .movement__grid { grid-template-columns: 1fr; gap: 56px; }
+      .speakers__grid { grid-template-columns: 1fr 1fr; }
+      .speakers__grid--bottom { grid-template-columns: 1fr; }
+      .ticket__layout { grid-template-columns: 1fr; gap: 48px; }
+      .why__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .inner { padding: 0 32px; }
+      .top-bar .info { display: none; }
+      .nav-group { display: none; }
+      .logo-wrap { padding: 0; }
+      .hamburger { display: flex; }
+      .hero__details { flex-wrap: wrap; }
+      .detail-item { padding: 14px 20px; }
+      .footer__inner { grid-template-columns: 1fr; padding: 56px 32px 48px; gap: 40px; }
+      .footer__nav { grid-template-columns: 1fr 1fr; }
+      .footer__base { padding: 18px 32px; }
+    }
+    @media (max-width: 768px) {
+      .section-dark, .section-light { padding: 80px 0 90px; }
+      .speakers__grid { grid-template-columns: 1fr; }
+      .why__grid { grid-template-columns: 1fr; }
+      .sched-item { grid-template-columns: 80px 1fr; gap: 24px; }
+      .hero__heading { font-size: clamp(44px, 12vw, 70px); }
+    }
+    @media (max-width: 600px) {
+      .top-bar { padding: 7px 20px; }
+      .hero__body { padding: 48px 24px 100px; }
+      .sponsors__grid { flex-direction: column; }
+      .closing__heading { font-size: 44px; }
+      .footer__nav { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Top bar -->
+  <div class="top-bar">
+    <span class="quality">Quality is our standard <strong>for over 20 years</strong></span>
+    <div class="info">
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        Leeds United Kingdom
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+        +44 7968 100786
+      </span>
+    </div>
+  </div>
+
+  <!-- Main navbar -->
+  <nav class="navbar">
+    <div class="nav-group left">
+      <a href="/" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="events.html" class="nav-link">Events</a>
+    </div>
+    <a href="#" class="logo-wrap" id="logoWrap">
+      <span class="logo-text-group">
+        <span class="logo-name">Ethical Wealth Academy</span>
+        <span class="logo-sub">Build · Preserve · Grow</span>
+      </span>
+      <span class="logo-img-group">
+        <img src="images/goldlogo.png" alt="Ethical Wealth Academy" />
+      </span>
+    </a>
+    <div class="nav-group right">
+      <a href="success.html" class="nav-link">Success Stories</a>
+      <a href="mini-events.html" class="nav-link">Mini Events</a>
+      <a href="conference.html" class="nav-link active">Conferences</a>
+
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="mobile-menu__curtain">
+      <div class="curtain-half"></div>
+      <div class="curtain-half"></div>
+    </div>
+    <div class="curtain-seam"></div>
+    <div class="menu-orb"></div>
+    <div class="mobile-menu__accent"></div>
+    <div class="mobile-menu__inner">
+      <div class="mobile-logo">
+        <span class="logo-name">Ethical Wealth Academy</span>
+        <span class="logo-sub">Build · Preserve · Grow</span>
+        <div class="mobile-logo-rule"></div>
+      </div>
+      <nav>
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item"><a href="/" class="mobile-nav-link"><span class="link-num">01</span><span class="link-text">Home</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link"><span class="link-num">02</span><span class="link-text">About Us</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="events.html" class="mobile-nav-link"><span class="link-num">03</span><span class="link-text">Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="conference.html" class="mobile-nav-link"><span class="link-num">06</span><span class="link-text">Conferences</span><span class="link-arrow"></span></a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__footer">
+        <p>Get in touch</p>
+        <a href="tel:+44 7968 100786">+44 7968 100786</a>
+        <a href="#">Leeds United Kingdom</a>
+      </div>
+      <div class="mobile-menu__cta">
+        <a href="#" class="btn-primary"><span>Start Your Journey</span></a>
+      </div>
+    </div>
+  </div>
+
+  
+    <!-- HERO -->
+  <section class="hero-about" aria-label="About Us Hero">
+    <div class="hero-about__bg"></div>
+    <div class="hero-about__overlay"></div>
+    <div class="hero-about__content">
+      <span class="hero-about__eyebrow"></span>
+      <span class="hero-about__eyebrow">Annual Conference · 2025</span>
+      <span class="hero-about__rule"></span>
+      <h1 class="hero-about__heading">Motivate. Inspire.<br><em>Transform.</em></h1>
+      <p class="hero-about__body">No theory. No hype. Just a proven social housing investment model — built by active investors, taught to hundreds.</p>
+    </div>
+    <div class="hero-about__breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">◆</span>
+      <span class="current">About Us</span>
+    </div>
+  </section>
+
+    <!-- Stat bar -->
+    <div class="hero__stats">
+      <div class="hstat"><span class="hstat__num">300+</span><span class="hstat__label">Investors in the Room</span></div>
+      <div class="hstat"><span class="hstat__num">5</span><span class="hstat__label">World-Class Speakers</span></div>
+      <div class="hstat"><span class="hstat__num">100%</span><span class="hstat__label">Proceeds to Charity</span></div>
+      <div class="hstat"><span class="hstat__num">£19.99</span><span class="hstat__label">Early Bird Price</span></div>
+    </div>
+  </section>
+
+  <!-- MOVEMENT SECTION -->
+  <section class="section-dark" id="movement">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="movement__grid">
+        <div>
+          <div class="tag reveal">
+            <span class="tag__line"></span>
+            <span class="tag__text">More Than an Event</span>
+          </div>
+          <h2 class="movement__heading reveal">
+            This Is a<br><em>Movement.</em>
+          </h2>
+        </div>
+        <div>
+          <p class="movement__body reveal">
+            The Ethical Wealth Academy Conference is where serious investors, entrepreneurs, and purpose-driven people gather to challenge each other, learn from the best, and leave with a plan they can actually execute.
+          </p>
+          <p class="movement__body reveal" style="transition-delay:0.1s">
+            Success in property — and in life — is 80% psychology and only 20% strategy. This conference is built entirely around that truth.
+          </p>
+          <blockquote class="movement__quote reveal" style="transition-delay:0.18s">
+            "A movement to create wealth with integrity, build businesses that serve, and inspire a generation to lead with faith, purpose, and persistence."
+          </blockquote>
+        </div>
+      </div>
+
+      <div style="margin-top: 72px;">
+        <div class="movement__stats">
+          <div class="mstat reveal">
+            <span class="mstat__num">300+</span>
+            <span class="mstat__label">Investors & Entrepreneurs</span>
+          </div>
+          <div class="mstat reveal" style="transition-delay:0.14s">
+            <span class="mstat__num">5</span>
+            <span class="mstat__label">World-Class Speakers</span>
+          </div>
+          <div class="mstat reveal" style="transition-delay:0.28s">
+            <span class="mstat__num">100%</span>
+            <span class="mstat__label">Proceeds to Charity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARITY SECTION -->
+  <section class="charity" id="charity">
+    <div class="grain grain--multiply" aria-hidden="true"></div>
+    <div class="inner" style="text-align:center; position:relative; z-index:2;">
+      <div class="charity__heart reveal">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h2 class="charity__heading reveal">
+        Every Ticket You Buy<br><em>Funds Someone in Need.</em>
+      </h2>
+      <p class="charity__body reveal" style="transition-delay:0.1s">
+        We believe building wealth and giving back are not competing ideas — they are the same idea. Every penny from ticket sales goes directly to charity. No exceptions. Attending this conference doesn't just change your trajectory. It changes someone else's life.
+      </p>
+      <div class="charity__pill reveal" style="transition-delay:0.18s">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        100% of Ticket Proceeds Go to Charity
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section class="section-dark" id="speakers">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="speakers__header">
+        <div>
+          <div class="tag reveal"><span class="tag__line"></span><span class="tag__text">The Speakers</span></div>
+          <h2 class="speakers__heading reveal">Five Voices.<br><em>One Direction.</em></h2>
+        </div>
+        <p class="speakers__intro reveal" style="transition-delay:0.12s">
+          Each speaker was chosen deliberately. Together they cover the full picture — property strategy, business mindset, entrepreneurial growth, faith-led leadership, and global community.
+        </p>
+      </div>
+
+      <!-- Top row: 3 speakers -->
+      <div class="speakers__grid">
+
+        <!-- Ayub Kayat -->
+        <div class="speaker-card">
+          <div class="speaker-portrait">
+            <span class="speaker-index">01 / 05</span>
+            <img src="images/ayub.jpg" alt="Ayub Kayat" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="speaker-portrait__placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="speaker-role-badge">Founding Partner</span>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Ayub Kayat</h3>
+            <span class="speaker-title">Founding Partner, Ethical Wealth Academy</span>
+            <div class="speaker-rule"></div>
+            <p class="speaker-bio">23+ years across property asset management, sales, development, and social housing. Ayub built the social housing model that has generated six-figure returns for hundreds of students. His mission: empower others to build wealth with integrity, guided by faith, discipline, and purpose.</p>
+            <div class="speaker-topic">
+              <span class="topic-dot"></span>
+              <span class="topic-text">Building wealth with integrity — a roadmap to ethical property investment and personal transformation.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Looay Gharib -->
+        <div class="speaker-card">
+          <div class="speaker-portrait">
+            <span class="speaker-index">02 / 05</span>
+            <img src="images/looay.jpg" alt="Looay Gharib" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+
+            <div class="speaker-portrait__placeholder">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="speaker-role-badge">Founder & CEO</span>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Looay Gharib</h3>
+            <span class="speaker-title">Founder & CEO, Kubix Media</span>
+            <div class="speaker-rule"></div>
+            <p class="speaker-bio">20+ years in digital innovation. Looay has grown Kubix Media into a European leader in eCommerce, working alongside major global brands. He'll share the mindset, habits, and principles that turn vision into a multi-million-pound reality.</p>
+            <div class="speaker-topic">
+              <span class="topic-dot"></span>
+              <span class="topic-text">From vision to reality — the mindset and habits that build multi-million-pound businesses.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saj Hussain -->
+        <div class="speaker-card">
+          <div class="speaker-portrait">
+            <span class="speaker-index">03 / 05</span>            
+            <img src="images/Hussain.jpg" alt="Saj Hussain" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+
+            <div class="speaker-portrait__placeholder">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="speaker-role-badge">Property Specialist</span>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Saj Hussain</h3>
+            <span class="speaker-title">Property Specialist & Networking Leader</span>
+            <div class="speaker-rule"></div>
+            <p class="speaker-bio">Since 2007, Saj has built a multi-million-pound portfolio and runs one of Birmingham's most-attended property networking events — 100+ investors monthly. Real-world strategies, real results.</p>
+            <div class="speaker-topic">
+              <span class="topic-dot"></span>
+              <span class="topic-text">Scaling your property portfolio through collaboration, consistency, and real-world strategy.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom row: 2 speakers -->
+      <div class="speakers__grid--bottom" style="margin-top:2px;">
+
+        <!-- Shaikh Zaheer -->
+        <div class="speaker-card">
+          <div class="speaker-portrait">
+            <span class="speaker-index">04 / 05</span>            
+            <img src="images/shaikh.jpeg" alt="shaikh" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+
+            <div class="speaker-portrait__placeholder">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="speaker-role-badge">International Speaker</span>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">Shaikh Zaheer Mahmood</h3>
+            <span class="speaker-title">International Speaker & Educator</span>
+            <div class="speaker-rule"></div>
+            <p class="speaker-bio">A globally respected scholar who has spoken from Malaysia to Barbados. Founder of a leading educational institute in Birmingham. He brings timeless principles that align wealth-building with purpose, faith, and lasting values.</p>
+            <div class="speaker-topic">
+              <span class="topic-dot"></span>
+              <span class="topic-text">Faith, ethics, and business — aligning your wealth journey with principles that endure.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SMBF -->
+        <div class="speaker-card">
+          <div class="speaker-portrait">
+            <span class="speaker-index">05 / 05</span>             
+            <img src="images/smbf.png" alt="SMBF" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+
+            <div class="speaker-portrait__placeholder">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="speaker-role-badge">Global Network</span>
+          </div>
+          <div class="speaker-info">
+            <h3 class="speaker-name">SMBF</h3>
+            <span class="speaker-title">Global Network for Muslim Entrepreneurs</span>
+            <div class="speaker-rule"></div>
+            <p class="speaker-bio">Operating across 12+ countries, SMBF connects Muslim entrepreneurs with the tools, partnerships, and community needed to grow. On the day, they'll make a landmark announcement: the launch of their new platform, CONNECT.</p>
+            <div class="speaker-topic">
+              <span class="topic-dot"></span>
+              <span class="topic-text">Global community, collaboration, and a major announcement on the day.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="section-light" id="schedule">
+    <div class="grain grain--multiply" aria-hidden="true"></div>
+    <div class="inner">
+      <div style="text-align:center; margin-bottom: 72px;">
+        <div class="tag reveal" style="justify-content:center;">
+          <span class="tag__line"></span>
+          <span class="tag__text tag--dark" style="color: var(--gold-dark);">On the Day</span>
+          <span class="tag__line"></span>
+        </div>
+        <h2 class="schedule__heading reveal">An Evening of<br><em>Inspiration & Connection</em></h2>
+        <p class="schedule__subline reveal" style="transition-delay:0.1s;">Saturday, 13th December 2025 · 4:30 PM Onwards</p>
+      </div>
+
+      <div class="schedule__timeline">
+        <div class="sched-item">
+          <span class="sched-time">4:30 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Registration</span>
+            <h3 class="sched-title">Welcome Drinks Reception</h3>
+            <p class="sched-desc">Arrive, settle in, and connect with fellow attendees over complimentary drinks as we set the tone for the evening.</p>
+          </div>
+        </div>
+        <div class="sched-item">
+          <span class="sched-time">5:45 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Opening</span>
+            <h3 class="sched-title">Introduction to Ethical Wealth</h3>
+            <p class="sched-desc">Setting the stage for a transformational evening of purpose-driven wealth creation.</p>
+          </div>
+        </div>
+        <div class="sched-item">
+          <span class="sched-time">6:00 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Ayub Kayat</span>
+            <h3 class="sched-title">Building Wealth with Integrity</h3>
+            <p class="sched-desc">A roadmap to ethical property investment and personal transformation — from deal sourcing to portfolio scaling.</p>
+          </div>
+        </div>
+        <div class="sched-item">
+          <span class="sched-time">6:40 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Looay Gharib</span>
+            <h3 class="sched-title">From Vision to Reality</h3>
+            <p class="sched-desc">The mindset, habits, and daily principles that turn an idea into a multi-million-pound business.</p>
+          </div>
+        </div>
+        <div class="sched-item">
+          <span class="sched-time">7:10 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Saj Hussain</span>
+            <h3 class="sched-title">Scaling Through Collaboration</h3>
+            <p class="sched-desc">Real-world strategies for growing your property portfolio through consistency, networking, and strategic partnerships.</p>
+          </div>
+        </div>
+        <div class="sched-item">
+          <span class="sched-time">7:35 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Shaikh Zaheer Mahmood</span>
+            <h3 class="sched-title">Faith, Ethics & Business</h3>
+            <p class="sched-desc">Aligning your wealth journey with purpose and principles that create lasting impact beyond financial returns.</p>
+          </div>
+        </div>
+        <div class="sched-item">
+          <span class="sched-time">8:00 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">SMBF</span>
+            <h3 class="sched-title">Global Community & Major Announcement</h3>
+            <p class="sched-desc">SMBF presents their vision for empowering Muslim entrepreneurs globally — and announces the launch of CONNECT.</p>
+          </div>
+        </div>
+        <div class="sched-item sched-item--special">
+          <span class="sched-time">8:30 PM</span>
+          <div class="sched-content">
+            <span class="sched-speaker">Closing</span>
+            <h3 class="sched-title">5-Course Dinner & Networking</h3>
+            <p class="sched-desc">A premium five-course dining experience followed by extended networking. The conversations that happen here are often the ones that change things.</p>
+            <div class="sched-special-pill">
+              <span>Premium Dining Included</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ATTEND -->
+  <section class="section-dark" id="why">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="inner">
+      <h2 class="why__heading reveal">Six Reasons This Room<br>Is <em>Worth Being In</em></h2>
+      <div class="why__grid">
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h3 class="why-title">Be Inspired</h3>
+          <p class="why-desc">Transformational stories and real outcomes from people who have already walked the path you're on.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></div>
+          <h3 class="why-title">Get Motivated</h3>
+          <p class="why-desc">Leave with the drive to act — not just the intention. Every talk is structured around momentum, not just information.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <h3 class="why-title">Gain Clarity</h3>
+          <p class="why-desc">Understand wealth-building strategies that align with your values, your timeline, and your current position.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 class="why-title">Network & Connect</h3>
+          <p class="why-desc">300 like-minded investors and entrepreneurs. The right introduction in this room changes everything.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <h3 class="why-title">Fine Dining</h3>
+          <p class="why-desc">A premium 5-course meal at a banqueting hall. The celebration is a deliberate part of the experience.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3 class="why-title">Give Back</h3>
+          <p class="why-desc">Your ticket directly funds charity. Building your future while contributing to someone else's is what ethical wealth means.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKET -->
+  <section class="section-light" id="ticket">
+    <div class="grain grain--multiply" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="ticket__layout">
+        <div>
+          <div class="tag reveal"><span class="tag__line" style="background:var(--gold-dark)"></span><span class="tag__text" style="color:var(--gold-dark)">Secure Your Place</span></div>
+          <h2 class="ticket__heading reveal">Everything Included.<br><em>One Early Bird Price.</em></h2>
+          <p class="ticket__subline reveal" style="transition-delay:0.08s">Limited seats available — they will sell out</p>
+          <p class="ticket__body reveal" style="transition-delay:0.14s">
+            This is a premium, purpose-driven event designed for serious investors who want to accelerate their wealth-building journey with integrity. Every element — the speakers, the dinner, the room — has been chosen deliberately.
+          </p>
+
+          <ul class="includes-list">
+            <li class="includes-item reveal" style="transition-delay:0.05s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">All five speaker presentations</span>
+            </li>
+            <li class="includes-item reveal" style="transition-delay:0.1s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">Live Q&A sessions with experts</span>
+            </li>
+            <li class="includes-item reveal" style="transition-delay:0.15s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">Welcome drinks reception</span>
+            </li>
+            <li class="includes-item reveal" style="transition-delay:0.2s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">Premium 5-course dinner</span>
+            </li>
+            <li class="includes-item reveal" style="transition-delay:0.25s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">Networking throughout the evening</span>
+            </li>
+            <li class="includes-item reveal" style="transition-delay:0.3s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">Conference materials</span>
+            </li>
+            <li class="includes-item reveal" style="transition-delay:0.35s">
+              <span class="inc-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <span class="inc-text">100% of proceeds donated to charity</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ticket card -->
+        <div class="ticket__card reveal" style="transition-delay:0.2s">
+          <span class="ticket__card-tag">Early Bird Offer</span>
+          <h3 class="ticket__card-title">Annual Conference Ticket</h3>
+
+          <div class="ticket__price-wrap">
+            <span class="ticket__price-label">Early Bird Price</span>
+            <div class="ticket__price"><sup>£</sup>19.99</div>
+          </div>
+
+          <div class="ticket__urgency">
+            <span class="urgency-dot"></span>
+            Early bird pricing ends soon
+          </div>
+
+          <a href="#" class="ticket__btn"><span>Buy Tickets Now — £19.99</span></a>
+          <span class="ticket__charity-note">All proceeds from ticket sales are donated to charity</span>
+
+          <div class="ticket__divider"></div>
+
+          <div class="ticket__value-row">
+            <span class="tv-label">5 Speaker Presentations</span>
+            <span class="tv-val">Included</span>
+          </div>
+          <div class="ticket__value-row">
+            <span class="tv-label">Welcome Drinks</span>
+            <span class="tv-val">Included</span>
+          </div>
+          <div class="ticket__value-row">
+            <span class="tv-label">Premium 5-Course Dinner</span>
+            <span class="tv-val">Included</span>
+          </div>
+          <div class="ticket__value-row">
+            <span class="tv-label">Networking Access</span>
+            <span class="tv-val">Included</span>
+          </div>
+          <div class="ticket__value-row">
+            <span class="tv-label">Charitable Contribution</span>
+            <span class="tv-val tv-val--gold">100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="section-dark" id="sponsors">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="inner">
+      <h2 class="sponsors__heading reveal">Supported By Those Who<br><em>Believe in the Mission</em></h2>
+      <p class="sponsors__sub reveal" style="transition-delay:0.1s">We're grateful to the organisations who share our values and make this event possible.</p>
+      <div class="sponsors__grid reveal" style="transition-delay:0.18s">
+        <div class="sponsor-pill">
+          <span class="sponsor-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span class="sponsor-name">Sh Zaheer</span>
+        </div>
+        <div class="sponsor-pill">
+          <span class="sponsor-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span>
+          <span class="sponsor-name">Citywide</span>
+        </div>
+        <div class="sponsor-pill">
+          <span class="sponsor-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>
+          <span class="sponsor-name">Saj Hussain</span>
+        </div>
+        <div class="sponsor-pill">
+          <span class="sponsor-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <span class="sponsor-name">Kubix Media</span>
+        </div>
+        <div class="sponsor-pill">
+          <span class="sponsor-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+          <span class="sponsor-name">SMBF</span>
+        </div>
+        <div class="sponsor-pill">
+          <span class="sponsor-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+          <span class="sponsor-name">Radio Mac</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="closing" id="closing">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="inner" style="position:relative;z-index:2;">
+      <div class="closing__rule reveal" aria-hidden="true"></div>
+      <h2 class="closing__heading reveal" style="transition-delay:0.1s">
+        300 People.<br>One Day.<br><em>Your Move.</em>
+      </h2>
+      <p class="closing__body reveal" style="transition-delay:0.2s">
+        Seats are limited. Early bird pricing won't last. And the room fills up with exactly the kind of people you want to be surrounded by.
+      </p>
+      <div class="closing__ctas reveal" style="transition-delay:0.3s">
+        <a href="#ticket" class="btn-primary"><span>Reserve My Early Bird Seat — £19.99</span></a>
+        <a href="#" class="btn-ghost-light">Learn About Our Programmes</a>
+      </div>
+      <div class="closing__meta reveal" style="transition-delay:0.38s">
+        <span>13th December 2025</span>
+        <span class="closing__meta-sep">◆</span>
+        <span>Rio Grande Banqueting Hall, Bradford</span>
+        <span class="closing__meta-sep">◆</span>
+        <span>4:30 PM Onwards</span>
+      </div>
+      <p class="closing__charity reveal" style="transition-delay:0.44s">
+        ♥ All ticket proceeds donated to charity
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="footer__rule" aria-hidden="true"></div>
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="footer__logo">
+          <span class="footer__logo-name">Ethical Wealth Academy</span>
+          <span class="footer__logo-sub">Build · Preserve · Grow</span>
+        </a>
+        <div class="footer__logo-rule" aria-hidden="true"></div>
+        <p class="footer__strapline">Guiding ambitious individuals toward ethical, strategy-led property wealth — without compromising on values or returns.</p>
+      </div>
+      <nav class="footer__nav">
+        <div>
+          <h4 class="footer__nav-heading">Company</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">About Us</a></li>
+            <li><a href="#" class="footer__nav-link">Our Mentors</a></li>
+            <li><a href="#" class="footer__nav-link">Success Stories</a></li>
+            <li><a href="#" class="footer__nav-link">Our Mission</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__nav-heading">Events</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">Mini Workshops</a></li>
+            <li><a href="#" class="footer__nav-link">Investment Intensives</a></li>
+            <li><a href="#" class="footer__nav-link">Discovery Evenings</a></li>
+            <li><a href="#" class="footer__nav-link">Annual Conference</a></li>
+            <li><a href="#" class="footer__nav-link">Live Webinars</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__nav-heading">Get in Touch</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">Leeds, United Kingdom</a></li>
+            <li><a href="tel:+447968100786" class="footer__nav-link">+44 7968 100786</a></li>
+            <li><a href="mailto:hello@ethicalwealthacademy.com" class="footer__nav-link">hello@ethicalwealthacademy.com</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__base">
+      <span class="footer__copy">&copy; <span id="footerYear"></span> Ethical Wealth Academy. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <span class="footer__legal-sep">·</span>
+        <a href="#">Terms of Use</a>
+        <span class="footer__legal-sep">·</span>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => hamburger.classList.toggle('open'));
+
+    // Scroll reveal
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .speaker-card, .why-card, .mstat, .sched-item').forEach(el => revealObs.observe(el));
+
+    // Footer year
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

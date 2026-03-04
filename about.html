@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Ethical Wealth Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --gold: #c9a84c;
+      --gold-dark: #a8863a;
+      --light-grey: #f5f4f2;
+      --text-nav: #2a2a2a;
+      --bar-bg: #1a1a1a;
+      --navy: #041832;
+      --navy-mid: #0a2847;
+      --navy-light: #0f3560;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-display: 'Montserrat', sans-serif;
+    }
+
+    body { font-family: 'Montserrat', sans-serif; background: var(--light-grey); }
+    body.menu-open { overflow: hidden; }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--bar-bg);
+      color: #ccc;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 40px;
+    }
+    .top-bar .quality { font-weight: 300; }
+    .top-bar .quality strong { font-weight: 500; color: #fff; }
+    .top-bar .info { display: flex; gap: 28px; align-items: center; }
+    .top-bar .info span { display: flex; align-items: center; gap: 6px; }
+    .top-bar .info svg { width: 11px; height: 11px; fill: var(--gold); flex-shrink: 0; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 72px;
+      border-bottom: 1px solid #e8e6e2;
+      z-index: 1000;
+      position: sticky;
+      top: 0;
+      transition: box-shadow 0.3s ease;
+    }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-group { display: flex; align-items: center; gap: 36px; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    .nav-link {
+      font-size: 10.5px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--text-nav); text-decoration: none;
+      position: relative; padding-bottom: 2px; transition: color 0.25s ease; white-space: nowrap;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: var(--black); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: var(--black); font-weight: 500; }
+    .nav-link.active::after { width: 100%; }
+    .logo-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      line-height: 1; text-decoration: none; padding: 0 32px; flex-shrink: 0;
+      position: relative; height: 72px; justify-content: center;
+    }
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400;
+      letter-spacing: 0.28em; color: var(--black); text-transform: uppercase; white-space: nowrap;
+    }
+    .logo-sub {
+      font-family: 'Montserrat', sans-serif; font-size: 7px; font-weight: 300;
+      letter-spacing: 0.5em; color: #999; text-transform: uppercase;
+      margin-top: 4px; padding-left: 0.5em; white-space: nowrap;
+    }
+    .logo-text-group {
+      display: flex; flex-direction: column; align-items: center;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .logo-img-group {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 8px));
+      opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .logo-img-group img { height: 42px; width: auto; display: block; }
+    .navbar.scrolled .logo-text-group { opacity: 0; transform: translateY(-8px); }
+    .navbar.scrolled .logo-img-group { opacity: 1; transform: translate(-50%, -50%); }
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 44px; height: 44px; cursor: pointer; background: none; border: none;
+      padding: 0; z-index: 1100; position: relative; flex-shrink: 0;
+    }
+    .hamburger .line {
+      display: block; width: 26px; height: 1.5px; background: var(--black);
+      transition: transform 0.55s cubic-bezier(0.77,0,0.175,1), opacity 0.4s ease, width 0.4s ease, background 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger .line:nth-child(1) { margin-bottom: 6px; }
+    .hamburger .line:nth-child(3) { margin-top: 6px; width: 16px; }
+    .hamburger.open .line { background: var(--white); }
+    .hamburger.open .line:nth-child(1) { transform: translateY(7.5px) rotate(45deg); width: 26px; }
+    .hamburger.open .line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .line:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); width: 26px; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; pointer-events: none; }
+    .mobile-menu__curtain { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
+    .curtain-half { background: #0e0e0e; transform: scaleY(0); transition: transform 0.7s cubic-bezier(0.77,0,0.175,1); }
+    .curtain-half:nth-child(1) { transform-origin: top; }
+    .curtain-half:nth-child(2) { transform-origin: bottom; }
+    .curtain-seam {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent);
+      transform: scaleY(0); transform-origin: center; transition: transform 0.5s ease 0.5s;
+    }
+    .mobile-menu__accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 0.7s cubic-bezier(0.77,0,0.175,1) 0.4s; opacity: 0.9;
+    }
+    .menu-orb {
+      position: absolute; width: 450px; height: 450px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; animation: orbPulse 5s ease-in-out infinite;
+    }
+    @keyframes orbPulse {
+      0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(0.95); }
+      50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
+    }
+    .mobile-menu__inner {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 80px 40px 48px; overflow-y: auto;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+    }
+    .mobile-menu.is-open { pointer-events: all; }
+    .mobile-menu.is-open .curtain-half { transform: scaleY(1); }
+    .mobile-menu.is-open .curtain-seam { transform: scaleY(1); }
+    .mobile-menu.is-open .mobile-menu__accent { transform: scaleX(1); }
+    .mobile-menu.is-open .mobile-menu__inner { opacity: 1; transform: translateY(0); }
+    .mobile-logo { margin-bottom: 40px; text-align: center; }
+    .mobile-logo .logo-name { color: var(--white); font-size: 17px; letter-spacing: 0.28em; }
+    .mobile-logo .logo-sub { color: rgba(255,255,255,0.3); display: block; margin-top: 8px; }
+    .mobile-logo-rule { width: 36px; height: 1px; background: var(--gold); margin: 14px auto 0; opacity: 0.6; }
+    .mobile-nav-list { list-style: none; width: 100%; max-width: 360px; }
+    .mobile-nav-item + .mobile-nav-item { border-top: 1px solid rgba(255,255,255,0.06); }
+    .mobile-nav-item { opacity: 0; transform: translateX(-20px); transition: none; }
+    .mobile-menu.is-open .mobile-nav-item { opacity: 1; transform: translateX(0); }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(1) { transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(2) { transition: opacity 0.5s ease 0.65s, transform 0.5s ease 0.65s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(3) { transition: opacity 0.5s ease 0.75s, transform 0.5s ease 0.75s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(4) { transition: opacity 0.5s ease 0.85s, transform 0.5s ease 0.85s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(5) { transition: opacity 0.5s ease 0.95s, transform 0.5s ease 0.95s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(6) { transition: opacity 0.5s ease 1.05s, transform 0.5s ease 1.05s; }
+    .mobile-nav-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 4px; font-family: 'Cormorant Garamond', serif;
+      font-size: 30px; font-weight: 400; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.65); text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: color 0.3s ease, padding-left 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .mobile-nav-link .link-num {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
+      letter-spacing: 0.22em; color: rgba(201,168,76,0.5);
+      margin-right: 16px; transition: color 0.3s ease; padding-top: 2px; flex-shrink: 0;
+    }
+    .mobile-nav-link .link-text { flex: 1; }
+    .mobile-nav-link .link-arrow {
+      width: 18px; height: 18px;
+      border-right: 1.5px solid var(--gold); border-top: 1.5px solid var(--gold);
+      transform: rotate(45deg) scale(0);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+      opacity: 0; flex-shrink: 0;
+    }
+    .mobile-nav-link:hover { color: var(--white); padding-left: 8px; }
+    .mobile-nav-link:hover .link-num { color: var(--gold); }
+    .mobile-nav-link:hover .link-arrow { transform: rotate(45deg) scale(1); opacity: 1; }
+    .mobile-menu__footer {
+      margin-top: 40px; width: 100%; max-width: 360px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px; text-align: center; opacity: 0; transition: none;
+    }
+    .mobile-menu.is-open .mobile-menu__footer { opacity: 1; transition: opacity 0.5s ease 1.15s; }
+    .mobile-menu__footer p { font-size: 8px; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 10px; }
+    .mobile-menu__footer a { display: block; font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; letter-spacing: 0.06em; margin-bottom: 4px; transition: color 0.25s; }
+    .mobile-menu__footer a:hover { color: var(--gold); }
+    .mobile-menu__cta { margin-top: 28px; opacity: 0; transition: none; }
+    .mobile-menu.is-open .mobile-menu__cta { opacity: 1; transition: opacity 0.5s ease 1.25s; }
+
+    /* ── SCROLL REVEAL UTILITY ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      position: relative; display: inline-block; padding: 15px 38px;
+      font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
+      color: var(--black); background: var(--gold); border: 1px solid var(--gold);
+      overflow: hidden; cursor: pointer; transition: color 0.45s ease, border-color 0.45s ease;
+    }
+    .btn-primary::before { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--white); transition: top 0.45s cubic-bezier(0.4,0,0.2,1); z-index: 0; }
+    .btn-primary:hover::before { top: 0; }
+    .btn-primary:hover { color: var(--black); border-color: var(--white); }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-ghost-dark {
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none; color: rgba(255,255,255,0.35);
+      display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s ease;
+    }
+    .btn-ghost-dark::after {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: currentColor; transition: width 0.35s ease;
+    }
+    .btn-ghost-dark:hover { color: var(--gold); }
+    .btn-ghost-dark:hover::after { width: 42px; }
+
+    .btn-ghost-light {
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none; color: rgba(4,24,50,0.45);
+      display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s ease;
+    }
+    .btn-ghost-light::after {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: currentColor; transition: width 0.35s ease;
+    }
+    .btn-ghost-light:hover { color: var(--gold-dark); }
+    .btn-ghost-light:hover::after { width: 40px; }
+
+    .btn-navy {
+      position: relative; display: inline-block; padding: 14px 36px;
+      font-family: var(--font-display); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: var(--white); background: var(--navy); border: 1px solid var(--navy);
+      overflow: hidden; cursor: pointer; transition: color 0.4s ease, border-color 0.4s ease;
+    }
+    .btn-navy::before {
+      content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+      background: var(--gold); transition: top 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 0;
+    }
+    .btn-navy:hover::before { top: 0; }
+    .btn-navy:hover { color: var(--navy); border-color: var(--gold); }
+    .btn-navy span { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════════════
+       HERO — ABOUT US
+    ══════════════════════════════════════════ */
+    .hero-about {
+      position: relative; width: 100%; height: 88vh; min-height: 560px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-about__bg {
+      position: absolute; inset: 0;
+      background-image: url('images/hero-property.jpg');
+      background-size: cover; background-position: center 30%;
+      transform: scale(1.04); animation: slowZoom 12s ease forwards;
+    }
+    @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
+    .hero-about__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(155deg, rgba(0,0,0,0.94) 0%, rgba(4,24,50,0.7) 50%, rgba(0,0,0,0.75) 100%);
+    }
+    .hero-about__content {
+      position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 800px;
+    }
+    .hero-about__rule { display: block; width: 48px; height: 1px; background: var(--gold); margin: 0 auto 28px; opacity: 0; animation: fadeUp 0.8s 0.4s ease forwards; }
+    .hero-about__eyebrow {
+      font-family: var(--font-display); font-size: 10px; font-weight: 400;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold);
+      opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards; margin-bottom: 20px; display: block;
+    }
+    .hero-about__heading {
+      font-family: var(--font-serif); font-size: clamp(44px, 6.5vw, 78px); font-weight: 500;
+      line-height: 1.06; color: var(--white); letter-spacing: 0.02em; margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.9s 0.45s ease forwards;
+    }
+    .hero-about__heading em { color: var(--gold); font-style: italic; font-weight: 300; }
+    .hero-about__body {
+      font-family: var(--font-display); font-size: 14px; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.72); letter-spacing: 0.04em; max-width: 560px;
+      margin: 0 auto 0; opacity: 0; animation: fadeUp 0.9s 0.65s ease forwards;
+    }
+    /* Breadcrumb strip at bottom of hero */
+    .hero-about__breadcrumb {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+      background: rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(201,168,76,0.25);
+      backdrop-filter: blur(4px);
+      padding: 14px 56px;
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0; animation: fadeUp 0.8s 1s ease forwards;
+    }
+    .hero-about__breadcrumb a, .hero-about__breadcrumb span {
+      font-family: var(--font-display); font-size: 9px; font-weight: 300;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: rgba(255,255,255,0.4); transition: color 0.25s;
+    }
+    .hero-about__breadcrumb a:hover { color: var(--gold); }
+    .hero-about__breadcrumb .sep { color: rgba(201,168,76,0.4); }
+    .hero-about__breadcrumb .current { color: rgba(255,255,255,0.65); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ══════════════════════════════════════════
+       SECTION — WHY WE EXIST (DARK NAVY)
+    ══════════════════════════════════════════ */
+    .why {
+      position: relative; background: var(--navy); overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 680px;
+    }
+    .why::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 65% 90% at 15% 50%, rgba(201,168,76,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 90% 85%, rgba(255,255,255,0.02) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .why__grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .why__top-rule {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent);
+    }
+    /* Image column */
+    .why__image {
+      position: relative; z-index: 2; overflow: hidden;
+    }
+    .why__image img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block;
+      filter: brightness(0.65) saturate(0.7) sepia(0.1);
+      transition: transform 7s ease, filter 0.6s ease;
+    }
+    .why__image:hover img { transform: scale(1.04); filter: brightness(0.75) saturate(0.85); }
+    .why__image::after {
+      content: ''; position: absolute; inset: 28px;
+      border: 1px solid rgba(201,168,76,0.25); pointer-events: none; z-index: 3;
+      transition: inset 0.5s ease;
+    }
+    .why__image:hover::after { inset: 22px; }
+    .why__image-label {
+      position: absolute; bottom: 60px; left: 0; writing-mode: vertical-rl;
+      transform: rotate(180deg); font-family: var(--font-display); font-size: 7.5px;
+      font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); padding: 0 14px; z-index: 4;
+    }
+    .why__badge {
+      position: absolute; bottom: 52px; right: -20px; background: var(--gold);
+      color: var(--navy); padding: 20px 28px; z-index: 4; text-align: center;
+      box-shadow: -8px 8px 32px rgba(0,0,0,0.4);
+    }
+    .why__badge__num {
+      font-family: var(--font-serif); font-size: 38px; font-weight: 400;
+      letter-spacing: -0.01em; line-height: 1; display: block; color: var(--navy);
+    }
+    .why__badge__label {
+      font-family: var(--font-display); font-size: 8px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; display: block;
+      margin-top: 6px; color: rgba(4,24,50,0.7);
+    }
+    /* Content column */
+    .why__content {
+      position: relative; z-index: 2; padding: 80px 64px 80px 72px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-tag {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+    }
+    .section-tag__line { width: 36px; height: 1px; background: var(--gold); opacity: 0.7; }
+    .section-tag__text--gold {
+      font-family: var(--font-display); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.85;
+    }
+    .section-tag__text--dark {
+      font-family: var(--font-display); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-dark);
+    }
+    .heading-dark {
+      font-family: var(--font-serif); font-size: clamp(34px, 3.5vw, 52px);
+      font-weight: 400; line-height: 1.1; color: var(--white);
+      letter-spacing: 0.01em; margin-bottom: 32px;
+    }
+    .heading-dark em { font-style: italic; font-weight: 300; color: var(--gold); }
+    .body-dark {
+      font-family: var(--font-display); font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: rgba(255,255,255,0.5); margin-bottom: 18px; max-width: 480px;
+    }
+    .body-dark strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+    .divider-dark {
+      width: 100%; max-width: 480px; height: 1px;
+      background: linear-gradient(to right, rgba(201,168,76,0.4), transparent);
+      margin: 28px 0;
+    }
+    .cta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 8px; }
+
+    /* ══════════════════════════════════════════
+       SECTION — WHAT WE DO (LIGHT)
+    ══════════════════════════════════════════ */
+    .what-we-do {
+      position: relative; background: #f8f6f2; overflow: hidden;
+      padding: 120px 0 140px;
+    }
+    .what-we-do::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 80% at 85% 30%, rgba(201,168,76,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 10% 80%, rgba(4,24,50,0.04) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .what-we-do__grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .what-we-do__inner {
+      position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px;
+    }
+    .what-we-do__header { text-align: center; margin-bottom: 88px; }
+    .heading-light {
+      font-family: var(--font-serif); font-size: clamp(36px, 4vw, 56px); font-weight: 400;
+      line-height: 1.08; color: var(--navy); letter-spacing: 0.01em;
+    }
+    .heading-light em { font-style: italic; font-weight: 300; color: var(--gold-dark); }
+    .section-tag--centred {
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 24px;
+    }
+    /* Four pillars grid */
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .pillar-card {
+      position: relative; background: rgba(255,255,255,0.7);
+      padding: 48px 36px 44px; overflow: hidden; cursor: default;
+      border-top: 2px solid transparent;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.4s ease, border-color 0.4s ease;
+    }
+    .pillar-card.visible { opacity: 1; transform: translateY(0); }
+    .pillar-card:nth-child(1) { transition-delay: 0.05s; }
+    .pillar-card:nth-child(2) { transition-delay: 0.18s; }
+    .pillar-card:nth-child(3) { transition-delay: 0.31s; }
+    .pillar-card:nth-child(4) { transition-delay: 0.44s; }
+    .pillar-card:hover { background: var(--white); border-color: rgba(201,168,76,0.6); }
+    .pillar-card::after {
+      content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.05), transparent);
+      transition: left 0.7s ease; pointer-events: none;
+    }
+    .pillar-card:hover::after { left: 130%; }
+    .pillar-num {
+      font-family: var(--font-serif); font-size: 64px; font-weight: 300; line-height: 1;
+      color: rgba(201,168,76,0.1); letter-spacing: -0.02em; display: block;
+      margin-bottom: 20px; transition: color 0.4s ease;
+    }
+    .pillar-card:hover .pillar-num { color: rgba(201,168,76,0.2); }
+    .pillar-icon {
+      width: 36px; height: 36px; border: 1px solid rgba(4,24,50,0.2);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .pillar-icon svg { width: 16px; height: 16px; fill: var(--navy); }
+    .pillar-card:hover .pillar-icon { border-color: rgba(201,168,76,0.6); background: rgba(201,168,76,0.08); }
+    .pillar-card:hover .pillar-icon svg { fill: var(--gold-dark); }
+    .pillar-title {
+      font-family: var(--font-serif); font-size: 24px; font-weight: 400;
+      color: var(--navy); letter-spacing: 0.02em; margin-bottom: 12px; line-height: 1.2;
+    }
+    .pillar-rule {
+      width: 28px; height: 1px; background: var(--gold); opacity: 0.4;
+      margin-bottom: 16px; transition: width 0.4s ease, opacity 0.4s ease;
+    }
+    .pillar-card:hover .pillar-rule { width: 52px; opacity: 0.7; }
+    .pillar-desc {
+      font-family: var(--font-display); font-size: 12.5px; font-weight: 300;
+      line-height: 1.78; color: rgba(4,24,50,0.55); transition: color 0.35s ease;
+    }
+    .pillar-card:hover .pillar-desc { color: rgba(4,24,50,0.7); }
+
+    /* ══════════════════════════════════════════
+       SECTION — HOW WE TEACH (DARK NAVY)
+    ══════════════════════════════════════════ */
+    .how {
+      position: relative; background: var(--navy); overflow: hidden;
+      padding: 130px 0 140px;
+    }
+    .how::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 70% at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 85% 80%, rgba(201,168,76,0.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .how__grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .how__top-rule {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent);
+    }
+    .how__inner {
+      position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px;
+    }
+    .how__header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 96px; }
+    .how__body {
+      font-family: var(--font-display); font-size: 13px; font-weight: 300;
+      line-height: 1.88; color: rgba(255,255,255,0.45); margin-top: 24px; max-width: 440px;
+    }
+    .how__body strong { color: rgba(255,255,255,0.75); font-weight: 400; }
+    /* Steps grid */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px;
+    }
+    .step-card {
+      position: relative; background: rgba(255,255,255,0.025);
+      padding: 44px 28px 40px; overflow: hidden; cursor: default;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.4s ease;
+    }
+    .step-card.visible { opacity: 1; transform: translateY(0); }
+    .step-card:nth-child(1) { transition-delay: 0.04s; }
+    .step-card:nth-child(2) { transition-delay: 0.12s; }
+    .step-card:nth-child(3) { transition-delay: 0.2s;  }
+    .step-card:nth-child(4) { transition-delay: 0.28s; }
+    .step-card:nth-child(5) { transition-delay: 0.36s; }
+    .step-card:nth-child(6) { transition-delay: 0.44s; }
+    .step-card:hover { background: rgba(201,168,76,0.04); }
+    .step-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); z-index: 3;
+    }
+    .step-card:hover::before { transform: scaleX(1); }
+    .step-num-ghost {
+      font-family: var(--font-serif); font-size: 56px; font-weight: 300; line-height: 1;
+      color: rgba(201,168,76,0.09); letter-spacing: -0.02em; display: block;
+      margin-bottom: 16px; transition: color 0.4s ease;
+    }
+    .step-card:hover .step-num-ghost { color: rgba(201,168,76,0.2); }
+    .step-label {
+      font-family: var(--font-display); font-size: 7.5px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.7;
+      display: block; margin-bottom: 10px; transition: opacity 0.3s;
+    }
+    .step-card:hover .step-label { opacity: 1; }
+    .step-title {
+      font-family: var(--font-serif); font-size: 20px; font-weight: 400;
+      color: var(--white); line-height: 1.2;
+    }
+    .step-rule {
+      width: 20px; height: 1px; background: var(--gold); opacity: 0.35;
+      margin: 14px 0; transition: width 0.4s ease, opacity 0.4s ease;
+    }
+    .step-card:hover .step-rule { width: 40px; opacity: 0.65; }
+    .step-desc {
+      font-family: var(--font-display); font-size: 11px; font-weight: 300;
+      line-height: 1.7; color: rgba(255,255,255,0.38); transition: color 0.35s ease;
+    }
+    .step-card:hover .step-desc { color: rgba(255,255,255,0.58); }
+
+    /* ══════════════════════════════════════════
+       SECTION — TRACK RECORD (LIGHT)
+    ══════════════════════════════════════════ */
+    .track-record {
+      position: relative; background: #f8f6f2; overflow: hidden; padding: 120px 0 140px;
+    }
+    .track-record::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 55% 70% at 10% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 90% 20%, rgba(4,24,50,0.04) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .track-record__grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .track-record__inner {
+      position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px;
+    }
+    .track-record__header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 88px; }
+    .track-record__intro {
+      font-family: var(--font-display); font-size: 13px; font-weight: 300;
+      line-height: 1.88; color: rgba(4,24,50,0.55); margin-top: 20px; max-width: 420px;
+    }
+    /* Total headline */
+    .track-total {
+      margin-bottom: 64px; border-left: 3px solid rgba(201,168,76,0.7); padding-left: 28px;
+    }
+    .track-total__num {
+      font-family: var(--font-serif); font-size: clamp(52px, 6vw, 88px); font-weight: 300;
+      color: var(--navy); line-height: 1; letter-spacing: -0.01em; display: block;
+    }
+    .track-total__num em { color: var(--gold-dark); font-style: italic; }
+    .track-total__label {
+      font-family: var(--font-display); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase; color: rgba(4,24,50,0.4);
+      display: block; margin-top: 8px;
+    }
+    /* Deals grid */
+    .deals-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .deal-card {
+      position: relative; background: rgba(255,255,255,0.65);
+      padding: 44px 32px 40px; overflow: hidden; cursor: default;
+      border-top: 2px solid transparent;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.4s ease, border-color 0.4s ease;
+    }
+    .deal-card.visible { opacity: 1; transform: translateY(0); }
+    .deal-card:nth-child(1) { transition-delay: 0.05s; }
+    .deal-card:nth-child(2) { transition-delay: 0.15s; }
+    .deal-card:nth-child(3) { transition-delay: 0.25s; }
+    .deal-card:nth-child(4) { transition-delay: 0.35s; }
+    .deal-card:hover { background: var(--white); border-color: rgba(201,168,76,0.5); }
+    .deal-card::after {
+      content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.05), transparent);
+      transition: left 0.7s ease; pointer-events: none;
+    }
+    .deal-card:hover::after { left: 130%; }
+    .deal-location {
+      font-family: var(--font-display); font-size: 8px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-dark);
+      opacity: 0.8; display: block; margin-bottom: 16px;
+    }
+    .deal-amount {
+      font-family: var(--font-serif); font-size: 42px; font-weight: 300;
+      color: var(--navy); line-height: 1; letter-spacing: -0.01em; display: block;
+      margin-bottom: 16px;
+    }
+    .deal-rule {
+      width: 28px; height: 1px; background: var(--gold); opacity: 0.4;
+      margin-bottom: 16px; transition: width 0.4s ease, opacity 0.4s ease;
+    }
+    .deal-card:hover .deal-rule { width: 48px; opacity: 0.7; }
+    .deal-label {
+      font-family: var(--font-display); font-size: 11px; font-weight: 300;
+      color: rgba(4,24,50,0.5); line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION — THE TEAM (DARK NAVY)
+       Mirrors the homepage .mentors section exactly
+    ══════════════════════════════════════════ */
+    .team {
+      position: relative; background: var(--navy); overflow: hidden; padding: 120px 0 140px;
+    }
+    .team::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 70% at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 85% 80%, rgba(201,168,76,0.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .team__grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .team__top-rule {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent);
+    }
+    .team__inner {
+      position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px;
+    }
+    .team__header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 80px; gap: 40px; flex-wrap: wrap;
+    }
+    .team__header-left { max-width: 560px; }
+    .team__header-right { max-width: 320px; }
+    .team__intro {
+      font-family: var(--font-display); font-size: 13px; font-weight: 300;
+      line-height: 1.85; color: rgba(255,255,255,0.4); letter-spacing: 0.03em;
+    }
+    .team__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    /* Mentor card — identical to homepage */
+    .mentor-card {
+      position: relative; background: rgba(255,255,255,0.025); overflow: hidden;
+      cursor: default; transition: background 0.4s ease;
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease, background 0.4s ease;
+    }
+    .mentor-card.visible { opacity: 1; transform: translateY(0); }
+    .mentor-card:nth-child(1) { transition-delay: 0.05s; }
+    .mentor-card:nth-child(2) { transition-delay: 0.2s; }
+    .mentor-card:nth-child(3) { transition-delay: 0.35s; }
+    .mentor-card:hover { background: rgba(201,168,76,0.04); }
+    .mentor-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); z-index: 3;
+    }
+    .mentor-card:hover::before { transform: scaleX(1); }
+    .mentor-card::after {
+      content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent);
+      transition: left 0.7s ease; z-index: 1; pointer-events: none;
+    }
+    .mentor-card:hover::after { left: 130%; }
+    .mentor-portrait { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; }
+    .mentor-portrait img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+      filter: brightness(0.75) saturate(0.7) sepia(0.12);
+      transition: transform 7s ease, filter 0.5s ease;
+    }
+    .mentor-card:hover .mentor-portrait img { transform: scale(1.04); filter: brightness(0.85) saturate(0.85) sepia(0.06); }
+    .mentor-portrait::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(4,24,50,0.5) 70%, rgba(4,24,50,0.92) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .mentor-index {
+      position: absolute; top: 20px; left: 20px; font-family: var(--font-display);
+      font-size: 9px; font-weight: 400; letter-spacing: 0.25em; color: rgba(255,255,255,0.35);
+      z-index: 2; text-transform: uppercase;
+    }
+    .mentor-role-badge {
+      position: absolute; bottom: 20px; right: 20px; z-index: 2;
+      font-family: var(--font-display); font-size: 7.5px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.85;
+      writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity 0.3s ease;
+    }
+    .mentor-card:hover .mentor-role-badge { opacity: 1; }
+    .mentor-info { padding: 28px 32px 36px; position: relative; z-index: 2; }
+    .mentor-name {
+      font-family: var(--font-serif); font-size: 28px; font-weight: 400;
+      letter-spacing: 0.04em; color: var(--white); margin-bottom: 4px; line-height: 1.1;
+    }
+    .mentor-title {
+      font-family: var(--font-display); font-size: 8.5px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.75;
+      margin-bottom: 18px; display: block;
+    }
+    .mentor-rule {
+      width: 28px; height: 1px; background: var(--gold); opacity: 0.4;
+      margin-bottom: 18px; transition: width 0.4s ease, opacity 0.4s ease;
+    }
+    .mentor-card:hover .mentor-rule { width: 52px; opacity: 0.7; }
+    .mentor-bio {
+      font-family: var(--font-display); font-size: 12.5px; font-weight: 300;
+      line-height: 1.78; color: rgba(255,255,255,0.45); margin-bottom: 24px;
+      transition: color 0.35s ease;
+    }
+    .mentor-card:hover .mentor-bio { color: rgba(255,255,255,0.6); }
+    .mentor-stats { display: flex; gap: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .mentor-stat { display: flex; flex-direction: column; gap: 3px; }
+    .mentor-stat__num {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 400;
+      color: var(--gold); letter-spacing: 0.02em; line-height: 1;
+    }
+    .mentor-stat__label {
+      font-family: var(--font-display); font-size: 7.5px; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    /* Team footer */
+    .team__footer { margin-top: 80px; text-align: center; position: relative; }
+    .team__footer::before {
+      content: ''; display: block; width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+      margin: 0 auto 32px;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION — CLOSING CTA (LIGHT)
+    ══════════════════════════════════════════ */
+    .cta-closing {
+      position: relative; background: #f8f6f2; overflow: hidden; padding: 140px 0 150px;
+    }
+    .cta-closing::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+    .cta-closing__grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .cta-closing__inner {
+      position: relative; z-index: 2; max-width: 780px; margin: 0 auto;
+      padding: 0 56px; text-align: center;
+    }
+    .cta-closing__rule { display: block; width: 1px; height: 56px; background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent); margin: 0 auto 40px; }
+    .cta-closing__heading {
+      font-family: var(--font-serif); font-size: clamp(38px, 5vw, 64px); font-weight: 400;
+      line-height: 1.08; color: var(--navy); letter-spacing: 0.01em; margin-bottom: 28px;
+    }
+    .cta-closing__heading em { font-style: italic; font-weight: 300; color: var(--gold-dark); }
+    .cta-closing__body {
+      font-family: var(--font-display); font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: rgba(4,24,50,0.55); max-width: 520px;
+      margin: 0 auto 48px; letter-spacing: 0.03em;
+    }
+    .cta-closing__actions { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
+
+    /* ══════════════════════════════════════════
+       SITE FOOTER
+    ══════════════════════════════════════════ */
+    .site-footer { position: relative; background: #060e1a; overflow: hidden; }
+    .footer__top-rule {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6) 25%, rgba(201,168,76,0.6) 75%, transparent);
+      z-index: 3;
+    }
+    .footer__grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .footer__orb { position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none; z-index: 1; }
+    .footer__orb--left { top: -160px; left: -180px; background: radial-gradient(circle, rgba(201,168,76,0.055) 0%, transparent 65%); }
+    .footer__orb--right { bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 60%); }
+    .footer__inner {
+      position: relative; z-index: 2; max-width: 1280px; margin: 0 auto;
+      padding: 96px 64px 80px; display: grid; grid-template-columns: 300px 1fr;
+      gap: 80px; align-items: start;
+    }
+    .footer__brand { display: flex; flex-direction: column; }
+    .footer__logo { display: flex; flex-direction: column; gap: 7px; text-decoration: none; margin-bottom: 20px; }
+    .footer__logo-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase; color: #fff; line-height: 1;
+      transition: color 0.3s ease;
+    }
+    .footer__logo:hover .footer__logo-name { color: #c9a84c; }
+    .footer__logo-sub {
+      font-family: 'Montserrat', sans-serif; font-size: 7px; font-weight: 300;
+      letter-spacing: 0.45em; text-transform: uppercase; color: rgba(255,255,255,0.28); padding-left: 0.45em;
+    }
+    .footer__logo-rule { width: 36px; height: 1px; background: #c9a84c; opacity: 0.55; margin-bottom: 22px; }
+    .footer__brand-strapline {
+      font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 300;
+      line-height: 1.85; color: rgba(255,255,255,0.38); letter-spacing: 0.03em; margin-bottom: 32px;
+    }
+    .footer__socials { display: flex; gap: 10px; align-items: center; }
+    .footer__social {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.35); text-decoration: none;
+      transition: border-color 0.35s, color 0.35s, background 0.35s, transform 0.35s;
+    }
+    .footer__social svg { width: 15px; height: 15px; }
+    .footer__social:hover { border-color: #c9a84c; color: #c9a84c; background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+    .footer__nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .footer__nav-heading {
+      font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase; color: #c9a84c; opacity: 0.85;
+      margin-bottom: 24px; position: relative; padding-bottom: 14px;
+    }
+    .footer__nav-heading::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 20px; height: 1px; background: #c9a84c; opacity: 0.4;
+    }
+    .footer__nav-list { list-style: none; display: flex; flex-direction: column; gap: 1px; }
+    .footer__nav-link {
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 300;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.38); text-decoration: none;
+      display: inline-block; padding: 6px 0; position: relative;
+      transition: color 0.28s, padding-left 0.3s;
+    }
+    .footer__nav-link::before {
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 0; height: 1px; background: #c9a84c; opacity: 0.6; transition: width 0.3s;
+    }
+    .footer__nav-link:hover { color: rgba(255,255,255,0.8); padding-left: 14px; }
+    .footer__nav-link:hover::before { width: 8px; }
+    .footer__contact-list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+    .footer__contact-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 300;
+      line-height: 1.65; color: rgba(255,255,255,0.38);
+    }
+    .footer__contact-item a { color: inherit; text-decoration: none; transition: color 0.28s; }
+    .footer__contact-item a:hover { color: #c9a84c; }
+    .footer__contact-icon { flex-shrink: 0; width: 14px; height: 14px; color: #c9a84c; opacity: 0.7; margin-top: 2px; }
+    .footer__contact-icon svg { width: 14px; height: 14px; fill: currentColor; }
+    .footer__cta {
+      position: relative; display: inline-block; padding: 13px 30px;
+      font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: #041832; background: #c9a84c; border: 1px solid #c9a84c;
+      overflow: hidden; cursor: pointer; transition: color 0.4s;
+    }
+    .footer__cta::before {
+      content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+      background: #fff; transition: top 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 0;
+    }
+    .footer__cta:hover::before { top: 0; }
+    .footer__cta:hover { color: #041832; border-color: #fff; }
+    .footer__cta span { position: relative; z-index: 1; }
+    .footer__quote-bar {
+      position: relative; z-index: 2;
+      border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12);
+      background: rgba(201,168,76,0.03); padding: 22px 64px; overflow: hidden;
+    }
+    .footer__quote-bar::before {
+      content: '\201C'; position: absolute; top: -20px; left: 56px;
+      font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 300;
+      color: rgba(201,168,76,0.06); line-height: 1; pointer-events: none;
+    }
+    .footer__quote-bar-inner {
+      max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .footer__quote-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300;
+      font-style: italic; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; line-height: 1.5; flex: 1;
+    }
+    .footer__quote-sep { color: rgba(201,168,76,0.35); font-size: 8px; flex-shrink: 0; }
+    .footer__quote-attr {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase; color: #c9a84c; opacity: 0.6; flex-shrink: 0;
+    }
+    .footer__base { position: relative; z-index: 2; background: rgba(0,0,0,0.35); padding: 28px 64px; }
+    .footer__base-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto;
+      column-gap: 40px; row-gap: 8px; align-items: center;
+    }
+    .footer__copy {
+      font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 300;
+      letter-spacing: 0.08em; color: rgba(255,255,255,0.22); grid-column: 1; grid-row: 1;
+    }
+    .footer__legal-links {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      justify-content: flex-end; grid-column: 2; grid-row: 1;
+    }
+    .footer__legal-link {
+      font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 300;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.25s;
+    }
+    .footer__legal-link:hover { color: #c9a84c; }
+    .footer__legal-sep { color: rgba(255,255,255,0.12); font-size: 10px; }
+    .footer__disclaimer {
+      font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 300;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.14); line-height: 1.6;
+      grid-column: 1 / -1; grid-row: 2; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer__brand, .footer__nav { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .footer__nav { transition-delay: 0.15s; }
+    .footer__brand.f-visible, .footer__nav.f-visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(3, 1fr); }
+      .deals-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 960px) {
+      .why { grid-template-columns: 1fr; grid-template-rows: 380px auto; }
+      .why__image { height: 380px; }
+      .why__badge { right: 24px; bottom: -24px; }
+      .why__content { padding: 64px 32px; }
+      .how__header { grid-template-columns: 1fr; gap: 0; }
+      .track-record__header { grid-template-columns: 1fr; gap: 0; }
+      .team__grid { grid-template-columns: 1fr; }
+      .mentor-portrait { aspect-ratio: 4 / 3; }
+      .mentor-portrait img { object-position: center 20%; }
+      .team__header { flex-direction: column; align-items: flex-start; }
+      .footer__inner { grid-template-columns: 1fr; gap: 48px; padding: 64px 28px 48px; }
+      .footer__nav { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .top-bar { padding: 7px 20px; }
+      .top-bar .info { display: none; }
+      .navbar { padding: 0 20px; height: 64px; }
+      .nav-group { display: none; }
+      .logo-wrap { padding: 0; height: 64px; }
+      .logo-name { font-size: 16px; letter-spacing: 0.2em; }
+      .hamburger { display: flex; }
+      .what-we-do__inner, .how__inner, .track-record__inner, .team__inner { padding: 0 28px; }
+    }
+    @media (max-width: 768px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .deals-grid { grid-template-columns: 1fr; }
+      .hero-about__breadcrumb { padding: 14px 28px; }
+      .cta-closing__inner { padding: 0 24px; }
+    }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .why__content { padding: 48px 24px 56px; }
+      .hero-about { height: 100svh; }
+    }
+    @media (max-width: 1100px) {
+      .footer__inner { grid-template-columns: 260px 1fr; gap: 56px; padding: 80px 40px 64px; }
+    }
+    @media (max-width: 520px) {
+      .footer__nav { grid-template-columns: 1fr; }
+      .footer__quote-bar { padding: 20px 28px; }
+      .footer__base { padding: 22px 28px; }
+      .footer__base-inner { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+      .footer__legal-links { justify-content: flex-start; grid-row: 2; grid-column: 1; }
+      .footer__disclaimer { grid-row: 3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="quality">Quality is our standard <strong>for over 20 years</strong></span>
+    <div class="info">
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        Leeds United Kingdom
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+        +44 7968 100786
+      </span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-group left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link active">About Us</a>
+      <a href="events.html" class="nav-link">Events</a>
+    </div>
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-text-group">
+        <span class="logo-name">Ethical Wealth Academy</span>
+        <span class="logo-sub">Build · Preserve · Grow</span>
+      </span>
+      <span class="logo-img-group">
+        <img src="images/goldlogo.png" alt="Ethical Wealth Academy" />
+      </span>
+    </a>
+    <div class="nav-group right">
+      <a href="success.html" class="nav-link">Success Stories</a>
+      <a href="mini-events.html" class="nav-link">Mini Events</a>
+      <a href="conference.html" class="nav-link">Conferences</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="mobile-menu__curtain">
+      <div class="curtain-half"></div>
+      <div class="curtain-half"></div>
+    </div>
+    <div class="curtain-seam"></div>
+    <div class="menu-orb"></div>
+    <div class="mobile-menu__accent"></div>
+    <div class="mobile-menu__inner">
+      <div class="mobile-logo">
+        <span class="logo-name">Ethical Wealth Academy</span>
+        <span class="logo-sub">Build · Preserve · Grow</span>
+        <div class="mobile-logo-rule"></div>
+      </div>
+      <nav>
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link"><span class="link-num">01</span><span class="link-text">Home</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link"><span class="link-num">02</span><span class="link-text">About Us</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="events.html" class="mobile-nav-link"><span class="link-num">03</span><span class="link-text">Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="conference.html" class="mobile-nav-link"><span class="link-num">06</span><span class="link-text">Conferences</span><span class="link-arrow"></span></a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__footer">
+        <p>Get in touch</p>
+        <a href="tel:+447968100786">+44 7968 100786</a>
+        <a href="#">Leeds United Kingdom</a>
+      </div>
+      <div class="mobile-menu__cta">
+        <a href="#" class="btn-primary"><span>Start Your Journey</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero-about" aria-label="About Us Hero">
+    <div class="hero-about__bg"></div>
+    <div class="hero-about__overlay"></div>
+    <div class="hero-about__content">
+      <span class="hero-about__eyebrow">Our Story</span>
+      <span class="hero-about__rule"></span>
+      <h1 class="hero-about__heading">We Teach What Works.<br><em>We Prove It First.</em></h1>
+      <p class="hero-about__body">No theory. No hype. Just a proven social housing investment model — built by active investors, taught to hundreds.</p>
+    </div>
+    <div class="hero-about__breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">◆</span>
+      <span class="current">About Us</span>
+    </div>
+  </section>
+
+  <!-- ══════════ WHY WE EXIST ══════════ -->
+  <section class="why" id="why" aria-label="Why We Exist">
+    <div class="why__grain" aria-hidden="true"></div>
+    <div class="why__top-rule" aria-hidden="true"></div>
+
+    <!-- Image column -->
+    <div class="why__image">
+      <img src="images/hero2.jpg" alt="Property investment — the old way is changing" loading="lazy" />
+      <span class="why__image-label">A New Model for Modern Investors</span>
+      <div class="why__badge">
+        <span class="why__badge__num">20</span>
+        <span class="why__badge__label">Years Experience</span>
+      </div>
+    </div>
+
+    <!-- Content column -->
+    <div class="why__content">
+      <div class="section-tag reveal">
+        <span class="section-tag__line"></span>
+        <span class="section-tag__text--gold">Why We Exist</span>
+      </div>
+      <h2 class="heading-dark reveal">
+        The Old Way of Property<br><em>Is Broken</em>
+      </h2>
+      <p class="body-dark reveal">
+        Buy-to-let is getting harder. Legislation is tightening. Margins are shrinking. <strong>Most landlords are working harder for less.</strong>
+      </p>
+      <p class="body-dark reveal" style="transition-delay:0.1s">
+        We saw this coming — and we found a better way.
+      </p>
+      <p class="body-dark reveal" style="transition-delay:0.15s">
+        Ethical Wealth Academy was built to share a single, proven strategy: social housing and supported living investment. It eliminates tenant headaches, void periods, and maintenance worries — and replaces them with <strong>guaranteed rent, long-term leases, and real six-figure returns.</strong>
+      </p>
+      <p class="body-dark reveal" style="transition-delay:0.2s">
+        We don't teach it because it sounds good. <strong>We teach it because we've done it</strong> — consistently, for over 20 years.
+      </p>
+      <div class="divider-dark reveal" style="transition-delay:0.25s"></div>
+      <div class="cta-row reveal" style="transition-delay:0.3s">
+        <a href="#" class="btn-primary"><span>Discover the Strategy</span></a>
+        <a href="#" class="btn-ghost-dark">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WHAT WE DO ══════════ -->
+  <section class="what-we-do" id="what-we-do" aria-label="What We Do">
+    <div class="what-we-do__grain" aria-hidden="true"></div>
+    <div class="what-we-do__inner">
+      <div class="what-we-do__header">
+        <div class="section-tag--centred reveal">
+          <span class="section-tag__line" style="background:var(--gold);opacity:0.8;"></span>
+          <span class="section-tag__text--dark">What We Do</span>
+          <span class="section-tag__line" style="background:var(--gold);opacity:0.8;"></span>
+        </div>
+        <h2 class="heading-light reveal" style="transition-delay:0.1s">
+          One Strategy.<br><em>Executed Properly.</em>
+        </h2>
+      </div>
+
+      <div class="pillars-grid">
+
+        <!-- Pillar 1 -->
+        <div class="pillar-card">
+          <span class="pillar-num" aria-hidden="true">01</span>
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 8z"/></svg>
+          </div>
+          <h3 class="pillar-title">Guaranteed Rent</h3>
+          <div class="pillar-rule"></div>
+          <p class="pillar-desc">Paid by local government. No chasing. No arrears. Predictable income that arrives regardless of market fluctuations or tenant circumstances.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="pillar-card">
+          <span class="pillar-num" aria-hidden="true">02</span>
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="pillar-title">Long-Term Leases</h3>
+          <div class="pillar-rule"></div>
+          <p class="pillar-desc">3 to 10-year agreements. Stability you can plan a portfolio around — not just hope for. Every lease secured before you purchase.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar-card">
+          <span class="pillar-num" aria-hidden="true">03</span>
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="pillar-title">Hands-Free Management</h3>
+          <div class="pillar-rule"></div>
+          <p class="pillar-desc">Approved providers handle everything. You own the asset, not the workload. No call-outs, no repairs, no complaints at midnight.</p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="pillar-card">
+          <span class="pillar-num" aria-hidden="true">04</span>
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <h3 class="pillar-title">Above-Market Yields</h3>
+          <div class="pillar-rule"></div>
+          <p class="pillar-desc">Demand dramatically outstrips supply — and returns reflect that reality. The market isn't broken for this strategy. It's working harder than ever.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW WE TEACH ══════════ -->
+  <section class="how" id="how" aria-label="How We Teach">
+    <div class="how__grain" aria-hidden="true"></div>
+    <div class="how__top-rule" aria-hidden="true"></div>
+    <div class="how__inner">
+
+      <div class="how__header">
+        <div>
+          <div class="section-tag reveal">
+            <span class="section-tag__line"></span>
+            <span class="section-tag__text--gold">How We Teach</span>
+          </div>
+          <h2 class="heading-dark reveal" style="transition-delay:0.1s">
+            <em>Mindset. Numbers. Action.</em><br>In That Order.
+          </h2>
+        </div>
+        <div>
+          <p class="how__body reveal" style="transition-delay:0.15s">
+            We structure everything around the same <strong>six steps</strong> our mentors used to build their own portfolios.
+          </p>
+          <p class="how__body reveal" style="transition-delay:0.22s">
+            Mindset first — because <strong>80% of what holds investors back is psychology, not knowledge.</strong> Then the numbers, the strategy, the tenancies, the execution, and finally the resilience to keep going when it gets hard.
+          </p>
+          <p class="how__body reveal" style="transition-delay:0.29s">
+            Every programme, every workshop, every webinar follows this same foundation.
+          </p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <span class="step-num-ghost" aria-hidden="true">01</span>
+          <span class="step-label">Step One</span>
+          <h3 class="step-title">Mindset</h3>
+          <div class="step-rule"></div>
+          <p class="step-desc">Shift how you think about wealth, risk, and time. Everything else depends on this foundation being solid.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num-ghost" aria-hidden="true">02</span>
+          <span class="step-label">Step Two</span>
+          <h3 class="step-title">Analytics</h3>
+          <div class="step-rule"></div>
+          <p class="step-desc">Read markets, model deals, and understand what the numbers are actually telling you before you commit.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num-ghost" aria-hidden="true">03</span>
+          <span class="step-label">Step Three</span>
+          <h3 class="step-title">Strategy</h3>
+          <div class="step-rule"></div>
+          <p class="step-desc">One clear model, deployed with focus. No pivoting, no distraction — just a system that consistently performs.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num-ghost" aria-hidden="true">04</span>
+          <span class="step-label">Step Four</span>
+          <h3 class="step-title">Tenancies</h3>
+          <div class="step-rule"></div>
+          <p class="step-desc">Structure leases correctly from the start. Understand how social housing agreements work — and how to protect yourself inside them.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num-ghost" aria-hidden="true">05</span>
+          <span class="step-label">Step Five</span>
+          <h3 class="step-title">Execution</h3>
+          <div class="step-rule"></div>
+          <p class="step-desc">Source, finance, complete. Turn knowledge into closed deals with a repeatable process that removes guesswork entirely.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num-ghost" aria-hidden="true">06</span>
+          <span class="step-label">Step Six</span>
+          <h3 class="step-title">Resilience</h3>
+          <div class="step-rule"></div>
+          <p class="step-desc">The market will test you. A portfolio grows through difficulty — and this step ensures you're equipped to keep going.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TRACK RECORD ══════════ -->
+  <section class="track-record" id="track-record" aria-label="Real Results">
+    <div class="track-record__grain" aria-hidden="true"></div>
+    <div class="track-record__inner">
+
+      <div class="track-record__header">
+        <div>
+          <div class="section-tag reveal">
+            <span class="section-tag__line" style="background:var(--gold);opacity:0.8;"></span>
+            <span class="section-tag__text--dark">Real Results</span>
+          </div>
+          <h2 class="heading-light reveal" style="transition-delay:0.1s">
+            <em>£734,000</em> in Student Profits.<br>Across Four Deals.
+          </h2>
+        </div>
+        <div>
+          <p class="track-record__intro reveal" style="transition-delay:0.15s">
+            Our students aren't waiting for the market to change. They're working a model that performs right now — because it's built around what the market actually needs.
+          </p>
+          <div style="margin-top:28px;" class="reveal" style="transition-delay:0.2s">
+            <a href="#" class="btn-ghost-light">See the full case studies</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="track-total reveal">
+        <span class="track-total__num"><em>£734,000</em></span>
+        <span class="track-total__label">Total Student Profits — Four Completed Deals</span>
+      </div>
+
+      <!-- Individual deals -->
+      <div class="deals-grid">
+
+        <div class="deal-card">
+          <span class="deal-location">Stockton-on-Tees</span>
+          <span class="deal-amount">£120,000</span>
+          <div class="deal-rule"></div>
+          <p class="deal-label">Student profit from a single social housing deal, completed within the programme framework.</p>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-location">Derby</span>
+          <span class="deal-amount">£175,000</span>
+          <div class="deal-rule"></div>
+          <p class="deal-label">Supported living conversion — lease secured before purchase, full management in place from day one.</p>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-location">Blackburn</span>
+          <span class="deal-amount">£180,000</span>
+          <div class="deal-rule"></div>
+          <p class="deal-label">Local authority partnership deal with guaranteed rent locked in for five years at above-market rates.</p>
+        </div>
+
+        <div class="deal-card">
+          <span class="deal-location">Willenhall</span>
+          <span class="deal-amount">£259,000</span>
+          <div class="deal-rule"></div>
+          <p class="deal-label">Multi-unit acquisition — our largest student profit to date. Completed using the full six-step process.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE TEAM ══════════ -->
+  <section class="team" id="team" aria-label="The Team">
+    <div class="team__grain" aria-hidden="true"></div>
+    <div class="team__top-rule" aria-hidden="true"></div>
+    <div class="team__inner">
+
+      <div class="team__header">
+        <div class="team__header-left">
+          <div class="section-tag reveal">
+            <span class="section-tag__line"></span>
+            <span class="section-tag__text--gold">The Team</span>
+          </div>
+          <h2 class="heading-dark reveal" style="transition-delay:0.08s">
+            Taught by Those<br>Who <em>Actually Do It</em>
+          </h2>
+        </div>
+        <div class="team__header-right reveal" style="transition-delay:0.15s">
+          <p class="team__intro">
+            Every mentor holds an active portfolio. They return week after week because this model keeps working — and they want you to see that firsthand.
+          </p>
+        </div>
+      </div>
+
+      <div class="team__grid">
+
+        <!-- Ahmed Ali -->
+        <div class="mentor-card">
+          <div class="mentor-portrait">
+            <span class="mentor-index">01 / 03</span>
+            <img src="images/ahmedalli.png" alt="Ahmed Ali — Director & Supported Housing Specialist" loading="lazy" />
+            <span class="mentor-role-badge">Director & Supported Housing Specialist</span>
+          </div>
+          <div class="mentor-info">
+            <h3 class="mentor-name">Ahmed Ali</h3>
+            <span class="mentor-title">Director & Supported Housing Specialist</span>
+            <div class="mentor-rule"></div>
+            <p class="mentor-bio">
+              22+ years in property since his first investment in 2002. Ahmed is a specialist in commercial lease structuring and supported housing for vulnerable adults. He builds portfolios that triple in value while directly addressing community housing needs.
+            </p>
+            <div class="mentor-stats">
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">40+</span>
+                <span class="mentor-stat__label">Properties</span>
+              </div>
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">22</span>
+                <span class="mentor-stat__label">Yrs Experience</span>
+              </div>
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">£8M+</span>
+                <span class="mentor-stat__label">Portfolio Value</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ayub Kayat -->
+        <div class="mentor-card">
+          <div class="mentor-portrait">
+            <span class="mentor-index">02 / 03</span>
+            <img src="images/ayub.jpg" alt="Ayub Kayat — Property Investment Coach & Founder" loading="lazy" />
+            <span class="mentor-role-badge">Property Investment Coach & Founder</span>
+          </div>
+          <div class="mentor-info">
+            <h3 class="mentor-name">Ayub Kayat</h3>
+            <span class="mentor-title">Property Investment Coach & Founder</span>
+            <div class="mentor-rule"></div>
+            <p class="mentor-bio">
+              15+ years across multiple countries. Ayub leads our mastermind groups, one-to-one coaching, and the annual conference. His belief: when the right people come together with a shared vision, that's where results happen.
+            </p>
+            <div class="mentor-stats">
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">120+</span>
+                <span class="mentor-stat__label">Deals Closed</span>
+              </div>
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">15</span>
+                <span class="mentor-stat__label">Yrs Experience</span>
+              </div>
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">£5M+</span>
+                <span class="mentor-stat__label">Portfolio Value</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mo Ditta -->
+        <div class="mentor-card">
+          <div class="mentor-portrait">
+            <span class="mentor-index">03 / 03</span>
+            <img src="images/moditta.png" alt="Mo Ditta — Compliance & Operations Director" loading="lazy" />
+            <span class="mentor-role-badge">Compliance & Operations Director</span>
+          </div>
+          <div class="mentor-info">
+            <h3 class="mentor-name">Mo Ditta</h3>
+            <span class="mentor-title">Compliance & Operations Director</span>
+            <div class="mentor-rule"></div>
+            <p class="mentor-bio">
+              20+ years in property since 2004. Mo ensures every strategy we teach is low-risk, legally sound, and genuinely hands-off. He designed our guaranteed rent frameworks and property management systems from the ground up.
+            </p>
+            <div class="mentor-stats">
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">£12M</span>
+                <span class="mentor-stat__label">Finance Arranged</span>
+              </div>
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">20</span>
+                <span class="mentor-stat__label">Yrs Experience</span>
+              </div>
+              <div class="mentor-stat">
+                <span class="mentor-stat__num">8%+</span>
+                <span class="mentor-stat__label">Avg Net Yield</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="team__footer">
+        <p class="mentors__quote reveal" style="font-family:var(--font-serif);font-size:clamp(18px,2.2vw,26px);font-weight:300;font-style:italic;color:rgba(255,255,255,0.35);letter-spacing:0.02em;line-height:1.6;max-width:640px;margin:0 auto 32px;">
+          "We don't just teach — we show you <strong style="color:rgba(255,255,255,0.6);font-weight:400;font-style:normal;">exactly what we do</strong>,<br>so you can replicate it with total confidence."
+        </p>
+        <div class="cta-row" style="justify-content:center;" id="teamCtaRow">
+          <a href="#" class="btn-primary"><span>Meet the Team</span></a>
+          <a href="#" class="btn-ghost-dark">View Success Stories</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ CLOSING CTA ══════════ -->
+  <section class="cta-closing" id="cta-closing" aria-label="Start Your Journey">
+    <div class="cta-closing__grain" aria-hidden="true"></div>
+    <div class="cta-closing__inner">
+      <span class="cta-closing__rule reveal" aria-hidden="true"></span>
+      <h2 class="cta-closing__heading reveal" style="transition-delay:0.1s">
+        Ready to See<br><em>How It Works?</em>
+      </h2>
+      <p class="cta-closing__body reveal" style="transition-delay:0.2s">
+        Start with a free discovery call. We'll show you the model, walk through a real deal, and tell you honestly whether this is the right fit for where you are now.
+      </p>
+      <div class="cta-closing__actions reveal" style="transition-delay:0.3s">
+        <a href="#" class="btn-navy"><span>Book a Free Discovery Call</span></a>
+        <a href="#" class="btn-ghost-light">View Upcoming Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer__grain" aria-hidden="true"></div>
+    <div class="footer__top-rule" aria-hidden="true"></div>
+    <div class="footer__orb footer__orb--left" aria-hidden="true"></div>
+    <div class="footer__orb footer__orb--right" aria-hidden="true"></div>
+
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo" aria-label="Ethical Wealth Academy — Home">
+          <span class="footer__logo-name">Ethical Wealth Academy</span>
+          <span class="footer__logo-sub">Build · Preserve · Grow</span>
+        </a>
+        <div class="footer__logo-rule" aria-hidden="true"></div>
+        <p class="footer__brand-strapline">Guiding ambitious individuals toward ethical, strategy-led property wealth — without compromising on values or returns.</p>
+        <div class="footer__socials" role="list" aria-label="Social Media">
+          <a href="#" class="footer__social" role="listitem" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="footer__social" role="listitem" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="footer__social" role="listitem" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer__social" role="listitem" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon fill="#060e1a" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer Navigation">
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Company</h4>
+          <ul class="footer__nav-list">
+            <li><a href="index.html" class="footer__nav-link">Home</a></li>
+            <li><a href="#" class="footer__nav-link">About Us</a></li>
+            <li><a href="#" class="footer__nav-link">Our Mentors</a></li>
+            <li><a href="#" class="footer__nav-link">Success Stories</a></li>
+            <li><a href="#" class="footer__nav-link">Our Mission</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Programmes</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">Social Housing Strategy</a></li>
+            <li><a href="#" class="footer__nav-link">Supported Living</a></li>
+            <li><a href="#" class="footer__nav-link">Portfolio Scaling</a></li>
+            <li><a href="#" class="footer__nav-link">1-to-1 Mentoring</a></li>
+            <li><a href="#" class="footer__nav-link">Online Courses</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Events</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">Mini Workshops</a></li>
+            <li><a href="#" class="footer__nav-link">Investment Intensives</a></li>
+            <li><a href="#" class="footer__nav-link">Discovery Evenings</a></li>
+            <li><a href="#" class="footer__nav-link">Annual Conference</a></li>
+            <li><a href="#" class="footer__nav-link">Live Webinars</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Get in Touch</h4>
+          <ul class="footer__contact-list">
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></span>
+              <span>Leeds<br>United Kingdom</span>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg></span>
+              <a href="tel:+447968100786">+44 7968 100786</a>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <a href="mailto:hello@ethicalwealthacademy.com">hello@ethicalwealthacademy.com</a>
+            </li>
+          </ul>
+          <a href="#" class="footer__cta"><span>Start Your Journey</span></a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__quote-bar" aria-hidden="true">
+      <div class="footer__quote-bar-inner">
+        <span class="footer__quote-text">"Wealth is not about having a lot of money; it's about having a lot of options."</span>
+        <span class="footer__quote-sep">◆</span>
+        <span class="footer__quote-attr">— Chris Rock</span>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <div class="footer__base-inner">
+        <p class="footer__copy">&copy; <span id="footerYear"></span> Ethical Wealth Academy. All rights reserved.</p>
+        <div class="footer__legal-links">
+          <a href="#" class="footer__legal-link">Privacy Policy</a>
+          <span class="footer__legal-sep" aria-hidden="true">·</span>
+          <a href="#" class="footer__legal-link">Terms of Use</a>
+          <span class="footer__legal-sep" aria-hidden="true">·</span>
+          <a href="#" class="footer__legal-link">Cookie Policy</a>
+          <span class="footer__legal-sep" aria-hidden="true">·</span>
+          <a href="#" class="footer__legal-link">Disclaimer</a>
+        </div>
+        <p class="footer__disclaimer">Property investment carries risk. Past performance is not indicative of future results. Please seek independent financial advice before making any investment decisions.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAVBAR SCROLL ──
+    const navbar = document.getElementById('navbar');
+    const heroSection = document.querySelector('.hero-about');
+    new IntersectionObserver(([e]) => {
+      navbar.classList.toggle('scrolled', !e.isIntersecting);
+    }, { threshold: 0.1 }).observe(heroSection);
+
+    // ── HAMBURGER ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function openMenu()  { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true');  mobileMenu.classList.add('is-open');  document.body.classList.add('menu-open'); }
+    function closeMenu() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('is-open'); document.body.classList.remove('menu-open'); }
+    hamburger.addEventListener('click', () => mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu());
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+
+    // ── SCROLL REVEAL ──
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll(
+      '.reveal, .pillar-card, .step-card, .deal-card, .mentor-card'
+    ).forEach(el => revealObs.observe(el));
+
+    // ── FOOTER REVEAL + YEAR ──
+    const footerObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('f-visible'); footerObs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.footer__brand, .footer__nav').forEach(el => footerObs.observe(el));
+
+    const yr = document.getElementById('footerYear');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
