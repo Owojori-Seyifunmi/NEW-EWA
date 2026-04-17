@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2-Day Social Housing Investment Blueprint — Ethical Wealth Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --gold: #c9a84c;
+      --gold-dark: #a8863a;
+      --light-grey: #f5f4f2;
+      --text-nav: #2a2a2a;
+      --bar-bg: #1a1a1a;
+      --navy: #041832;
+      --navy-mid: #0a2847;
+      --navy-light: #0f3560;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-display: 'Montserrat', sans-serif;
+    }
+
+    body { font-family: var(--font-display); background: var(--light-grey); }
+    body.menu-open { overflow: hidden; }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--bar-bg); color: #ccc;
+      font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+      display: flex; justify-content: space-between; align-items: center; padding: 7px 40px;
+    }
+    .top-bar .quality { font-weight: 300; }
+    .top-bar .quality strong { font-weight: 500; color: #fff; }
+    .top-bar .info { display: flex; gap: 28px; align-items: center; }
+    .top-bar .info span { display: flex; align-items: center; gap: 6px; }
+    .top-bar .info svg { width: 11px; height: 11px; fill: var(--gold); flex-shrink: 0; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--white); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px; border-bottom: 1px solid #e8e6e2;
+      z-index: 1000; position: sticky; top: 0; transition: box-shadow 0.3s ease;
+    }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-group { display: flex; align-items: center; gap: 36px; flex: 1; }
+    .nav-group.right { justify-content: flex-end; }
+    .nav-link {
+      font-size: 10.5px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--text-nav); text-decoration: none;
+      position: relative; padding-bottom: 2px; transition: color 0.25s ease; white-space: nowrap;
+    }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+    .nav-link:hover { color: var(--black); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link.active { color: var(--black); font-weight: 500; }
+    .logo-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      line-height: 1; text-decoration: none; padding: 0 32px; flex-shrink: 0;
+      position: relative; height: 72px; justify-content: center;
+    }
+    .logo-name { font-family: var(--font-serif); font-size: 22px; font-weight: 400; letter-spacing: 0.28em; color: var(--black); text-transform: uppercase; white-space: nowrap; }
+    .logo-sub { font-family: var(--font-display); font-size: 7px; font-weight: 300; letter-spacing: 0.5em; color: #999; text-transform: uppercase; margin-top: 4px; padding-left: 0.5em; white-space: nowrap; }
+    .logo-text-group { display: flex; flex-direction: column; align-items: center; transition: opacity 0.4s ease, transform 0.4s ease; }
+    .logo-img-group { position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 8px)); opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease; }
+    .logo-img-group img { height: 42px; width: auto; display: block; }
+    .navbar.scrolled .logo-text-group { opacity: 0; transform: translateY(-8px); }
+    .navbar.scrolled .logo-img-group { opacity: 1; transform: translate(-50%, -50%); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 44px; height: 44px; cursor: pointer; background: none; border: none; padding: 0; z-index: 1100; position: relative; flex-shrink: 0; }
+    .hamburger .line { display: block; width: 26px; height: 1.5px; background: var(--black); transition: transform 0.55s cubic-bezier(0.77,0,0.175,1), opacity 0.4s ease, width 0.4s ease, background 0.3s ease; transform-origin: center; }
+    .hamburger .line:nth-child(1) { margin-bottom: 6px; }
+    .hamburger .line:nth-child(3) { margin-top: 6px; width: 16px; }
+    .hamburger.open .line { background: var(--white); }
+    .hamburger.open .line:nth-child(1) { transform: translateY(7.5px) rotate(45deg); width: 26px; }
+    .hamburger.open .line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .line:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); width: 26px; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; pointer-events: none; }
+    .mobile-menu__curtain { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
+    .curtain-half { background: #0e0e0e; transform: scaleY(0); transition: transform 0.7s cubic-bezier(0.77,0,0.175,1); }
+    .curtain-half:nth-child(1) { transform-origin: top; }
+    .curtain-half:nth-child(2) { transform-origin: bottom; }
+    .curtain-seam { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent); transform: scaleY(0); transform-origin: center; transition: transform 0.5s ease 0.5s; }
+    .mobile-menu__accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%); transform: scaleX(0); transform-origin: center; transition: transform 0.7s cubic-bezier(0.77,0,0.175,1) 0.4s; opacity: 0.9; }
+    .menu-orb { position: absolute; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; animation: orbPulse 5s ease-in-out infinite; }
+    @keyframes orbPulse { 0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(0.95); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); } }
+    .mobile-menu__inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px 48px; overflow-y: auto; opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s; }
+    .mobile-menu.is-open { pointer-events: all; }
+    .mobile-menu.is-open .curtain-half { transform: scaleY(1); }
+    .mobile-menu.is-open .curtain-seam { transform: scaleY(1); }
+    .mobile-menu.is-open .mobile-menu__accent { transform: scaleX(1); }
+    .mobile-menu.is-open .mobile-menu__inner { opacity: 1; transform: translateY(0); }
+    .mobile-logo { margin-bottom: 40px; text-align: center; }
+    .mobile-logo .logo-name { color: var(--white); font-size: 17px; letter-spacing: 0.28em; font-family: var(--font-serif); }
+    .mobile-logo .logo-sub { color: rgba(255,255,255,0.3); display: block; margin-top: 8px; font-size: 7px; letter-spacing: 0.5em; text-transform: uppercase; }
+    .mobile-logo-rule { width: 36px; height: 1px; background: var(--gold); margin: 14px auto 0; opacity: 0.6; }
+    .mobile-nav-list { list-style: none; width: 100%; max-width: 360px; }
+    .mobile-nav-item + .mobile-nav-item { border-top: 1px solid rgba(255,255,255,0.06); }
+    .mobile-nav-item { opacity: 0; transform: translateX(-20px); transition: none; }
+    .mobile-menu.is-open .mobile-nav-item { opacity: 1; transform: translateX(0); }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(1) { transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(2) { transition: opacity 0.5s ease 0.65s, transform 0.5s ease 0.65s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(3) { transition: opacity 0.5s ease 0.75s, transform 0.5s ease 0.75s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(4) { transition: opacity 0.5s ease 0.85s, transform 0.5s ease 0.85s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(5) { transition: opacity 0.5s ease 0.95s, transform 0.5s ease 0.95s; }
+    .mobile-menu.is-open .mobile-nav-item:nth-child(6) { transition: opacity 0.5s ease 1.05s, transform 0.5s ease 1.05s; }
+    .mobile-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 18px 4px; font-family: var(--font-serif); font-size: 30px; font-weight: 400; letter-spacing: 0.06em; color: rgba(255,255,255,0.65); text-decoration: none; position: relative; overflow: hidden; transition: color 0.3s ease, padding-left 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+    .mobile-nav-link .link-num { font-family: var(--font-display); font-size: 9px; font-weight: 300; letter-spacing: 0.22em; color: rgba(201,168,76,0.5); margin-right: 16px; transition: color 0.3s ease; padding-top: 2px; flex-shrink: 0; }
+    .mobile-nav-link .link-text { flex: 1; }
+    .mobile-nav-link .link-arrow { width: 18px; height: 18px; border-right: 1.5px solid var(--gold); border-top: 1.5px solid var(--gold); transform: rotate(45deg) scale(0); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease; opacity: 0; flex-shrink: 0; }
+    .mobile-nav-link:hover { color: var(--white); padding-left: 8px; }
+    .mobile-nav-link:hover .link-num { color: var(--gold); }
+    .mobile-nav-link:hover .link-arrow { transform: rotate(45deg) scale(1); opacity: 1; }
+    .mobile-menu__footer { margin-top: 40px; width: 100%; max-width: 360px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; text-align: center; opacity: 0; transition: none; }
+    .mobile-menu.is-open .mobile-menu__footer { opacity: 1; transition: opacity 0.5s ease 1.15s; }
+    .mobile-menu__footer p { font-size: 8px; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 10px; }
+    .mobile-menu__footer a { display: block; font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; letter-spacing: 0.06em; margin-bottom: 4px; transition: color 0.25s; }
+    .mobile-menu__footer a:hover { color: var(--gold); }
+    .mobile-menu__cta { margin-top: 28px; opacity: 0; transition: none; }
+    .mobile-menu.is-open .mobile-menu__cta { opacity: 1; transition: opacity 0.5s ease 1.25s; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      position: relative; display: inline-block; padding: 16px 44px;
+      font-family: var(--font-display); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: var(--navy); background: var(--gold); border: 1px solid var(--gold);
+      overflow: hidden; cursor: pointer; transition: color 0.45s ease, border-color 0.45s ease;
+    }
+    .btn-primary::before { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--white); transition: top 0.45s cubic-bezier(0.4,0,0.2,1); z-index: 0; }
+    .btn-primary:hover::before { top: 0; }
+    .btn-primary:hover { border-color: var(--white); }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-ghost {
+      font-family: var(--font-display); font-size: 10px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+      color: rgba(255,255,255,0.4); display: inline-flex; align-items: center; gap: 10px;
+      transition: color 0.3s ease; padding: 16px 0;
+    }
+    .btn-ghost::after { content: ''; display: block; width: 24px; height: 1px; background: currentColor; transition: width 0.35s ease; }
+    .btn-ghost:hover { color: var(--gold); }
+    .btn-ghost:hover::after { width: 42px; }
+
+    .btn-gold-outline {
+      position: relative; display: inline-block; padding: 16px 44px;
+      font-family: var(--font-display); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      color: var(--gold); background: transparent; border: 1px solid rgba(201,168,76,0.5);
+      overflow: hidden; cursor: pointer; transition: color 0.45s ease, border-color 0.45s ease;
+    }
+    .btn-gold-outline::before { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--gold); transition: top 0.45s cubic-bezier(0.4,0,0.2,1); z-index: 0; }
+    .btn-gold-outline:hover::before { top: 0; }
+    .btn-gold-outline:hover { color: var(--navy); border-color: var(--gold); }
+    .btn-gold-outline span { position: relative; z-index: 1; }
+
+    /* ══════════════════════
+       HERO
+    ══════════════════════ */
+    .hero {
+      position: relative; width: 100%; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute; inset: 0;
+      background-image: url('images/hero-property.jpg');
+      background-size: cover; background-position: center 30%;
+      transform: scale(1.04); animation: slowZoom 14s ease forwards;
+    }
+    @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(155deg, rgba(4,24,50,0.97) 0%, rgba(4,24,50,0.78) 45%, rgba(0,0,0,0.82) 100%);
+    }
+    /* Diagonal gold accent line */
+    .hero__diagonal {
+      position: absolute; top: 0; right: 0; width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(201,168,76,0.25) 40%, rgba(201,168,76,0.25) 60%, transparent 100%);
+      transform: translateX(-120px);
+      pointer-events: none; z-index: 2;
+    }
+    .hero__content {
+      position: relative; z-index: 3; text-align: center;
+      padding: 120px 24px 180px; max-width: 900px;
+    }
+    .hero__eyebrow {
+      font-family: var(--font-display); font-size: 9px; font-weight: 400;
+      letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards; display: block;
+    }
+    .hero__rule { display: block; width: 48px; height: 1px; background: var(--gold); margin: 0 auto 32px; opacity: 0; animation: fadeUp 0.8s 0.38s ease forwards; }
+    .hero__heading {
+      font-family: var(--font-serif); font-size: clamp(52px, 7.5vw, 96px);
+      font-weight: 500; line-height: 0.95; color: var(--white);
+      letter-spacing: 0.01em; margin-bottom: 10px;
+      opacity: 0; animation: fadeUp 0.9s 0.52s ease forwards;
+    }
+    .hero__heading em { color: var(--gold); font-style: italic; font-weight: 300; display: block; font-size: 0.78em; }
+    .hero__subheading {
+      font-family: var(--font-serif); font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300; font-style: italic; color: rgba(255,255,255,0.6);
+      letter-spacing: 0.04em; margin-bottom: 44px;
+      opacity: 0; animation: fadeUp 0.9s 0.64s ease forwards;
+    }
+
+    /* Event detail pills */
+    .hero__details {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap; margin-bottom: 48px;
+      opacity: 0; animation: fadeUp 0.9s 0.76s ease forwards;
+    }
+    .hero__detail {
+      display: flex; align-items: center; gap: 9px;
+      padding: 14px 28px; border: 1px solid rgba(201,168,76,0.22);
+      background: rgba(201,168,76,0.07);
+      font-family: var(--font-display); font-size: 9.5px; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65);
+      margin: 3px; transition: background 0.3s ease;
+    }
+    .hero__detail:hover { background: rgba(201,168,76,0.12); }
+    .hero__detail svg { width: 13px; height: 13px; fill: var(--gold); flex-shrink: 0; }
+    .hero__detail strong { color: var(--gold); font-weight: 500; }
+
+    .hero__ctas {
+      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 0.9s ease forwards;
+    }
+
+    /* Stat bar */
+    .hero__stat-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 4;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: rgba(4,24,50,0.8); backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(201,168,76,0.18);
+    }
+    .hero__stat {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 22px 16px; border-right: 1px solid rgba(255,255,255,0.05);
+      position: relative; overflow: hidden; transition: background 0.35s ease; cursor: default;
+    }
+    .hero__stat:last-child { border-right: none; }
+    .hero__stat:hover { background: rgba(201,168,76,0.05); }
+    .hero__stat::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scaleX(0); width: 60%; height: 1px; background: var(--gold); transition: transform 0.4s ease; }
+    .hero__stat:hover::before { transform: translateX(-50%) scaleX(1); }
+    .hero__stat__num { font-family: var(--font-serif); font-size: 32px; font-weight: 400; color: var(--gold); line-height: 1; letter-spacing: -0.01em; }
+    .hero__stat__label { font-family: var(--font-display); font-size: 7px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ══════════════════════
+       URGENCY STRIP
+    ══════════════════════ */
+    .urgency-strip {
+      background: var(--gold); padding: 14px 40px;
+      display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;
+    }
+    .urgency-strip__text {
+      font-family: var(--font-display); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .urgency-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--navy); opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 0.4; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } }
+    .urgency-strip__link {
+      font-family: var(--font-display); font-size: 9.5px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; color: var(--navy);
+      border-bottom: 1px solid rgba(4,24,50,0.4); padding-bottom: 1px; transition: border-color 0.25s ease;
+    }
+    .urgency-strip__link:hover { border-color: var(--navy); }
+
+    /* ══════════════════════
+       PROBLEM SECTION (LIGHT)
+    ══════════════════════ */
+    .problem {
+      position: relative; background: #f8f6f2; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 680px;
+    }
+    .problem::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 65% 90% at 85% 50%, rgba(201,168,76,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 10% 85%, rgba(4,24,50,0.04) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .problem__grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .problem__image { position: relative; z-index: 2; overflow: hidden; }
+    .problem__image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; filter: brightness(0.72) saturate(0.85); transition: transform 7s ease; }
+    .problem__image:hover img { transform: scale(1.04); }
+    .problem__image::after { content: ''; position: absolute; inset: 28px; border: 1px solid rgba(201,168,76,0.3); pointer-events: none; z-index: 3; transition: inset 0.5s ease; }
+    .problem__image:hover::after { inset: 22px; }
+    .problem__badge {
+      position: absolute; bottom: 52px; right: -20px; background: var(--navy);
+      padding: 20px 28px; z-index: 4; text-align: center; box-shadow: -8px 8px 32px rgba(4,24,50,0.3);
+    }
+    .problem__badge__num { font-family: var(--font-serif); font-size: 38px; font-weight: 400; color: var(--gold); line-height: 1; display: block; }
+    .problem__badge__label { font-family: var(--font-display); font-size: 8px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; display: block; margin-top: 6px; color: rgba(255,255,255,0.65); }
+    .problem__content { position: relative; z-index: 2; padding: 80px 72px 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .section-tag { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .section-tag__line { width: 36px; height: 1px; background: var(--gold); opacity: 0.8; }
+    .section-tag__text { font-family: var(--font-display); font-size: 9px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-dark); }
+    .section-tag__text--gold { color: var(--gold); opacity: 0.85; }
+    .heading-light { font-family: var(--font-serif); font-size: clamp(34px, 3.5vw, 52px); font-weight: 400; line-height: 1.1; color: var(--navy); letter-spacing: 0.01em; margin-bottom: 10px; }
+    .heading-light em { font-style: italic; color: var(--gold-dark); font-weight: 300; }
+    .subhead { font-family: var(--font-display); font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(4,24,50,0.4); margin-bottom: 28px; }
+    .body-light { font-family: var(--font-display); font-size: 14px; font-weight: 300; line-height: 1.82; color: rgba(4,24,50,0.65); margin-bottom: 18px; max-width: 480px; }
+    .body-light strong { color: var(--navy); font-weight: 500; }
+    .divider-light { width: 100%; max-width: 480px; height: 1px; background: linear-gradient(to right, rgba(201,168,76,0.5), transparent); margin: 28px 0; }
+
+    /* Problem list */
+    .problem-list { list-style: none; margin-bottom: 36px; }
+    .problem-item {
+      display: flex; align-items: flex-start; gap: 16px; padding: 14px 0;
+      border-bottom: 1px solid rgba(4,24,50,0.08);
+      opacity: 0; transform: translateX(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .problem-item.visible { opacity: 1; transform: translateX(0); }
+    .problem-item:nth-child(1) { transition-delay: 0.06s; }
+    .problem-item:nth-child(2) { transition-delay: 0.18s; }
+    .problem-item:nth-child(3) { transition-delay: 0.30s; }
+    .problem-item:nth-child(4) { transition-delay: 0.42s; }
+    .problem-icon { flex-shrink: 0; width: 32px; height: 32px; border: 1px solid rgba(4,24,50,0.2); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .problem-icon svg { width: 14px; height: 14px; fill: var(--navy); }
+    .problem-text { display: flex; flex-direction: column; gap: 3px; }
+    .problem-title { font-family: var(--font-display); font-size: 12.5px; font-weight: 500; color: var(--navy); letter-spacing: 0.04em; }
+    .problem-desc { font-family: var(--font-display); font-size: 12px; font-weight: 300; color: rgba(4,24,50,0.55); line-height: 1.6; }
+
+    .cta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+
+    /* ══════════════════════
+       WHAT YOU'LL LEARN (DARK)
+    ══════════════════════ */
+    .learn {
+      position: relative; background: var(--navy); overflow: hidden; padding: 130px 0 140px;
+    }
+    .learn::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 60% 70% at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 85% 80%, rgba(201,168,76,0.05) 0%, transparent 55%); pointer-events: none; }
+    .learn__grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.055; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .learn__top-rule { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent); }
+    .learn__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+    .learn__header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 88px; }
+    .heading-dark { font-family: var(--font-serif); font-size: clamp(36px, 4vw, 56px); font-weight: 400; line-height: 1.08; color: var(--white); letter-spacing: 0.01em; }
+    .heading-dark em { font-style: italic; font-weight: 300; color: var(--gold); }
+    .learn__intro { font-family: var(--font-display); font-size: 13px; font-weight: 300; line-height: 1.88; color: rgba(255,255,255,0.45); margin-top: 24px; max-width: 440px; }
+    .learn__intro strong { color: rgba(255,255,255,0.75); font-weight: 400; }
+
+    /* MASTER framework grid */
+    .master-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .master-card {
+      position: relative; background: rgba(255,255,255,0.025); padding: 52px 40px 48px; overflow: hidden;
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease, background 0.4s ease;
+    }
+    .master-card.visible { opacity: 1; transform: translateY(0); }
+    .master-card:nth-child(1) { transition-delay: 0.05s; }
+    .master-card:nth-child(2) { transition-delay: 0.18s; }
+    .master-card:nth-child(3) { transition-delay: 0.31s; }
+    .master-card:nth-child(4) { transition-delay: 0.44s; }
+    .master-card:nth-child(5) { transition-delay: 0.57s; }
+    .master-card:nth-child(6) { transition-delay: 0.70s; }
+    .master-card:hover { background: rgba(201,168,76,0.04); }
+    .master-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transform: scaleX(0); transform-origin: center; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); z-index: 3; }
+    .master-card:hover::before { transform: scaleX(1); }
+    .master-card::after { content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent); transition: left 0.7s ease; pointer-events: none; z-index: 1; }
+    .master-card:hover::after { left: 130%; }
+    .master-num { font-family: var(--font-serif); font-size: 72px; font-weight: 300; line-height: 1; color: rgba(201,168,76,0.1); letter-spacing: -0.02em; display: block; margin-bottom: 24px; transition: color 0.4s ease; }
+    .master-card:hover .master-num { color: rgba(201,168,76,0.2); }
+    .master-label { font-family: var(--font-display); font-size: 8.5px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); opacity: 0.75; display: block; margin-bottom: 10px; transition: opacity 0.3s; }
+    .master-card:hover .master-label { opacity: 1; }
+    .master-title { font-family: var(--font-serif); font-size: 28px; font-weight: 400; color: var(--white); margin-bottom: 16px; line-height: 1.1; }
+    .master-rule { width: 28px; height: 1px; background: var(--gold); opacity: 0.4; margin-bottom: 16px; transition: width 0.4s ease, opacity 0.4s ease; }
+    .master-card:hover .master-rule { width: 52px; opacity: 0.7; }
+    .master-quote { font-family: var(--font-serif); font-size: 14px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 18px; padding-left: 14px; border-left: 2px solid rgba(201,168,76,0.35); transition: color 0.35s ease; }
+    .master-card:hover .master-quote { color: rgba(255,255,255,0.55); }
+    .master-desc { font-family: var(--font-display); font-size: 12.5px; font-weight: 300; line-height: 1.78; color: rgba(255,255,255,0.45); transition: color 0.35s ease; }
+    .master-card:hover .master-desc { color: rgba(255,255,255,0.6); }
+
+    /* ══════════════════════
+       WHAT'S INCLUDED (LIGHT)
+    ══════════════════════ */
+    .included {
+      position: relative; background: #f8f6f2; overflow: hidden; padding: 130px 0 140px;
+    }
+    .included::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 60% 70% at 85% 20%, rgba(201,168,76,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 55% at 10% 80%, rgba(4,24,50,0.04) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+    .included__grain { position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .included__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+    .included__header { text-align: center; margin-bottom: 80px; }
+    .included__header .section-tag { justify-content: center; }
+    .included__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 64px; }
+    .inc-card {
+      position: relative; background: rgba(255,255,255,0.7); padding: 44px 32px 40px; overflow: hidden;
+      border-top: 2px solid transparent;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.4s ease, border-color 0.4s ease;
+    }
+    .inc-card.visible { opacity: 1; transform: translateY(0); }
+    .inc-card:nth-child(1) { transition-delay: 0.05s; }
+    .inc-card:nth-child(2) { transition-delay: 0.15s; }
+    .inc-card:nth-child(3) { transition-delay: 0.25s; }
+    .inc-card:nth-child(4) { transition-delay: 0.35s; }
+    .inc-card:hover { background: var(--white); border-color: rgba(201,168,76,0.6); }
+    .inc-card::after { content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.05), transparent); transition: left 0.7s ease; pointer-events: none; }
+    .inc-card:hover::after { left: 130%; }
+    .inc-num { font-family: var(--font-serif); font-size: 56px; font-weight: 300; color: rgba(201,168,76,0.12); letter-spacing: -0.02em; line-height: 1; display: block; margin-bottom: 16px; transition: color 0.4s ease; }
+    .inc-card:hover .inc-num { color: rgba(201,168,76,0.22); }
+    .inc-title { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--navy); margin-bottom: 12px; line-height: 1.2; }
+    .inc-rule { width: 28px; height: 1px; background: var(--gold); opacity: 0.4; margin-bottom: 14px; transition: width 0.4s ease, opacity 0.4s ease; }
+    .inc-card:hover .inc-rule { width: 48px; opacity: 0.7; }
+    .inc-desc { font-family: var(--font-display); font-size: 12.5px; font-weight: 300; line-height: 1.78; color: rgba(4,24,50,0.55); transition: color 0.35s ease; }
+    .inc-card:hover .inc-desc { color: rgba(4,24,50,0.7); }
+
+    /* Value table */
+    .value-table {
+      max-width: 760px; margin: 0 auto; background: rgba(255,255,255,0.7); padding: 0;
+    }
+    .value-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px; border-bottom: 1px solid rgba(4,24,50,0.08);
+    }
+    .value-row:last-child { border-bottom: none; background: rgba(201,168,76,0.06); }
+    .value-row__label { font-family: var(--font-display); font-size: 12.5px; font-weight: 300; color: rgba(4,24,50,0.6); }
+    .value-row__amount { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: rgba(4,24,50,0.4); }
+    .value-row--total .value-row__label { font-weight: 500; color: var(--navy); font-size: 13px; letter-spacing: 0.05em; }
+    .value-row--total .value-row__amount { color: var(--gold-dark); font-size: 22px; }
+    .value-note { text-align: center; margin-top: 20px; font-family: var(--font-display); font-size: 11px; font-weight: 300; letter-spacing: 0.06em; color: rgba(4,24,50,0.4); }
+
+    /* ══════════════════════
+       RESULTS (DARK)
+    ══════════════════════ */
+    .results {
+      position: relative; background: var(--navy); overflow: hidden; padding: 0;
+      border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    .results__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .result-stat {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 56px 20px; border-right: 1px solid rgba(255,255,255,0.05);
+      position: relative; overflow: hidden; transition: background 0.35s ease; cursor: default;
+    }
+    .result-stat:last-child { border-right: none; }
+    .result-stat:hover { background: rgba(201,168,76,0.04); }
+    .result-stat::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scaleX(0); width: 60%; height: 1px; background: var(--gold); transition: transform 0.4s ease; }
+    .result-stat:hover::before { transform: translateX(-50%) scaleX(1); }
+    .result-stat__num { font-family: var(--font-serif); font-size: 44px; font-weight: 400; color: var(--gold); line-height: 1; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .result-stat__label { font-family: var(--font-display); font-size: 8px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+    /* ══════════════════════
+       MENTORS (DARK)
+    ══════════════════════ */
+    .mentors {
+      position: relative; background: var(--navy); overflow: hidden; padding: 120px 0 140px;
+    }
+    .mentors::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 60% 70% at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 85% 80%, rgba(201,168,76,0.05) 0%, transparent 55%); pointer-events: none; }
+    .mentors__grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.055; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .mentors__top-rule { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent); }
+    .mentors__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+    .mentors__header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 80px; gap: 40px; flex-wrap: wrap; }
+    .mentors__header-left { max-width: 560px; }
+    .mentors__intro { font-family: var(--font-display); font-size: 13px; font-weight: 300; line-height: 1.85; color: rgba(255,255,255,0.4); letter-spacing: 0.03em; }
+    .mentors__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .mentor-card {
+      position: relative; background: rgba(255,255,255,0.025); overflow: hidden; cursor: default;
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease, background 0.4s ease;
+    }
+    .mentor-card.visible { opacity: 1; transform: translateY(0); }
+    .mentor-card:nth-child(1) { transition-delay: 0.05s; }
+    .mentor-card:nth-child(2) { transition-delay: 0.2s; }
+    .mentor-card:nth-child(3) { transition-delay: 0.35s; }
+    .mentor-card:hover { background: rgba(201,168,76,0.04); }
+    .mentor-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transform: scaleX(0); transform-origin: center; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); z-index: 3; }
+    .mentor-card:hover::before { transform: scaleX(1); }
+    .mentor-card::after { content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent); transition: left 0.7s ease; z-index: 1; pointer-events: none; }
+    .mentor-card:hover::after { left: 130%; }
+    .mentor-portrait { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; }
+    .mentor-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: brightness(0.75) saturate(0.7) sepia(0.12); transition: transform 7s ease, filter 0.5s ease; }
+    .mentor-card:hover .mentor-portrait img { transform: scale(1.04); filter: brightness(0.85) saturate(0.85) sepia(0.06); }
+    .mentor-portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(4,24,50,0.5) 70%, rgba(4,24,50,0.92) 100%); pointer-events: none; z-index: 1; }
+    .mentor-index { position: absolute; top: 20px; left: 20px; font-family: var(--font-display); font-size: 9px; font-weight: 400; letter-spacing: 0.25em; color: rgba(255,255,255,0.35); z-index: 2; text-transform: uppercase; }
+    .mentor-role-badge { position: absolute; bottom: 20px; right: 20px; z-index: 2; font-family: var(--font-display); font-size: 7.5px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.85; writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity 0.3s ease; }
+    .mentor-card:hover .mentor-role-badge { opacity: 1; }
+    .mentor-info { padding: 28px 32px 36px; position: relative; z-index: 2; }
+    .mentor-name { font-family: var(--font-serif); font-size: 28px; font-weight: 400; letter-spacing: 0.04em; color: var(--white); margin-bottom: 4px; line-height: 1.1; }
+    .mentor-title { font-family: var(--font-display); font-size: 8.5px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 18px; display: block; }
+    .mentor-rule { width: 28px; height: 1px; background: var(--gold); opacity: 0.4; margin-bottom: 18px; transition: width 0.4s ease, opacity 0.4s ease; }
+    .mentor-card:hover .mentor-rule { width: 52px; opacity: 0.7; }
+    .mentor-bio { font-family: var(--font-display); font-size: 12.5px; font-weight: 300; line-height: 1.78; color: rgba(255,255,255,0.45); margin-bottom: 24px; transition: color 0.35s ease; }
+    .mentor-card:hover .mentor-bio { color: rgba(255,255,255,0.6); }
+    .mentor-stats { display: flex; gap: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .mentor-stat { display: flex; flex-direction: column; gap: 3px; }
+    .mentor-stat__num { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--gold); letter-spacing: 0.02em; line-height: 1; }
+    .mentor-stat__label { font-family: var(--font-display); font-size: 7.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .mentors__footer { margin-top: 80px; text-align: center; }
+    .mentors__footer::before { content: ''; display: block; width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); margin: 0 auto 32px; }
+    .mentors__quote { font-family: var(--font-serif); font-size: clamp(18px, 2.2vw, 26px); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.35); line-height: 1.6; max-width: 640px; margin: 0 auto 32px; }
+    .mentors__quote strong { color: rgba(255,255,255,0.6); font-weight: 400; font-style: normal; }
+
+    /* ══════════════════════
+       WHO IS IT FOR (LIGHT)
+    ══════════════════════ */
+    .who {
+      position: relative; background: #f8f6f2; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 680px;
+    }
+    .who::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 65% 90% at 15% 50%, rgba(201,168,76,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 50% at 90% 85%, rgba(4,24,50,0.04) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+    .who__grain { position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .who__content { position: relative; z-index: 2; padding: 80px 64px 80px 72px; display: flex; flex-direction: column; justify-content: center; }
+    .who__lists { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; max-width: 560px; margin: 28px 0 32px; }
+    .who__list { padding: 24px 28px 28px; position: relative; overflow: hidden; }
+    .who__list--yes { background: rgba(255,255,255,0.65); border-top: 2px solid rgba(201,168,76,0.55); }
+    .who__list--no { background: rgba(4,24,50,0.03); border-top: 2px solid rgba(4,24,50,0.18); }
+    .who__list__header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .who__list__icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.4); }
+    .who__list__icon svg { width: 11px; height: 11px; stroke: var(--gold-dark); fill: none; stroke-width: 2.5; }
+    .who__list__icon--no { background: rgba(4,24,50,0.06); border-color: rgba(4,24,50,0.2); }
+    .who__list__icon--no svg { stroke: rgba(4,24,50,0.45); }
+    .who__list__title { font-family: var(--font-display); font-size: 8px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(4,24,50,0.5); }
+    .who__items { list-style: none; }
+    .who__item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(4,24,50,0.06); opacity: 0; transform: translateX(-14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .who__item.visible { opacity: 1; transform: translateX(0); }
+    .who__list--yes .who__item:nth-child(1) { transition-delay: 0.06s; }
+    .who__list--yes .who__item:nth-child(2) { transition-delay: 0.16s; }
+    .who__list--yes .who__item:nth-child(3) { transition-delay: 0.26s; }
+    .who__list--yes .who__item:nth-child(4) { transition-delay: 0.36s; }
+    .who__list--no .who__item:nth-child(1) { transition-delay: 0.1s; }
+    .who__list--no .who__item:nth-child(2) { transition-delay: 0.2s; }
+    .who__list--no .who__item:nth-child(3) { transition-delay: 0.3s; }
+    .wi-dot { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; margin-top: 6px; }
+    .who__item--yes .wi-dot { background: var(--gold); opacity: 0.75; }
+    .who__item--no .wi-dot { background: rgba(4,24,50,0.3); }
+    .wi-text { font-family: var(--font-display); font-size: 12px; font-weight: 300; line-height: 1.6; color: rgba(4,24,50,0.6); }
+    .wi-text strong { font-weight: 500; color: var(--navy); }
+    .who__image { position: relative; z-index: 2; overflow: hidden; }
+    .who__image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; filter: brightness(0.72) saturate(0.85); transition: transform 7s ease; }
+    .who__image:hover img { transform: scale(1.04); }
+    .who__image::after { content: ''; position: absolute; inset: 28px; border: 1px solid rgba(201,168,76,0.3); pointer-events: none; z-index: 3; transition: inset 0.5s ease; }
+    .who__image:hover::after { inset: 22px; }
+    .who__badge { position: absolute; bottom: 52px; left: -20px; background: var(--navy); padding: 20px 28px; z-index: 4; text-align: center; box-shadow: 8px 8px 32px rgba(4,24,50,0.3); }
+    .who__badge__num { font-family: var(--font-serif); font-size: 38px; font-weight: 400; color: var(--gold); line-height: 1; display: block; }
+    .who__badge__label { font-family: var(--font-display); font-size: 8px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; display: block; margin-top: 6px; color: rgba(255,255,255,0.65); }
+    .who__closing { font-family: var(--font-serif); font-size: 16px; font-weight: 300; font-style: italic; color: rgba(4,24,50,0.45); line-height: 1.65; max-width: 440px; margin-bottom: 36px; padding-left: 20px; border-left: 2px solid rgba(201,168,76,0.6); }
+
+    /* ══════════════════════
+       LOGISTICS (DARK)
+    ══════════════════════ */
+    .logistics {
+      position: relative; background: var(--navy); overflow: hidden; padding: 120px 0 140px;
+    }
+    .logistics::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 55% 65% at 10% 15%, rgba(201,168,76,0.055) 0%, transparent 60%), radial-gradient(ellipse 45% 55% at 90% 85%, rgba(201,168,76,0.04) 0%, transparent 55%); pointer-events: none; }
+    .logistics__grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.055; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .logistics__top-rule { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent); }
+    .logistics__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+    .logistics__header { text-align: center; margin-bottom: 80px; }
+    .logistics__header .section-tag { justify-content: center; margin-bottom: 24px; }
+    .logistics__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .logistics-card {
+      position: relative; background: rgba(255,255,255,0.025); padding: 52px 40px 48px; overflow: hidden;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.4s ease;
+    }
+    .logistics-card.visible { opacity: 1; transform: translateY(0); }
+    .logistics-card:nth-child(1) { transition-delay: 0.05s; }
+    .logistics-card:nth-child(2) { transition-delay: 0.18s; }
+    .logistics-card:nth-child(3) { transition-delay: 0.31s; }
+    .logistics-card:hover { background: rgba(201,168,76,0.04); }
+    .logistics-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transform: scaleX(0); transform-origin: center; transition: transform 0.5s ease; z-index: 3; }
+    .logistics-card:hover::before { transform: scaleX(1); }
+    .logistics-card::after { content: ''; position: absolute; top: 0; left: -100%; bottom: 0; width: 60%; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent); transition: left 0.7s ease; pointer-events: none; }
+    .logistics-card:hover::after { left: 130%; }
+    .logistics-icon { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 28px; transition: border-color 0.3s ease, background 0.3s ease; }
+    .logistics-icon svg { width: 18px; height: 18px; fill: none; stroke: rgba(255,255,255,0.55); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s ease; }
+    .logistics-card:hover .logistics-icon { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.07); }
+    .logistics-card:hover .logistics-icon svg { stroke: var(--gold); }
+    .logistics-title { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+    .logistics-rule { width: 28px; height: 1px; background: var(--gold); opacity: 0.4; margin-bottom: 16px; transition: width 0.4s ease, opacity 0.4s ease; }
+    .logistics-card:hover .logistics-rule { width: 52px; opacity: 0.7; }
+    .logistics-val { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--gold); letter-spacing: 0.02em; margin-bottom: 8px; }
+    .logistics-desc { font-family: var(--font-display); font-size: 12.5px; font-weight: 300; line-height: 1.78; color: rgba(255,255,255,0.45); }
+
+    /* ══════════════════════
+       CLOSING CTA (DARK)
+    ══════════════════════ */
+    .closing {
+      position: relative; background: var(--navy); overflow: hidden; padding: 140px 0 150px; text-align: center;
+    }
+    .closing::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 65% 70% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 65%); pointer-events: none; }
+    .closing__grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.055; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .closing__top-rule { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent); }
+    .closing__inner { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; padding: 0 56px; }
+    .closing__vert-rule { display: block; width: 1px; height: 56px; background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent); margin: 0 auto 44px; }
+    .closing__heading { font-family: var(--font-serif); font-size: clamp(40px, 6vw, 80px); font-weight: 300; line-height: 0.95; color: var(--white); margin-bottom: 12px; letter-spacing: 0.01em; }
+    .closing__heading em { display: block; font-style: italic; color: var(--gold); font-size: 0.85em; }
+    .closing__body { font-family: var(--font-display); font-size: 14px; font-weight: 300; line-height: 1.85; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0 auto 14px; }
+    .closing__meta { font-family: var(--font-display); font-size: 9px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 44px; display: block; }
+    .closing__ctas { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
+
+    /* ══════════════════════
+       FOOTER
+    ══════════════════════ */
+    .site-footer { position: relative; background: #060e1a; overflow: hidden; }
+    .footer__top-rule { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.6) 25%, rgba(201,168,76,0.6) 75%, transparent 100%); z-index: 3; }
+    .footer__grain { position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.055; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 300px 300px; }
+    .footer__orb { position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none; z-index: 1; }
+    .footer__orb--left { top: -160px; left: -180px; background: radial-gradient(circle, rgba(201,168,76,0.055) 0%, transparent 65%); }
+    .footer__orb--right { bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 60%); }
+    .footer__inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 96px 64px 80px; display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+    .footer__brand { display: flex; flex-direction: column; }
+    .footer__logo { display: flex; flex-direction: column; gap: 7px; text-decoration: none; margin-bottom: 20px; }
+    .footer__logo-name { font-family: var(--font-serif); font-size: 19px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; line-height: 1; transition: color 0.3s; }
+    .footer__logo:hover .footer__logo-name { color: var(--gold); }
+    .footer__logo-sub { font-family: var(--font-display); font-size: 7px; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(255,255,255,0.28); padding-left: 0.45em; }
+    .footer__logo-rule { width: 36px; height: 1px; background: var(--gold); opacity: 0.55; margin-bottom: 22px; }
+    .footer__strapline { font-family: var(--font-display); font-size: 12.5px; font-weight: 300; line-height: 1.85; color: rgba(255,255,255,0.38); margin-bottom: 32px; }
+    .footer__socials { display: flex; gap: 10px; }
+    .footer__social { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); text-decoration: none; transition: border-color 0.35s, color 0.35s, background 0.35s, transform 0.35s; }
+    .footer__social svg { width: 15px; height: 15px; }
+    .footer__social:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+    .footer__nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .footer__nav-heading { font-family: var(--font-display); font-size: 8.5px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 24px; position: relative; padding-bottom: 14px; }
+    .footer__nav-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 20px; height: 1px; background: var(--gold); opacity: 0.4; }
+    .footer__nav-list { list-style: none; display: flex; flex-direction: column; gap: 1px; }
+    .footer__nav-link { font-family: var(--font-display); font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.38); text-decoration: none; display: inline-block; padding: 6px 0; position: relative; transition: color 0.28s, padding-left 0.3s; }
+    .footer__nav-link::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 0; height: 1px; background: var(--gold); opacity: 0.6; transition: width 0.3s; }
+    .footer__nav-link:hover { color: rgba(255,255,255,0.8); padding-left: 14px; }
+    .footer__nav-link:hover::before { width: 8px; }
+    .footer__contact-list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+    .footer__contact-item { display: flex; align-items: flex-start; gap: 12px; font-family: var(--font-display); font-size: 12px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.38); }
+    .footer__contact-item a { color: inherit; text-decoration: none; transition: color 0.28s; }
+    .footer__contact-item a:hover { color: var(--gold); }
+    .footer__contact-icon { flex-shrink: 0; width: 14px; height: 14px; color: var(--gold); opacity: 0.7; margin-top: 2px; }
+    .footer__contact-icon svg { width: 14px; height: 14px; fill: currentColor; }
+    .footer__cta { position: relative; display: inline-block; padding: 13px 30px; font-family: var(--font-display); font-size: 9.5px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; color: var(--navy); background: var(--gold); border: 1px solid var(--gold); overflow: hidden; cursor: pointer; transition: color 0.4s; }
+    .footer__cta::before { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: #fff; transition: top 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 0; }
+    .footer__cta:hover::before { top: 0; }
+    .footer__cta:hover { color: var(--navy); border-color: #fff; }
+    .footer__cta span { position: relative; z-index: 1; }
+    .footer__quote-bar { position: relative; z-index: 2; border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); background: rgba(201,168,76,0.03); padding: 22px 64px; overflow: hidden; }
+    .footer__quote-bar::before { content: '\201C'; position: absolute; top: -20px; left: 56px; font-family: var(--font-serif); font-size: 120px; font-weight: 300; color: rgba(201,168,76,0.06); line-height: 1; pointer-events: none; }
+    .footer__quote-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .footer__quote-text { font-family: var(--font-serif); font-size: 17px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; line-height: 1.5; flex: 1; }
+    .footer__quote-sep { color: rgba(201,168,76,0.35); font-size: 8px; flex-shrink: 0; }
+    .footer__quote-attr { font-family: var(--font-display); font-size: 9px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.6; flex-shrink: 0; }
+    .footer__base { position: relative; z-index: 2; background: rgba(0,0,0,0.35); padding: 28px 64px; }
+    .footer__base-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 40px; row-gap: 8px; align-items: center; }
+    .footer__copy { font-family: var(--font-display); font-size: 10.5px; font-weight: 300; letter-spacing: 0.08em; color: rgba(255,255,255,0.22); grid-column: 1; grid-row: 1; }
+    .footer__legal-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; grid-column: 2; grid-row: 1; }
+    .footer__legal-link { font-family: var(--font-display); font-size: 9.5px; font-weight: 300; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.25s; }
+    .footer__legal-link:hover { color: var(--gold); }
+    .footer__legal-sep { color: rgba(255,255,255,0.12); font-size: 10px; }
+    .footer__disclaimer { font-family: var(--font-display); font-size: 9.5px; font-weight: 300; letter-spacing: 0.05em; color: rgba(255,255,255,0.14); line-height: 1.6; grid-column: 1 / -1; grid-row: 2; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer__brand, .footer__nav { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .footer__nav { transition-delay: 0.15s; }
+    .footer__brand.f-visible, .footer__nav.f-visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════
+       RESPONSIVE
+    ══════════════════════ */
+    @media (max-width: 1100px) {
+      .footer__inner { grid-template-columns: 260px 1fr; gap: 56px; padding: 80px 40px 64px; }
+      .footer__nav { grid-template-columns: repeat(2, 1fr); }
+      .included__grid { grid-template-columns: repeat(2, 1fr); }
+      .master-grid { grid-template-columns: repeat(2, 1fr); }
+      .mentors__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 960px) {
+      .problem { grid-template-columns: 1fr; grid-template-rows: 380px auto; }
+      .problem__image { height: 380px; }
+      .problem__badge { right: 24px; bottom: -24px; }
+      .problem__content { padding: 64px 32px; }
+      .who { grid-template-columns: 1fr; grid-template-rows: 380px auto; }
+      .who__image { height: 380px; grid-row: 1; }
+      .who__badge { left: auto; right: 24px; bottom: -24px; }
+      .who__content { grid-row: 2; padding: 64px 32px; }
+      .who__lists { max-width: 100%; }
+      .mentors__grid { grid-template-columns: 1fr; }
+      .mentor-portrait { aspect-ratio: 4/3; }
+      .learn__header { grid-template-columns: 1fr; gap: 0; }
+    }
+    @media (max-width: 900px) {
+      .top-bar { padding: 7px 20px; }
+      .top-bar .info { display: none; }
+      .navbar { padding: 0 20px; height: 64px; }
+      .nav-group { display: none; }
+      .logo-wrap { padding: 0; height: 64px; }
+      .logo-name { font-size: 16px; letter-spacing: 0.2em; }
+      .hamburger { display: flex; }
+      .learn__inner, .mentors__inner, .included__inner, .logistics__inner, .closing__inner { padding: 0 32px; }
+      .logistics__grid { grid-template-columns: 1fr; }
+      .hero__stat-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero { min-height: 100svh; }
+      .hero__heading { font-size: clamp(48px, 14vw, 72px); }
+      .hero__details { flex-direction: column; align-items: stretch; }
+      .hero__detail { justify-content: center; }
+      .master-grid { grid-template-columns: 1fr; }
+      .included__grid { grid-template-columns: 1fr; }
+      .closing__ctas { flex-direction: column; align-items: center; }
+      .footer__inner { grid-template-columns: 1fr; padding: 64px 28px 48px; gap: 48px; }
+      .footer__quote-bar { padding: 20px 28px; }
+      .footer__base { padding: 22px 28px; }
+      .footer__base-inner { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+      .footer__legal-links { justify-content: flex-start; grid-row: 2; grid-column: 1; }
+      .footer__disclaimer { grid-row: 3; }
+      .results__inner { grid-template-columns: repeat(2, 1fr); }
+      .result-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+      .result-stat:nth-child(even) { border-bottom: none; }
+    }
+    @media (max-width: 600px) {
+      .footer__nav { grid-template-columns: 1fr; }
+      .who__lists { grid-template-columns: 1fr; }
+      .urgency-strip { flex-direction: column; gap: 8px; padding: 14px 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="quality">Quality is our standard <strong>for over 20 years</strong></span>
+    <div class="info">
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        Suite 20A, Crown House, 94 Armley, Leeds LS12EJ United Kingdom
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+        +44 7968 100786
+      </span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-group left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="twoday.html" class="nav-link active">Two Day Events</a>
+    </div>
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-text-group">
+        <span class="logo-name">Ethical Wealth Academy</span>
+        <span class="logo-sub">Build · Preserve · Grow</span>
+      </span>
+      <span class="logo-img-group">
+        <img src="images/goldlogo.png" alt="Ethical Wealth Academy" />
+      </span>
+    </a>
+    <div class="nav-group right">
+      <a href="success.html" class="nav-link">Success Stories</a>
+      <a href="mini-events.html" class="nav-link">Mini Events</a>
+      <a href="conference.html" class="nav-link">Conferences</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="mobile-menu__curtain">
+      <div class="curtain-half"></div>
+      <div class="curtain-half"></div>
+    </div>
+    <div class="curtain-seam"></div>
+    <div class="menu-orb"></div>
+    <div class="mobile-menu__accent"></div>
+    <div class="mobile-menu__inner">
+      <div class="mobile-logo">
+        <span class="logo-name">Ethical Wealth Academy</span>
+        <span class="logo-sub">Build · Preserve · Grow</span>
+        <div class="mobile-logo-rule"></div>
+      </div>
+      <nav>
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link"><span class="link-num">01</span><span class="link-text">Home</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link"><span class="link-num">02</span><span class="link-text">About Us</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="twoday.html" class="mobile-nav-link"><span class="link-num">03</span><span class="link-text"> Two Day Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="conference.html" class="mobile-nav-link"><span class="link-num">06</span><span class="link-text">Conferences</span><span class="link-arrow"></span></a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__footer">
+        <p>Get in touch</p>
+        <a href="tel:+447968100786">+44 7968 100786</a>
+        <a href="#">Leeds United Kingdom</a>
+      </div>
+      <div class="mobile-menu__cta">
+        <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary"><span>Secure Your Seat</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" aria-label="2-Day Workshop Hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__diagonal" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <span class="hero__eyebrow">2-Day In-Person Workshop · Village Hotel, South Leeds</span>
+      <span class="hero__rule"></span>
+      <h1 class="hero__heading">
+        The Social Housing<br>Investment
+        <em>Blueprint</em>
+      </h1>
+      <p class="hero__subheading">The One Proven Strategy to Generate £100,000+ in 12 Months — With Little or No Money Down</p>
+
+      <div class="hero__details">
+        <div class="hero__detail">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#c9a84c" stroke-width="2" fill="none"/><line x1="8" y1="2" x2="8" y2="6" stroke="#c9a84c" stroke-width="2" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="#c9a84c" stroke-width="2" fill="none"/></svg>
+          <strong>20th &amp; 21st June 2025</strong>
+        </div>
+        <div class="hero__detail">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          Village Hotel, <strong>South Leeds</strong>
+        </div>
+        <div class="hero__detail">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <strong>2 Full Days</strong> of Intensive Training
+        </div>
+        <div class="hero__detail">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Investment: <strong>£1,195</strong>
+        </div>
+      </div>
+
+      <div class="hero__ctas">
+        <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary"><span>Secure Your Seat — Register Now</span></a>
+        <a href="#blueprint" class="btn-ghost">Learn What's Covered</a>
+      </div>
+    </div>
+
+    <!-- Stat bar -->
+    <div class="hero__stat-bar">
+      <div class="hero__stat">
+        <span class="hero__stat__num">£734K+</span>
+        <span class="hero__stat__label">Student Profits Generated</span>
+      </div>
+      <div class="hero__stat">
+        <span class="hero__stat__num">500+</span>
+        <span class="hero__stat__label">Investors Trained</span>
+      </div>
+      <div class="hero__stat">
+        <span class="hero__stat__num">20+</span>
+        <span class="hero__stat__label">Years Combined Experience</span>
+      </div>
+      <div class="hero__stat">
+        <span class="hero__stat__num">£5B</span>
+        <span class="hero__stat__label">Social Housing Market Size</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- URGENCY STRIP -->
+  <div class="urgency-strip">
+    <span class="urgency-strip__text">
+      <span class="urgency-dot"></span>
+      Limited seats available — 20th &amp; 21st June 2025 · Village Hotel, South Leeds
+    </span>
+    <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="urgency-strip__link">Reserve Your Place →</a>
+  </div>
+
+  <!-- ══════════ THE PROBLEM ══════════ -->
+  <section class="problem" id="problem" aria-label="The Old Way Is Broken">
+    <div class="problem__grain" aria-hidden="true"></div>
+
+    <div class="problem__image">
+      <img src="images/hero2.jpg" alt="Modern social housing accommodation" loading="lazy" />
+      <span style="position:absolute;bottom:60px;left:0;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:0 14px;z-index:4;">Social Housing &amp; Supported Living</span>
+      <div class="problem__badge">
+        <span class="problem__badge__num">£5B</span>
+        <span class="problem__badge__label">Market Size</span>
+      </div>
+    </div>
+
+    <div class="problem__content">
+      <div class="section-tag reveal">
+        <span class="section-tag__line"></span>
+        <span class="section-tag__text">The Old Way Is Broken</span>
+      </div>
+      <h2 class="heading-light reveal">Why Most Landlords<br><em>Are Struggling</em></h2>
+      <p class="subhead reveal">The Buy-to-Let model is under pressure</p>
+      <p class="body-light reveal">For decades, property investors built wealth through Buy-to-Let. But the landscape has fundamentally shifted — and most landlords are working harder for less.</p>
+      <div class="divider-light reveal" style="transition-delay:0.1s"></div>
+
+      <ul class="problem-list">
+        <li class="problem-item">
+          <span class="problem-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+          <span class="problem-text">
+            <span class="problem-title">Ever-Tightening Legislation</span>
+            <span class="problem-desc">New regulations make traditional buy-to-let increasingly complex and costly.</span>
+          </span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="problem-text">
+            <span class="problem-title">End of Section 21 &amp; Fixed Terms</span>
+            <span class="problem-desc">Reduced ability to manage your property combined with increased tenancy uncertainty.</span>
+          </span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+          <span class="problem-text">
+            <span class="problem-title">Shrinking Profit Margins</span>
+            <span class="problem-desc">Rising costs and stagnant rents are squeezing landlords harder than ever before.</span>
+          </span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+          <span class="problem-text">
+            <span class="problem-title">Void Periods &amp; Tenant Risk</span>
+            <span class="problem-desc">Empty properties and rent arrears destroy cashflow — and there's no guaranteed solution in traditional BTL.</span>
+          </span>
+        </li>
+      </ul>
+
+      <div class="cta-row reveal" style="transition-delay:0.2s">
+        <a href="#blueprint" class="btn-primary" style="background:var(--navy);border-color:var(--navy);color:var(--white);"><span>See the Better Way</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE BLUEPRINT (MASTER) ══════════ -->
+  <section class="learn" id="blueprint" aria-label="The 6-Step Blueprint">
+    <div class="learn__grain" aria-hidden="true"></div>
+    <div class="learn__top-rule" aria-hidden="true"></div>
+    <div class="learn__inner">
+
+      <div class="learn__header">
+        <div>
+          <div class="section-tag reveal">
+            <span class="section-tag__line"></span>
+            <span class="section-tag__text--gold" style="color:var(--gold);opacity:0.85;">What You'll Learn</span>
+          </div>
+          <h2 class="heading-dark reveal" style="transition-delay:0.08s">
+            The 6-Step<br><em>Blueprint</em>
+          </h2>
+        </div>
+        <div>
+          <p class="learn__intro reveal" style="transition-delay:0.15s">
+            Over two intensive days you'll work through the same six-step system our mentors have used to generate over <strong>£734,000 in student profits</strong> across four completed deals. Not theory — a repeatable, proven framework.
+          </p>
+          <p class="learn__intro reveal" style="transition-delay:0.22s; margin-top:16px;">
+            <strong>80% is Psychology &amp; 20% is what you do taking action.</strong> — Tony Robbins. We build both.
+          </p>
+        </div>
+      </div>
+
+      <div class="master-grid">
+        <div class="master-card">
+          <span class="master-num" aria-hidden="true">01</span>
+          <span class="master-label">Step One</span>
+          <h3 class="master-title">Mindset</h3>
+          <div class="master-rule"></div>
+          <p class="master-quote">"Identify what's holding you back and overcome your fear, limiting beliefs, and mental blocks."</p>
+          <p class="master-desc">Build clarity, certainty, and unstoppable motivation. 80% of success is psychology — this is where we start, and it changes everything that follows.</p>
+        </div>
+        <div class="master-card">
+          <span class="master-num" aria-hidden="true">02</span>
+          <span class="master-label">Step Two</span>
+          <h3 class="master-title">Analytics</h3>
+          <div class="master-rule"></div>
+          <p class="master-quote">"Master rental yield calculations, ROI analysis, and exit strategies."</p>
+          <p class="master-desc">The numbers that protect your profits. Make confident, risk-managed investment decisions before you commit a single pound. No guesswork.</p>
+        </div>
+        <div class="master-card">
+          <span class="master-num" aria-hidden="true">03</span>
+          <span class="master-label">Step Three</span>
+          <h3 class="master-title">Strategy</h3>
+          <div class="master-rule"></div>
+          <p class="master-quote">"Why chasing too many strategies keeps you broke. Focus on Blocks of Flats &amp; HMOs."</p>
+          <p class="master-desc">One focused strategy executed well beats ten strategies started and abandoned. You'll understand exactly where to direct your attention for maximum return.</p>
+        </div>
+        <div class="master-card">
+          <span class="master-num" aria-hidden="true">04</span>
+          <span class="master-label">Step Four</span>
+          <h3 class="master-title">Tenancies</h3>
+          <div class="master-rule"></div>
+          <p class="master-quote">"Understand long-term social housing leases, rent reviews, and CPI-linked increases."</p>
+          <p class="master-desc">Your key to guaranteed rent. Structure leases correctly from the start. 3, 5, even 10-year agreements — negotiated and protected before you purchase.</p>
+        </div>
+        <div class="master-card">
+          <span class="master-num" aria-hidden="true">05</span>
+          <span class="master-label">Step Five</span>
+          <h3 class="master-title">Execution</h3>
+          <div class="master-rule"></div>
+          <p class="master-quote">"Build a repeatable deal flow system — source, finance, complete."</p>
+          <p class="master-desc">Turn knowledge into closed deals. A repeatable process that removes guesswork entirely — from sourcing your first deal to building a portfolio that runs itself.</p>
+        </div>
+        <div class="master-card">
+          <span class="master-num" aria-hidden="true">06</span>
+          <span class="master-label">Step Six</span>
+          <h3 class="master-title">Resilience</h3>
+          <div class="master-rule"></div>
+          <p class="master-quote">"The right legal and tax structure — and the mindset to keep going when it gets hard."</p>
+          <p class="master-desc">Markets test you. A portfolio grows through difficulty. This step ensures you're legally protected, tax-efficient, and mentally equipped to stay the course.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WHAT'S INCLUDED ══════════ -->
+  <section class="included" id="included" aria-label="What's Included">
+    <div class="included__grain" aria-hidden="true"></div>
+    <div class="included__inner">
+
+      <div class="included__header">
+        <div class="section-tag reveal" style="justify-content:center;">
+          <span class="section-tag__line"></span>
+          <span class="section-tag__text">What's Included</span>
+          <span class="section-tag__line"></span>
+        </div>
+        <h2 class="heading-light reveal" style="text-align:center; transition-delay:0.1s">
+          Nearly <em>£3,150 of Value</em><br>For Just £1,195
+        </h2>
+      </div>
+
+      <div class="included__grid">
+        <div class="inc-card">
+          <span class="inc-num" aria-hidden="true">01</span>
+          <h3 class="inc-title">2 Days of Intensive Training</h3>
+          <div class="inc-rule"></div>
+          <p class="inc-desc">Full access to both days of the Social Housing Investment Blueprint — real content, real case studies, real deal numbers from people who are still actively investing.</p>
+          <p style="margin-top:12px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);">Value: £2,500</p>
+        </div>
+        <div class="inc-card">
+          <span class="inc-num" aria-hidden="true">02</span>
+          <h3 class="inc-title">Course Materials &amp; Resources</h3>
+          <div class="inc-rule"></div>
+          <p class="inc-desc">A complete workbook covering every module — yours to keep and reference as you start building your portfolio. Includes deal analysis templates and lease checklists.</p>
+          <p style="margin-top:12px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);">Value: £500</p>
+        </div>
+        <div class="inc-card">
+          <span class="inc-num" aria-hidden="true">03</span>
+          <h3 class="inc-title">Lunch &amp; Refreshments</h3>
+          <div class="inc-rule"></div>
+          <p class="inc-desc">Both days at Village Hotel, South Leeds include full lunch and refreshments — so you stay focused and energised throughout the intensive programme.</p>
+          <p style="margin-top:12px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);">Value: £150</p>
+        </div>
+        <div class="inc-card">
+          <span class="inc-num" aria-hidden="true">04</span>
+          <h3 class="inc-title">Networking Opportunities</h3>
+          <div class="inc-rule"></div>
+          <p class="inc-desc">Two days surrounded by investors at various stages of their journey. The connections made in rooms like this frequently lead to joint ventures, deal referrals, and lifelong partnerships.</p>
+          <p style="margin-top:12px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);">Value: Priceless</p>
+        </div>
+      </div>
+
+      <!-- Value table -->
+      <div style="max-width:760px;margin:48px auto 0;">
+        <div class="value-table">
+          <div class="value-row">
+            <span class="value-row__label">2 Days of Intensive Training</span>
+            <span class="value-row__amount">£2,500</span>
+          </div>
+          <div class="value-row">
+            <span class="value-row__label">Course Materials &amp; Resources</span>
+            <span class="value-row__amount">£500</span>
+          </div>
+          <div class="value-row">
+            <span class="value-row__label">Lunch &amp; Refreshments (Both Days)</span>
+            <span class="value-row__amount">£150</span>
+          </div>
+          <div class="value-row">
+            <span class="value-row__label">Networking Opportunities</span>
+            <span class="value-row__amount" style="color:var(--gold-dark);">Priceless</span>
+          </div>
+          <div class="value-row value-row--total">
+            <span class="value-row__label">Total Value</span>
+            <span class="value-row__amount">£3,150+</span>
+          </div>
+          <div class="value-row" style="background:rgba(4,24,50,0.04);">
+            <span class="value-row__label" style="font-weight:600;color:var(--navy);font-size:15px;letter-spacing:0.02em;">Your Investment</span>
+            <span class="value-row__amount" style="color:var(--navy);font-size:28px;font-weight:400;">£1,195</span>
+          </div>
+        </div>
+        <p class="value-note">Limited spaces available. Secure your spot today before they sell out.</p>
+        <div style="text-align:center;margin-top:32px;">
+          <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary" style="background:var(--navy);border-color:var(--navy);color:var(--white);padding:16px 52px;">
+            <span>Register Now — Secure Your Seat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ RESULTS BAR ══════════ -->
+  <section class="results" aria-label="Proven Results">
+    <div class="results__inner">
+      <div class="result-stat">
+        <span class="result-stat__num">£120K</span>
+        <span class="result-stat__label">Student Profit — Stockton-on-Tees</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat__num">£175K</span>
+        <span class="result-stat__label">Student Profit — Derby</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat__num">£180K</span>
+        <span class="result-stat__label">Student Profit — Blackburn</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat__num">£259K</span>
+        <span class="result-stat__label">Student Profit — Willenhall</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MENTORS ══════════ -->
+  <section class="mentors" id="mentors" aria-label="Your Mentors">
+    <div class="mentors__grain" aria-hidden="true"></div>
+    <div class="mentors__top-rule" aria-hidden="true"></div>
+    <div class="mentors__inner">
+
+      <div class="mentors__header">
+        <div class="mentors__header-left">
+          <div class="section-tag reveal">
+            <span class="section-tag__line"></span>
+            <span class="section-tag__text--gold" style="color:var(--gold);opacity:0.85;">The Team</span>
+          </div>
+          <h2 class="heading-dark reveal" style="transition-delay:0.08s">
+            Taught by those who<br><em>actually do it</em>
+          </h2>
+        </div>
+        <div style="max-width:320px;" class="reveal" style="transition-delay:0.15s">
+          <p class="mentors__intro">
+            No theorists. No classroom academics. Every mentor at Ethical Wealth Academy holds an active portfolio — and returns to share exactly how they did it, week after week.
+          </p>
+        </div>
+      </div>
+
+      <div class="mentors__grid">
+        <!-- Ayub -->
+        <div class="mentor-card">
+          <div class="mentor-portrait">
+            <span class="mentor-index">01 / 03</span>
+            <img src="images/ayub.jpg" alt="Ayub Kayat" loading="lazy" />
+            <span class="mentor-role-badge">Property Investment Coach</span>
+          </div>
+          <div class="mentor-info">
+            <h3 class="mentor-name">Ayub Kayat</h3>
+            <span class="mentor-title">Property Investment Coach &amp; Founder</span>
+            <div class="mentor-rule"></div>
+            <p class="mentor-bio">With 15 years of extensive experience across several countries, Ayub brings deep passion and expertise to help you achieve your goals. He'll guide you through different avenues to earn income from property and support your journey to success.</p>
+            <div class="mentor-stats">
+              <div class="mentor-stat"><span class="mentor-stat__num">120+</span><span class="mentor-stat__label">Deals Closed</span></div>
+              <div class="mentor-stat"><span class="mentor-stat__num">15</span><span class="mentor-stat__label">Yrs Experience</span></div>
+              <div class="mentor-stat"><span class="mentor-stat__num">£5M+</span><span class="mentor-stat__label">Portfolio Value</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ahmed -->
+        <div class="mentor-card">
+          <div class="mentor-portrait">
+            <span class="mentor-index">02 / 03</span>
+            <img src="images/ahmedalli.png" alt="Ahmed Ali" loading="lazy" />
+            <span class="mentor-role-badge">Director &amp; Supported Housing Specialist</span>
+          </div>
+          <div class="mentor-info">
+            <h3 class="mentor-name">Ahmed Ali</h3>
+            <span class="mentor-title">Director &amp; Supported Housing Specialist</span>
+            <div class="mentor-rule"></div>
+            <p class="mentor-bio">With 22+ years in property since his first investment in 2002, Ahmed has mastered investment strategies that triple property values while addressing critical housing needs through supported living.</p>
+            <div class="mentor-stats">
+              <div class="mentor-stat"><span class="mentor-stat__num">40+</span><span class="mentor-stat__label">Properties</span></div>
+              <div class="mentor-stat"><span class="mentor-stat__num">22</span><span class="mentor-stat__label">Yrs Experience</span></div>
+              <div class="mentor-stat"><span class="mentor-stat__num">£8M+</span><span class="mentor-stat__label">Portfolio Value</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mo -->
+        <div class="mentor-card">
+          <div class="mentor-portrait">
+            <span class="mentor-index">03 / 03</span>
+            <img src="images/moditta.png" alt="Mo Ditta" loading="lazy" />
+            <span class="mentor-role-badge">Compliance &amp; Operations Director</span>
+          </div>
+          <div class="mentor-info">
+            <h3 class="mentor-name">Mo Ditta</h3>
+            <span class="mentor-title">Compliance &amp; Operations Director</span>
+            <div class="mentor-rule"></div>
+            <p class="mentor-bio">With 20+ years in property since 2004, Mo combines hands-on landlord experience with corporate management expertise to create low-risk, genuinely hands-off investment solutions.</p>
+            <div class="mentor-stats">
+              <div class="mentor-stat"><span class="mentor-stat__num">£12M</span><span class="mentor-stat__label">Finance Arranged</span></div>
+              <div class="mentor-stat"><span class="mentor-stat__num">20</span><span class="mentor-stat__label">Yrs Experience</span></div>
+              <div class="mentor-stat"><span class="mentor-stat__num">8%+</span><span class="mentor-stat__label">Avg Net Yield</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mentors__footer">
+        <p class="mentors__quote reveal">
+          "This isn't theory — it's a proven model that has generated over six figures every year for the past 3 years. Now, I'm ready to share it with you."<br>
+          <strong style="font-size:0.75em;letter-spacing:0.2em;">— Ayub Kayat, Founder</strong>
+        </p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;" class="reveal" style="transition-delay:0.15s">
+          <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary"><span>Join Us in June</span></a>
+          <a href="success.html" class="btn-ghost">View Success Stories</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WHO IS IT FOR ══════════ -->
+  <section class="who" id="who" aria-label="Who This Is For">
+    <div class="who__grain" aria-hidden="true"></div>
+
+    <div class="who__content">
+      <div class="section-tag reveal">
+        <span class="section-tag__line"></span>
+        <span class="section-tag__text">Let's Be Honest</span>
+      </div>
+      <h2 class="heading-light reveal">Who This Is<br><em>Actually For</em></h2>
+      <p class="subhead reveal">No pitch. No pressure. Just clarity.</p>
+      <p class="body-light reveal">Not every workshop is right for every person — and we'd rather tell you that upfront than waste your time or ours.</p>
+
+      <div class="who__lists reveal" style="transition-delay:0.12s;">
+        <div class="who__list who__list--yes">
+          <div class="who__list__header">
+            <span class="who__list__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="who__list__title">You belong here if…</span>
+          </div>
+          <ul class="who__items">
+            <li class="who__item who__item--yes"><span class="wi-dot"></span><span class="wi-text">You're tired of theory and <strong>ready for action</strong></span></li>
+            <li class="who__item who__item--yes"><span class="wi-dot"></span><span class="wi-text">You want to build wealth <strong>without compromising your values</strong></span></li>
+            <li class="who__item who__item--yes"><span class="wi-dot"></span><span class="wi-text">You're willing to <strong>learn, take feedback, and do the work</strong></span></li>
+            <li class="who__item who__item--yes"><span class="wi-dot"></span><span class="wi-text">You see the opportunity in <strong>helping others while helping yourself</strong></span></li>
+          </ul>
+        </div>
+        <div class="who__list who__list--no">
+          <div class="who__list__header">
+            <span class="who__list__icon who__list__icon--no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            <span class="who__list__title">Probably not for you if…</span>
+          </div>
+          <ul class="who__items">
+            <li class="who__item who__item--no"><span class="wi-dot"></span><span class="wi-text">You want to get rich <strong>without leaving the sofa</strong></span></li>
+            <li class="who__item who__item--no"><span class="wi-dot"></span><span class="wi-text">You're looking for a <strong>magic button</strong> with no effort</span></li>
+            <li class="who__item who__item--no"><span class="wi-dot"></span><span class="wi-text">You'd rather <strong>complain about the market</strong> than adapt to it</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="who__closing reveal" style="transition-delay:0.18s">No judgement either way. But honesty saves everyone time — including yours.</p>
+
+      <div class="cta-row reveal" style="transition-delay:0.26s">
+        <a href="#register" class="btn-primary" style="background:var(--navy);border-color:var(--navy);color:var(--white);"><span>I'm Ready — Register Now</span></a>
+      </div>
+    </div>
+
+    <div class="who__image">
+      <img src="images/hero2.jpg" alt="Investor workshop environment" loading="lazy" />
+      <div class="who__badge">
+        <span class="who__badge__num">94%</span>
+        <span class="who__badge__label">Student Completion Rate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ LOGISTICS ══════════ -->
+  <section class="logistics" id="logistics" aria-label="Event Details">
+    <div class="logistics__grain" aria-hidden="true"></div>
+    <div class="logistics__top-rule" aria-hidden="true"></div>
+    <div class="logistics__inner">
+
+      <div class="logistics__header">
+        <div class="section-tag reveal" style="justify-content:center;">
+          <span class="section-tag__line"></span>
+          <span class="section-tag__text--gold" style="color:var(--gold);opacity:0.85;">Event Details</span>
+          <span class="section-tag__line"></span>
+        </div>
+        <h2 class="heading-dark reveal" style="text-align:center;transition-delay:0.1s">
+          Everything You Need<br><em>Before You Arrive</em>
+        </h2>
+      </div>
+
+      <div class="logistics__grid">
+        <div class="logistics-card">
+          <div class="logistics-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="logistics-title">Dates</h3>
+          <div class="logistics-rule"></div>
+          <p class="logistics-val">20th &amp; 21st June 2025</p>
+          <p class="logistics-desc">Saturday and Sunday — two full consecutive days of immersive training. Plan to arrive by 9:00 AM on both days.</p>
+        </div>
+        <div class="logistics-card">
+          <div class="logistics-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          </div>
+          <h3 class="logistics-title">Venue</h3>
+          <div class="logistics-rule"></div>
+          <p class="logistics-val">Village Hotel, South Leeds</p>
+          <p class="logistics-desc">Capital Blvd, Morley, LS27 0TS — with excellent transport links, free parking, and a professional conference environment.</p>
+        </div>
+        <div class="logistics-card">
+          <div class="logistics-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3 class="logistics-title">Investment</h3>
+          <div class="logistics-rule"></div>
+          <p class="logistics-val">£1,195 per person</p>
+          <p class="logistics-desc">This includes all training, course materials, lunch and refreshments on both days. Limited spaces available — they will sell out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CLOSING CTA ══════════ -->
+  <section class="closing" id="register" aria-label="Register Now">
+    <div class="closing__grain" aria-hidden="true"></div>
+    <div class="closing__top-rule" aria-hidden="true"></div>
+    <div class="closing__inner">
+      <span class="closing__vert-rule reveal" aria-hidden="true"></span>
+      <h2 class="closing__heading reveal" style="transition-delay:0.1s">
+        Two Days from Now<br>You Could Have
+        <em>A Real Plan.</em>
+      </h2>
+      <p class="closing__body reveal" style="transition-delay:0.2s">
+        Join us at Village Hotel, South Leeds this June. Two days, the complete 6-step blueprint, mentors who've closed the deals — and a room full of people who've decided that where they are now is not where they intend to stay.
+      </p>
+      <span class="closing__meta reveal" style="transition-delay:0.25s">
+        Saturday 20th &amp; Sunday 21st June 2025 · Village Hotel, South Leeds · £1,195 per person
+      </span>
+      <div class="closing__ctas reveal" style="transition-delay:0.32s">
+        <a href="#" class="btn-primary"><span>Register Now — Secure Your Place</span></a>
+        <a href="events.html" class="btn-ghost">View All Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer" aria-label="Site Footer">
+    <div class="footer__grain" aria-hidden="true"></div>
+    <div class="footer__top-rule" aria-hidden="true"></div>
+    <div class="footer__orb footer__orb--left" aria-hidden="true"></div>
+    <div class="footer__orb footer__orb--right" aria-hidden="true"></div>
+
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo" aria-label="Ethical Wealth Academy — Home">
+          <span class="footer__logo-name">Ethical Wealth Academy</span>
+          <span class="footer__logo-sub">Build · Preserve · Grow</span>
+        </a>
+        <div class="footer__logo-rule" aria-hidden="true"></div>
+        <p class="footer__strapline">Guiding ambitious individuals toward ethical, strategy-led property wealth — without compromising on values or returns.</p>
+        <div class="footer__socials" role="list" aria-label="Social Media">
+          <a href="#" class="footer__social" role="listitem" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="footer__social" role="listitem" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="footer__social" role="listitem" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="footer__social" role="listitem" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon fill="#060e1a" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer Navigation">
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Company</h4>
+          <ul class="footer__nav-list">
+            <li><a href="about.html" class="footer__nav-link">About Us</a></li>
+            <li><a href="#" class="footer__nav-link">Our Mentors</a></li>
+            <li><a href="success.html" class="footer__nav-link">Success Stories</a></li>
+            <li><a href="#" class="footer__nav-link">Our Mission</a></li>
+            <li><a href="#" class="footer__nav-link">Press &amp; Media</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Programmes</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">Social Housing Strategy</a></li>
+            <li><a href="#" class="footer__nav-link">Supported Living</a></li>
+            <li><a href="#" class="footer__nav-link">Portfolio Scaling</a></li>
+            <li><a href="#" class="footer__nav-link">1-to-1 Mentoring</a></li>
+            <li><a href="#" class="footer__nav-link">Online Courses</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Events</h4>
+          <ul class="footer__nav-list">
+            <li><a href="mini-events.html" class="footer__nav-link">Mini Workshops</a></li>
+            <li><a href="#" class="footer__nav-link">Investment Intensives</a></li>
+            <li><a href="#" class="footer__nav-link">Discovery Evenings</a></li>
+            <li><a href="conference.html" class="footer__nav-link">Annual Conference</a></li>
+            <li><a href="#" class="footer__nav-link">Live Webinars</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <h4 class="footer__nav-heading">Get in Touch</h4>
+          <ul class="footer__contact-list">
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></span>
+              <span>Village Hotel, South Leeds<br>LS27 0TS</span>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg></span>
+              <a href="tel:+447968100786">+44 7968 100786</a>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <a href="mailto:hello@ethicalwealthacademy.com">hello@ethicalwealthacademy.com</a>
+            </li>
+          </ul>
+          <a href="#register" class="footer__cta"><span>Register Now</span></a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__quote-bar" aria-hidden="true">
+      <div class="footer__quote-bar-inner">
+        <span class="footer__quote-text">"Wealth is not about having a lot of money; it's about having a lot of options."</span>
+        <span class="footer__quote-sep">◆</span>
+        <span class="footer__quote-attr">— Chris Rock</span>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <div class="footer__base-inner">
+        <p class="footer__copy">&copy; <span id="footerYear"></span> Ethical Wealth Academy. All rights reserved.</p>
+        <div class="footer__legal-links">
+          <a href="#" class="footer__legal-link">Privacy Policy</a>
+          <span class="footer__legal-sep">·</span>
+          <a href="#" class="footer__legal-link">Terms of Use</a>
+          <span class="footer__legal-sep">·</span>
+          <a href="#" class="footer__legal-link">Cookie Policy</a>
+          <span class="footer__legal-sep">·</span>
+          <a href="#" class="footer__legal-link">Disclaimer</a>
+        </div>
+        <p class="footer__disclaimer">Property investment carries risk. Past performance is not indicative of future results. Please seek independent financial advice before making any investment decisions.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAVBAR SCROLL ──
+    const navbar = document.getElementById('navbar');
+    const heroSection = document.querySelector('.hero');
+    new IntersectionObserver(([e]) => {
+      navbar.classList.toggle('scrolled', !e.isIntersecting);
+    }, { threshold: 0.05 }).observe(heroSection);
+
+    // ── HAMBURGER ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function openMenu()  { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded','true');  mobileMenu.classList.add('is-open');  document.body.classList.add('menu-open'); }
+    function closeMenu() { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('is-open'); document.body.classList.remove('menu-open'); }
+    hamburger.addEventListener('click', () => mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu());
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+
+    // ── SCROLL REVEAL ──
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll(
+      '.reveal, .master-card, .inc-card, .mentor-card, .logistics-card, .problem-item, .who__item'
+    ).forEach(el => revealObs.observe(el));
+
+    // ── FOOTER REVEAL + YEAR ──
+    const footerObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('f-visible'); footerObs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.footer__brand, .footer__nav').forEach(el => footerObs.observe(el));
+
+    const yr = document.getElementById('footerYear');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
