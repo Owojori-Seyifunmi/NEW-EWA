@@ -8,6 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-22GE7PYRR9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-22GE7PYRR9');
+</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -81,6 +91,89 @@
     .nav-link:hover::after { width: 100%; }
     .nav-link.active { color: var(--black); font-weight: 500; }
     .nav-link.active::after { width: 100%; }
+
+        /* ── Events Dropdown ── */
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-dropdown__trigger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-bottom: 2px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-dropdown__chevron {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-top: 1px;
+      stroke: currentColor;
+      opacity: 0.6;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown__chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown__menu {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 200;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown__menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown__item {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10.5px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-nav);
+      text-decoration: none;
+      padding: 14px 20px;
+      border-bottom: 1px solid #f0eeea;
+      transition: color 0.2s ease, padding-left 0.25s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown__item:last-child { border-bottom: none; }
+
+    .nav-dropdown__item:hover {
+      color: var(--black);
+      background: #faf9f7;
+      padding-left: 26px;
+    }
+
+    /* 7th mobile item stagger */
+    .mobile-menu.is-open .mobile-nav-item:nth-child(7) {
+      transition: opacity 0.5s ease 1.15s, transform 0.5s ease 1.15s;
+    }
 
     .logo-wrap {
       display: flex; flex-direction: column; align-items: center;
@@ -962,9 +1055,18 @@
   <!-- Main navbar -->
   <nav class="navbar">
     <div class="nav-group left">
-      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link active">Home</a>
       <a href="about.html" class="nav-link">About Us</a>
-      <a href="twoday.html" class="nav-link active">Two Day Events</a>
+      <div class="nav-dropdown">
+        <button class="nav-link nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+          Events
+          <svg class="nav-dropdown__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown__menu" role="menu">
+          <a href="twoday.html" class="nav-dropdown__item" role="menuitem">Two Day Events</a>
+          <a href="mini-events.html" class="nav-dropdown__item" role="menuitem">Mini Events</a>
+        </div>
+      </div>
     </div>
     <a href="index.html" class="logo-wrap" id="logoWrap">
       <span class="logo-text-group">
@@ -977,8 +1079,8 @@
     </a>
     <div class="nav-group right">
       <a href="success.html" class="nav-link">Success Stories</a>
-      <a href="mini-events.html" class="nav-link">Mini Events</a>
       <a href="conference.html" class="nav-link">Conferences</a>
+      <a href="blog.html" class="nav-link">Blogs</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span class="line"></span><span class="line"></span><span class="line"></span>
@@ -1005,9 +1107,10 @@
           <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link"><span class="link-num">01</span><span class="link-text">Home</span><span class="link-arrow"></span></a></li>
           <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link"><span class="link-num">02</span><span class="link-text">About Us</span><span class="link-arrow"></span></a></li>
           <li class="mobile-nav-item"><a href="twoday.html" class="mobile-nav-link"><span class="link-num">03</span><span class="link-text">Two Day Events</span><span class="link-arrow"></span></a></li>
-          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
-          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
           <li class="mobile-nav-item"><a href="conference.html" class="mobile-nav-link"><span class="link-num">06</span><span class="link-text">Conferences</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link"><span class="link-num">07</span><span class="link-text">Blogs</span><span class="link-arrow"></span></a></li>
         </ul>
       </nav>
       <div class="mobile-menu__footer">
@@ -1482,6 +1585,31 @@
   </footer>
 
   <script>
+
+    /* ── Dropdown toggle ── */
+(function () {
+  const dropdown = document.querySelector('.nav-dropdown');
+  if (!dropdown) return;
+  const trigger = dropdown.querySelector('.nav-dropdown__trigger');
+
+  trigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.toggle('is-open');
+    trigger.setAttribute('aria-expanded', isOpen);
+  });
+
+  document.addEventListener('click', function () {
+    dropdown.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     const heroSection = document.querySelector('.events-hero');

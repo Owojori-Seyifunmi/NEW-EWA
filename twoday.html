@@ -7,7 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-22GE7PYRR9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-22GE7PYRR9');
+</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -60,6 +68,89 @@
     .nav-link:hover { color: var(--black); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .nav-link.active { color: var(--black); font-weight: 500; }
+
+    /* ── Events Dropdown ── */
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-dropdown__trigger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-bottom: 2px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-dropdown__chevron {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-top: 1px;
+      stroke: currentColor;
+      opacity: 0.6;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown__chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown__menu {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 200;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown__menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown__item {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10.5px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-nav);
+      text-decoration: none;
+      padding: 14px 20px;
+      border-bottom: 1px solid #f0eeea;
+      transition: color 0.2s ease, padding-left 0.25s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown__item:last-child { border-bottom: none; }
+
+    .nav-dropdown__item:hover {
+      color: var(--black);
+      background: #faf9f7;
+      padding-left: 26px;
+    }
+
+    /* 7th mobile item stagger */
+    .mobile-menu.is-open .mobile-nav-item:nth-child(7) {
+      transition: opacity 0.5s ease 1.15s, transform 0.5s ease 1.15s;
+    }
     .logo-wrap {
       display: flex; flex-direction: column; align-items: center;
       line-height: 1; text-decoration: none; padding: 0 32px; flex-shrink: 0;
@@ -747,9 +838,18 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-group left">
-      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link active">Home</a>
       <a href="about.html" class="nav-link">About Us</a>
-      <a href="twoday.html" class="nav-link active">Two Day Events</a>
+      <div class="nav-dropdown">
+        <button class="nav-link nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+          Events
+          <svg class="nav-dropdown__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown__menu" role="menu">
+          <a href="twoday.html" class="nav-dropdown__item" role="menuitem">Two Day Events</a>
+          <a href="mini-events.html" class="nav-dropdown__item" role="menuitem">Mini Events</a>
+        </div>
+      </div>
     </div>
     <a href="index.html" class="logo-wrap">
       <span class="logo-text-group">
@@ -762,8 +862,8 @@
     </a>
     <div class="nav-group right">
       <a href="success.html" class="nav-link">Success Stories</a>
-      <a href="mini-events.html" class="nav-link">Mini Events</a>
       <a href="conference.html" class="nav-link">Conferences</a>
+      <a href="blog.html" class="nav-link">Blogs</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span class="line"></span><span class="line"></span><span class="line"></span>
@@ -789,10 +889,11 @@
         <ul class="mobile-nav-list">
           <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link"><span class="link-num">01</span><span class="link-text">Home</span><span class="link-arrow"></span></a></li>
           <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link"><span class="link-num">02</span><span class="link-text">About Us</span><span class="link-arrow"></span></a></li>
-          <li class="mobile-nav-item"><a href="twoday.html" class="mobile-nav-link"><span class="link-num">03</span><span class="link-text"> Two Day Events</span><span class="link-arrow"></span></a></li>
-          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
-          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="twoday.html" class="mobile-nav-link"><span class="link-num">03</span><span class="link-text">Two Day Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="mini-events.html" class="mobile-nav-link"><span class="link-num">04</span><span class="link-text">Mini Events</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="success.html" class="mobile-nav-link"><span class="link-num">05</span><span class="link-text">Success Stories</span><span class="link-arrow"></span></a></li>
           <li class="mobile-nav-item"><a href="conference.html" class="mobile-nav-link"><span class="link-num">06</span><span class="link-text">Conferences</span><span class="link-arrow"></span></a></li>
+          <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link"><span class="link-num">07</span><span class="link-text">Blogs</span><span class="link-arrow"></span></a></li>
         </ul>
       </nav>
       <div class="mobile-menu__footer">
@@ -824,7 +925,7 @@
       <div class="hero__details">
         <div class="hero__detail">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#c9a84c" stroke-width="2" fill="none"/><line x1="8" y1="2" x2="8" y2="6" stroke="#c9a84c" stroke-width="2" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="#c9a84c" stroke-width="2" fill="none"/></svg>
-          <strong>20th &amp; 21st June 2025</strong>
+          <strong>11th &amp; 12st July 2026</strong>
         </div>
         <div class="hero__detail">
           <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
@@ -836,7 +937,7 @@
         </div>
         <div class="hero__detail">
           <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          Investment: <strong>£1,195</strong>
+          Investment: <strong>£995</strong>
         </div>
       </div>
 
@@ -871,7 +972,7 @@
   <div class="urgency-strip">
     <span class="urgency-strip__text">
       <span class="urgency-dot"></span>
-      Limited seats available — 20th &amp; 21st June 2025 · Village Hotel, South Leeds
+      Limited seats available — 11th &amp; 12st July 2026 · Village Hotel, South Leeds
     </span>
     <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="urgency-strip__link">Reserve Your Place →</a>
   </div>
@@ -1027,7 +1128,7 @@
           <span class="section-tag__line"></span>
         </div>
         <h2 class="heading-light reveal" style="text-align:center; transition-delay:0.1s">
-          Nearly <em>£3,150 of Value</em><br>For Just £1,195
+          Nearly <em>£3,150 of Value</em><br>For Just £995
         </h2>
       </div>
 
@@ -1087,7 +1188,7 @@
           </div>
           <div class="value-row" style="background:rgba(4,24,50,0.04);">
             <span class="value-row__label" style="font-weight:600;color:var(--navy);font-size:15px;letter-spacing:0.02em;">Your Investment</span>
-            <span class="value-row__amount" style="color:var(--navy);font-size:28px;font-weight:400;">£1,195</span>
+            <span class="value-row__amount" style="color:var(--navy);font-size:28px;font-weight:400;">£995</span>
           </div>
         </div>
         <p class="value-note">Limited spaces available. Secure your spot today before they sell out.</p>
@@ -1213,7 +1314,8 @@
           <strong style="font-size:0.75em;letter-spacing:0.2em;">— Ayub Kayat, Founder</strong>
         </p>
         <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;" class="reveal" style="transition-delay:0.15s">
-          <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary"><span>Join Us in June</span></a>
+          <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary"><span>Join Us in July
+</span></a>
           <a href="success.html" class="btn-ghost">View Success Stories</a>
         </div>
       </div>
@@ -1299,7 +1401,7 @@
           </div>
           <h3 class="logistics-title">Dates</h3>
           <div class="logistics-rule"></div>
-          <p class="logistics-val">20th &amp; 21st June 2025</p>
+          <p class="logistics-val">11th &amp; 12st July 2026</p>
           <p class="logistics-desc">Saturday and Sunday — two full consecutive days of immersive training. Plan to arrive by 9:00 AM on both days.</p>
         </div>
         <div class="logistics-card">
@@ -1317,7 +1419,7 @@
           </div>
           <h3 class="logistics-title">Investment</h3>
           <div class="logistics-rule"></div>
-          <p class="logistics-val">£1,195 per person</p>
+          <p class="logistics-val">£995 per person</p>
           <p class="logistics-desc">This includes all training, course materials, lunch and refreshments on both days. Limited spaces available — they will sell out.</p>
         </div>
       </div>
@@ -1338,10 +1440,10 @@
         Join us at Village Hotel, South Leeds this June. Two days, the complete 6-step blueprint, mentors who've closed the deals — and a room full of people who've decided that where they are now is not where they intend to stay.
       </p>
       <span class="closing__meta reveal" style="transition-delay:0.25s">
-        Saturday 20th &amp; Sunday 21st June 2025 · Village Hotel, South Leeds · £1,195 per person
+        Saturday 20th &amp; Sunday 21st June 2025 · Village Hotel, South Leeds · £995 per person
       </span>
       <div class="closing__ctas reveal" style="transition-delay:0.32s">
-        <a href="#" class="btn-primary"><span>Register Now — Secure Your Place</span></a>
+        <a href="https://link.fastpaydirect.com/payment-link/69e221ea7dd3512d92076d98" class="btn-primary"><span>Register Now — Secure Your Place</span></a>
         <a href="events.html" class="btn-ghost">View All Events</a>
       </div>
     </div>
@@ -1448,6 +1550,33 @@
   </footer>
 
   <script>
+
+    /* ── Dropdown toggle ── */
+    (function () {
+      const dropdown = document.querySelector('.nav-dropdown');
+      if (!dropdown) return;
+      const trigger = dropdown.querySelector('.nav-dropdown__trigger');
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', isOpen);
+      });
+
+      document.addEventListener('click', function () {
+        dropdown.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          dropdown.classList.remove('is-open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+
     // ── NAVBAR SCROLL ──
     const navbar = document.getElementById('navbar');
     const heroSection = document.querySelector('.hero');
