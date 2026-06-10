@@ -3,992 +3,1837 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Events — Social Housing Investment Workshop — Ethical Wealth Academy</title>
-
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1987348195492829');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1987348195492829&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <title>Liberate Your Property — Ethical Wealth Academy</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&family=Wix+Madefor+Display:wght@400;500;600;700&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Google tag, keep or remove depending on whether you want this solo ad page tracked separately -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-22GE7PYRR9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-22GE7PYRR9');
+  </script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --navy: #041832;
-      --navy-mid: #0a2847;
+      --black: #111111;
+      --white: #ffffff;
       --gold: #c9a84c;
       --gold-dark: #a8863a;
-      --white: #ffffff;
-      --off-white: #f8f6f2;
+      --light-grey: #f5f4f2;
+      --text-nav: #2a2a2a;
+      --bar-bg: #1a1a1a;
+      --navy: #041832;
+      --hero-bg: #0c0c0c;
       --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-display: 'Montserrat', sans-serif;
+      --font-hero: 'Wix Madefor Display', sans-serif;
+      --font-hero-text: 'Wix Madefor Text', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: var(--font-sans);
-      background: var(--navy);
-      color: var(--white);
+      font-family: var(--font-display);
+      background: var(--light-grey);
+      color: var(--navy);
       min-height: 100vh;
-      overflow-x: hidden;
+      padding-top: 103px;
     }
 
-    /* ── AMBIENT BACKGROUND ── */
-    body::before {
-      content: '';
+    /* HEADER */
+    .solo-header {
       position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(ellipse 70% 60% at 15% 10%, rgba(201,168,76,0.08) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 70% at 85% 80%, rgba(201,168,76,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(10,40,71,0.8) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;  
     }
 
-    /* ── GRAIN ── */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      background-size: 300px 300px;
+    .top-bar {
+      background: var(--bar-bg);
+      color: #ccc;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 7px 40px;
     }
 
-    /* ── TOP STRIP ── */
-    .top-strip {
-      position: relative;
-      z-index: 10;
-      background: rgba(0,0,0,0.4);
-      border-bottom: 1px solid rgba(201,168,76,0.2);
+    .top-bar .quality {
+      font-weight: 300;
+    }
+
+    .top-bar strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .top-bar .info {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-bar .info span {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 40px;
-      flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .top-strip__logo {
-      font-family: var(--font-serif);
-      font-size: 16px;
+    .top-bar .info svg {
+      width: 11px;
+      height: 11px;
+      fill: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .navbar {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 40px;
+      height: 72px;
+      border-bottom: 1px solid #e8e6e2;
+      position: relative;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    .nav-note {
+      font-family: var(--font-display);
+      font-size: 9px;
       font-weight: 400;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
+      color: rgba(4,24,50,0.48);
+      white-space: nowrap;
+    }
+
+    .nav-note--right {
+      justify-self: end;
+      color: var(--gold-dark);
+    }
+
+    .logo-wrap {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-    }
-
-    .top-strip__logo-rule {
-      width: 1px;
-      height: 20px;
-      background: rgba(201,168,76,0.4);
-    }
-
-    .top-strip__logo-sub {
-      font-family: var(--font-sans);
-      font-size: 7px;
-      font-weight: 300;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.7);
-    }
-
-    .top-strip__phone {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.25s;
-    }
-
-    .top-strip__phone:hover { color: var(--gold); }
-
-    .top-strip__phone svg { width: 12px; height: 12px; fill: var(--gold); }
-
-    /* ── MAIN WRAPPER ── */
-    .page {
+      line-height: 1;
+      padding: 0 32px;
+      flex-shrink: 0;
       position: relative;
-      z-index: 2;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 60px 40px 80px;
-      display: grid;
-      grid-template-columns: 1fr 460px;
-      gap: 64px;
-      align-items: start;
+      height: 72px;
+      justify-content: center;
     }
 
-    /* ── LEFT COLUMN ── */
-    .left { display: flex; flex-direction: column; }
-
-    /* Eyebrow */
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.1s ease forwards;
-    }
-
-    .eyebrow__line {
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.8;
-    }
-
-    .eyebrow__text {
-      font-family: var(--font-sans);
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* Heading */
-    .heading {
-      font-family: var(--font-serif);
-      font-size: clamp(42px, 5vw, 68px);
-      font-weight: 400;
-      line-height: 1.06;
-      color: var(--white);
-      letter-spacing: 0.01em;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s ease forwards;
-    }
-
-    .heading em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold);
-    }
-
-    /* Sub */
-    .subline {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.82;
-      color: rgba(255,255,255,0.55);
-      max-width: 500px;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.3s ease forwards;
-    }
-
-    /* ── DATE CARDS ── */
-    .dates {
-      display: flex;
-      gap: 0;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s ease forwards;
-      flex-wrap: wrap;
-    }
-
-    .date-card {
-      flex: 1;
-      min-width: 200px;
-      border: 1px solid rgba(201,168,76,0.3);
-      background: rgba(201,168,76,0.06);
-      padding: 22px 24px;
-      position: relative;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    .date-card:first-child { border-right: none; }
-
-    .date-card:hover {
-      background: rgba(201,168,76,0.11);
-      border-color: rgba(201,168,76,0.55);
-    }
-
-    .date-card__badge {
-      font-family: var(--font-sans);
-      font-size: 7.5px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .date-card__date {
+    .logo-name {
       font-family: var(--font-serif);
       font-size: 22px;
       font-weight: 400;
-      color: var(--white);
-      display: block;
-      margin-bottom: 8px;
-      line-height: 1.1;
+      letter-spacing: 0.28em;
+      color: var(--black);
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .date-card__row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-sans);
-      font-size: 10.5px;
+    .logo-sub {
+      font-family: var(--font-display);
+      font-size: 7px;
       font-weight: 300;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.5em;
+      color: #999;
+      text-transform: uppercase;
       margin-top: 4px;
+      padding-left: 0.5em;
+      white-space: nowrap;
     }
 
-    .date-card__row svg { width: 11px; height: 11px; fill: var(--gold); flex-shrink: 0; }
-
-    .date-card__or {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 16px;
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(201,168,76,0.4);
-      border-top: 1px solid rgba(201,168,76,0.2);
-      border-bottom: 1px solid rgba(201,168,76,0.2);
-      background: rgba(201,168,76,0.03);
-    }
-
-    /* Shared time row */
-    .shared-time {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 40px;
-      padding: 12px 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      width: fit-content;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.5s ease forwards;
-    }
-
-    .shared-time svg { width: 13px; height: 13px; fill: var(--gold); }
-
-    .shared-time span {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .shared-time strong { color: var(--gold); font-weight: 500; }
-
-    /* ── WHAT TO EXPECT ── */
-    .what-label {
-      font-family: var(--font-sans);
-      font-size: 8px;
-      font-weight: 500;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.8;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.55s ease forwards;
-    }
-
-    .what-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, rgba(201,168,76,0.35), transparent);
-    }
-
-    .what-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 44px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.65s ease forwards;
-    }
-
-    .what-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 16px 18px;
-      background: rgba(255,255,255,0.025);
-      border-top: 1px solid rgba(201,168,76,0.12);
-      transition: background 0.3s;
-    }
-
-    .what-item:hover { background: rgba(255,255,255,0.04); }
-
-    .what-item__icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border: 1px solid rgba(201,168,76,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-
-    .what-item__icon svg { width: 12px; height: 12px; fill: var(--gold); }
-
-    .what-item__text {
+    .logo-text-group {
       display: flex;
       flex-direction: column;
-      gap: 3px;
-    }
-
-    .what-item__title {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: 0.03em;
-      line-height: 1.3;
-    }
-
-    .what-item__desc {
-      font-family: var(--font-sans);
-      font-size: 10.5px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.55;
-    }
-
-    /* ── MENTORS ROW ── */
-    .mentors-row {
-      display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 40px;
-      padding: 20px 24px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .logo-img-group {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, calc(-50% + 8px));
       opacity: 0;
-      animation: fadeUp 0.7s 0.75s ease forwards;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    .mentor-avatars {
+    .logo-img-group img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar.scrolled .logo-text-group {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .navbar.scrolled .logo-img-group {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      min-height: calc(100vh - 103px);
+      background: var(--hero-bg);
+    }
+
+    .hero-text {
+      background: var(--hero-bg);
       display: flex;
       align-items: center;
+      padding: clamp(2.75rem, 5vw, 5.5rem) clamp(1.75rem, 4.5vw, 5rem);
     }
 
-    .mentor-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid rgba(201,168,76,0.5);
-      overflow: hidden;
+    .hero-inner {
+      width: 100%;
+      max-width: 36rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-hero);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.4rem;
+      line-height: 1.7;
+    }
+
+    .hero-attention {
+      font-family: var(--font-hero);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-grey);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-headline {
+      font-family: var(--font-hero);
+      font-weight: 500;
+      font-size: clamp(2.05rem, 3.6vw, 3.3rem);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-headline .hl-muted {
+      display: block;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero-headline .hl-bright {
+      display: block;
+      color: var(--white);
+    }
+
+    .hero-sub {
+      font-family: var(--font-hero-text);
+      font-weight: 400;
+      font-size: clamp(1rem, 1.15vw, 1.12rem);
+      line-height: 1.65;
+      color: rgba(255,255,255,0.64);
+      max-width: 31rem;
+    }
+
+    .hero-sub + .hero-sub {
+      margin-top: 1rem;
+    }
+
+    .hero-actions {
+      margin-top: 2.4rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-hero);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--navy);
+      background: var(--white);
+      padding: 1rem 2.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--white);
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(201,168,76,0.28);
+    }
+
+    .cta-actions .btn-primary, .host-actions .btn-primary {
+      margin-top: 2.3rem;
+      background: var(--gold);
+    }
+    .cta-actions .btn-primary:hover, .cta-actions .btn-primary:focus-visible, .host-actions .btn-primary:hover, .host-actions .btn-primary:focus-visible {
+      background: var(--gold-dark);
+      border-color: var(--gold-dark);
+      box-shadow: 0 12px 30px rgba(168,134,58,0.3);
+    } 
+
+    .hero-date {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 2.6rem;
+      font-family: var(--font-hero-text);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .hero-date svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--gold);
       flex-shrink: 0;
-      background: var(--navy-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    .mentor-avatar + .mentor-avatar { margin-left: -12px; }
+    .hero-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      background: linear-gradient(135deg, #1c1c1c 0%, #0c0c0c 100%);
+    }
 
-    .mentor-avatar img {
+    .hero-media img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
-      filter: saturate(0.6) brightness(0.85);
-    }
-
-    .mentor-avatar__initials {
-      font-family: var(--font-serif);
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--gold);
-    }
-
-    .mentors-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .mentors-copy__name {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: 0.04em;
-    }
-
-    .mentors-copy__role {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.4);
-      letter-spacing: 0.06em;
-    }
-
-    /* ── TRUST STRIP ── */
-    .trust-strip {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.85s ease forwards;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .trust-item__num {
-      font-family: var(--font-serif);
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .trust-item__label {
-      font-family: var(--font-sans);
-      font-size: 8.5px;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.4;
-    }
-
-    .trust-sep {
-      width: 1px;
-      height: 28px;
-      background: rgba(201,168,76,0.2);
-    }
-
-    /* ── RIGHT COLUMN — FORM ── */
-    .form-panel {
-      position: sticky;
-      top: 24px;
-      background: var(--white);
-      border-top: 3px solid var(--gold);
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s ease forwards;
-    }
-
-    .form-panel__header {
-      padding: 28px 32px 20px;
-      border-bottom: 1px solid rgba(4,24,50,0.08);
-    }
-
-    .form-panel__tag {
-      font-family: var(--font-sans);
-      font-size: 8px;
-      font-weight: 500;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .form-panel__tag::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, rgba(168,134,58,0.4), transparent);
-    }
-
-    .form-panel__title {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.15;
-      letter-spacing: 0.01em;
-      margin-bottom: 8px;
-    }
-
-    .form-panel__title em {
-      font-style: italic;
-      color: var(--gold-dark);
-      font-weight: 300;
-    }
-
-    .form-panel__price {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .price-badge {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--navy);
-      background: rgba(201,168,76,0.12);
-      border: 1px solid rgba(201,168,76,0.4);
-      padding: 4px 14px;
-      letter-spacing: 0.02em;
-    }
-
-    .price-note {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 300;
-      color: rgba(4,24,50,0.45);
-      letter-spacing: 0.08em;
-      line-height: 1.5;
-    }
-
-    /* Dates inside form panel */
-    .form-panel__dates {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin: 16px 32px 0;
-    }
-
-    .form-panel__date-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 16px;
-      background: rgba(4,24,50,0.03);
-      border: 1px solid rgba(4,24,50,0.07);
-    }
-
-    .form-panel__date-row + .form-panel__date-row {
-      border-top: none;
-    }
-
-    .form-panel__date-row svg { width: 12px; height: 12px; fill: var(--gold-dark); flex-shrink: 0; }
-
-    .form-panel__date-row__text {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    .form-panel__date-row__date {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--navy);
-      letter-spacing: 0.04em;
-    }
-
-    .form-panel__date-row__venue {
-      font-family: var(--font-sans);
-      font-size: 9.5px;
-      font-weight: 300;
-      color: rgba(4,24,50,0.5);
-      letter-spacing: 0.06em;
-    }
-
-    /* GHL embed */
-    .ghl-wrap {
-      padding: 20px 32px 32px;
-      position: relative;
-      min-height: 480px;
-    }
-
-    .ghl-loading {
-      position: absolute;
-      inset: 20px 32px 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-    .ghl-loading.hidden { opacity: 0; }
-
-    .ghl-spinner {
-      width: 28px;
-      height: 28px;
-      border: 2px solid rgba(201,168,76,0.2);
-      border-top-color: var(--gold-dark);
-      border-radius: 50%;
-      animation: spin 0.9s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .ghl-spinner-label {
-      font-family: var(--font-sans);
-      font-size: 8.5px;
-      font-weight: 400;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(4,24,50,0.3);
-    }
-
-    .ghl-wrap iframe {
-      width: 100%;
-      min-height: 480px;
-      border: none;
       display: block;
     }
 
-    /* ── BOTTOM BAR ── */
-    .bottom-bar {
+    /* soft feather so the photo melts into the dark text panel */
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(12,12,12,0.55) 0%, rgba(12,12,12,0) 22%);
+    }
+
+    /* ===================== PARTNER MARQUEE ===================== */
+    .marquee {
+      background: var(--white);
+      border-top: 1px solid #ececec;
+      border-bottom: 1px solid #ececec;
+      padding: clamp(1.6rem, 3vw, 2.6rem) 0;
+      overflow: hidden;
+      position: relative;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: clamp(2.25rem, 5vw, 4.75rem);
+      animation: marquee-scroll 32s linear infinite;
+      will-change: transform;
+    }
+
+    /* hover pauses, so a reader can settle on a name */
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      flex: 0 0 auto;
+      font-family: var(--font-hero);
+      font-weight: 600;
+      font-size: clamp(1.15rem, 1.9vw, 1.8rem);
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .marquee-dot {
+      flex: 0 0 auto;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.75;
+    }
+
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===================== THE PROBLEM (split feature) ===================== */
+    .process {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--white);
+    }
+
+    .proc-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(160deg, #17130f 0%, #060606 100%);
+    }
+
+    .proc-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .proc-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(6,6,6,0.12) 0%, rgba(6,6,6,0.35) 45%, rgba(6,6,6,0.8) 100%);
+    }
+
+    .proc-caption {
+      position: relative;
+      z-index: 1;
+      padding: clamp(2.25rem, 4vw, 4rem);
+    }
+
+    .proc-title {
+      font-family: var(--font-hero);
+      font-weight: 500;
+      font-size: clamp(2.6rem, 4.6vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      color: var(--white);
+    }
+
+    .proc-sub {
+      font-family: var(--font-hero-text);
+      font-weight: 400;
+      font-size: clamp(1.02rem, 1.3vw, 1.3rem);
+      line-height: 1.5;
+      color: rgba(255,255,255,0.82);
+      max-width: 30rem;
+      margin-top: 1.1rem;
+    }
+
+    .proc-content {
+      padding: clamp(2.5rem, 4vw, 4.75rem) clamp(1.75rem, 3.5vw, 4.25rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .prob {
+      display: flex;
+      gap: 1.15rem;
+      align-items: flex-start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .prob:first-child { padding-top: 0; }
+    .prob:last-child { padding-bottom: 0; border-bottom: none; }
+
+    .prob-num {
+      flex: 0 0 auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f4f3ef;
+      color: var(--gold-dark);
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prob-body { min-width: 0; }
+
+    .prob-title {
+      font-family: var(--font-hero);
+      font-weight: 600;
+      font-size: 1.12rem;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .prob-desc {
+      font-family: var(--font-hero-text);
+      font-weight: 400;
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: rgba(4,24,50,0.62);
+    }
+
+    /* ===================== WAY OUT (image overlay) ===================== */
+    .wayout {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      min-height: clamp(460px, 62vh, 680px);
+      background: linear-gradient(120deg, #0b0b0b 0%, #232323 100%);
+    }
+
+    .wayout-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .wayout::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.72) 38%, rgba(5,5,5,0.28) 72%, rgba(5,5,5,0.08) 100%);
+    }
+
+    .wayout-inner {
       position: relative;
       z-index: 2;
-      border-top: 1px solid rgba(201,168,76,0.15);
-      padding: 24px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      background: rgba(0,0,0,0.2);
+      max-width: 52rem;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.75rem, 5vw, 5.5rem);
+    }
+    .wayout-inner h1 {
+      font-size: clamp(2.25rem, 5vw, 4.5rem);
+      color: var(--white);
+      font-style: italic;
     }
 
-    .bottom-bar__copy {
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.2);
+    .wayout-title {
+      font-family: var(--font-hero);
+      font-weight: 400;
+      font-size: 3rem;
+      font-style: italic;
+      /* font-size: clamp(2.5rem, 5vw, 4.5rem); */
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      color: var(--white);
     }
 
-    .bottom-bar__links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .wayout-sub {
+      font-family: var(--font-hero-text);
+      font-weight: 400;
+      font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+      line-height: 1.55;
+      color: rgba(255,255,255,0.85);
+      max-width: 40rem;
+      margin-top: 1.4rem;
     }
 
-    .bottom-bar__link {
-      font-family: var(--font-sans);
-      font-size: 9.5px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.2);
+    .wayout-actions {
+      margin-top: 2.3rem;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      font-family: var(--font-hero);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
       text-decoration: none;
-      transition: color 0.25s;
+      color: var(--white);
+      background: transparent;
+      padding: 1rem 2.6rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.65);
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .bottom-bar__link:hover { color: var(--gold); }
-    .bottom-bar__sep { color: rgba(255,255,255,0.12); }
-
-    .bottom-bar__disclaimer {
-      font-family: var(--font-sans);
-      font-size: 9px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.14);
-      letter-spacing: 0.04em;
-      width: 100%;
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(201,168,76,0.3);
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @media (max-width: 700px) {
+      .wayout {
+        min-height: 440px;
+      }
+
+      .wayout::after {
+        background: linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.82) 100%);
+      }
+
+      .btn-ghost {
+        display: block;
+        text-align: center;
+      }
     }
 
-    /* ── RESPONSIVE ── */
+    
+    @media (max-width: 900px) {
+      .process { grid-template-columns: 1fr; }
+      .proc-media { order: 1; min-height: 340px; }
+      .proc-content { order: 2; }
+    }
+
     @media (max-width: 1024px) {
-      .page { grid-template-columns: 1fr; gap: 48px; padding: 48px 28px 60px; }
-      .form-panel { position: static; }
-      .what-grid { grid-template-columns: 1fr 1fr; }
+      .hero {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      }
     }
 
-    @media (max-width: 640px) {
-      .top-strip { padding: 10px 20px; }
-      .page { padding: 36px 20px 56px; }
-      .what-grid { grid-template-columns: 1fr; }
-      .dates { flex-direction: column; }
-      .date-card:first-child { border-right: 1px solid rgba(201,168,76,0.3); border-bottom: none; }
-      .date-card__or { padding: 12px 0; border-left: 1px solid rgba(201,168,76,0.2); border-right: 1px solid rgba(201,168,76,0.2); }
-      .trust-strip { gap: 16px; }
-      .form-panel__header { padding: 22px 20px 16px; }
-      .form-panel__dates { margin: 12px 20px 0; }
-      .ghl-wrap { padding: 16px 20px 24px; }
-      .bottom-bar { padding: 20px; }
+    @media (max-width: 900px) {
+      .top-bar {
+        padding: 7px 24px;
+      }
+
+      .top-bar .quality {
+        display: none;
+      }
+
+      .top-bar .info {
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        padding: 0 24px;
+      }
+
+      .nav-note {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .hero-text {
+        order: 1;
+        padding: clamp(2.5rem, 7vw, 3.5rem) clamp(1.5rem, 6vw, 2.5rem);
+      }
+
+      .hero-inner {
+        max-width: 38rem;
+        margin: 0 auto;
+      }
+
+      .hero-media {
+        order: 2;
+        min-height: 360px;
+      }
+
+      .hero-media::before {
+        background: linear-gradient(0deg, rgba(12,12,12,0.5) 0%, rgba(12,12,12,0) 30%);
+      }
     }
+
+    @media (max-width: 560px) {
+      .top-bar {
+        display: none;
+      }
+
+      .navbar {
+        height: 68px;
+      }
+
+      .logo-wrap {
+        height: 68px;
+        padding: 0 12px;
+      }
+
+      .logo-name {
+        font-size: 16px;
+        letter-spacing: 0.2em;
+      }
+
+      .logo-sub {
+        font-size: 6px;
+        letter-spacing: 0.35em;
+      }
+
+      .logo-img-group img {
+        height: 36px;
+      }
+
+      .hero-media {
+        min-height: 300px;
+      }
+
+      .btn-primary {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+
+      /* no auto-scroll, let people scroll the strip themselves */
+      .marquee-track {
+        animation: none !important;
+      }
+
+      .marquee {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+                mask-image: none;
+      }
+    }
+
+    /* ===================== THE SOLUTION (split feature) ===================== */
+    .solution {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--white);
+    }
+
+    .solution .proc-content {
+      order: 1;
+    }
+
+    .solution .proc-media {
+      order: 2;
+    }
+
+    .solution-intro {
+      margin-bottom: 1.7rem;
+      max-width: 42rem;
+    }
+
+    .solution-kicker {
+      font-family: var(--font-hero);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .solution-heading {
+      font-family: var(--font-hero);
+      font-weight: 600;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .solution-copy {
+      font-family: var(--font-hero-text);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(4,24,50,0.68);
+    }
+
+    .solution-copy strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .solution .proc-media::after {
+      background: linear-gradient(to bottom, rgba(6,6,6,0.08) 0%, rgba(6,6,6,0.35) 48%, rgba(6,6,6,0.82) 100%);
+    }
+
+    @media (max-width: 900px) {
+      .solution {
+        grid-template-columns: 1fr;
+      }
+
+      .solution .proc-content {
+        order: 2;
+      }
+
+      .solution .proc-media {
+        order: 1;
+        min-height: 340px;
+      }
+
+      /* ===================== LIMITED SEATS CTA ===================== */
+    .limited-seats {
+      min-height: clamp(420px, 58vh, 620px);
+    }
+
+    .limited-seats::after {
+      background: linear-gradient(
+        90deg,
+        rgba(5,5,5,0.9) 0%,
+        rgba(5,5,5,0.72) 42%,
+        rgba(5,5,5,0.32) 75%,
+        rgba(5,5,5,0.08) 100%
+      );
+    }
+
+    .limited-seats .wayout-title {
+      font-size: clamp(2.6rem, 6vw, 5.3rem);
+      font-style: normal;
+      font-weight: 600;
+      max-width: 46rem;
+    }
+
+    .limited-seats .wayout-sub {
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+    }
+
+    }
+
+    /* ===================== HOST SECTION ===================== */
+    .host {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      background: var(--white);
+      min-height: 620px;
+    }
+
+    .host-media {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #17130f 0%, #060606 100%);
+    }
+
+    .host-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .host-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(6,6,6,0.05) 0%,
+        rgba(6,6,6,0.25) 45%,
+        rgba(6,6,6,0.72) 100%
+      );
+    }
+
+    .host-content {
+      padding: clamp(3rem, 5vw, 5.5rem) clamp(1.75rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .host-kicker {
+      font-family: var(--font-hero);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+    }
+
+    .host-name {
+      font-family: var(--font-hero);
+      font-weight: 600;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .host-role {
+      font-family: var(--font-hero);
+      font-size: clamp(1rem, 1.35vw, 1.25rem);
+      font-weight: 600;
+      line-height: 1.55;
+      color: var(--gold-dark);
+      margin-bottom: 2rem;
+    }
+
+    .host-copy {
+      font-family: var(--font-hero-text);
+      font-size: clamp(1rem, 1.18vw, 1.12rem);
+      line-height: 1.75;
+      color: rgba(4,24,50,0.68);
+      max-width: 43rem;
+    }
+
+    .host-copy + .host-copy {
+      margin-top: 1.2rem;
+    }
+
+    .host-copy strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    
+
+    @media (max-width: 900px) {
+      .host {
+        grid-template-columns: 1fr;
+      }
+
+      .host-media {
+        min-height: 420px;
+        order: 1;
+      }
+
+      .host-content {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .host-media {
+        min-height: 340px;
+      }
+
+      .host-actions .btn-primary {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    /* ===================== HOST STATS ===================== */
+.host-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+
+.host-stat {
+  background: #f4f3ef;
+  border: 1px solid #ece8dc;
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+}
+
+.host-stat-number {
+  display: block;
+  font-family: var(--font-hero);
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold-dark);
+  margin-bottom: 0.4rem;
+}
+
+.host-stat-label {
+  display: block;
+  font-family: var(--font-hero-text);
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+@media (max-width: 900px) {
+  .host-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 460px) {
+  .host-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================== WHY MAKE THE SHIFT ===================== */
+.shift {
+  background: var(--light-grey);
+  padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.5rem, 5vw, 5.5rem);
+}
+
+.shift-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.shift-header {
+  max-width: 760px;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.shift-kicker {
+  font-family: var(--font-hero);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.9rem;
+}
+
+.shift-title {
+  font-family: var(--font-hero);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+}
+
+.shift-intro {
+  font-family: var(--font-hero-text);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.75;
+  color: rgba(4,24,50,0.68);
+}
+
+.shift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+}
+
+.shift-card {
+  background: var(--white);
+  border: 1px solid #ece8dc;
+  border-radius: 14px;
+  padding: clamp(1.35rem, 2.2vw, 2rem);
+  min-height: 250px;
+  box-shadow: 0 18px 45px rgba(4,24,50,0.045);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.shift-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,168,76,0.48);
+  box-shadow: 0 24px 55px rgba(4,24,50,0.08);
+}
+
+.shift-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #f4f3ef;
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.15rem;
+  border: 1px solid rgba(201,168,76,0.28);
+}
+
+.shift-icon svg {
+  width: 25px;
+  height: 25px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shift-card-title {
+  font-family: var(--font-hero);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.shift-card-copy {
+  font-family: var(--font-hero-text);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(4,24,50,0.64);
+}
+
+/* ===================== FINAL CTA ===================== */
+.final-cta {
+  min-height: clamp(520px, 70vh, 760px);
+}
+
+.final-cta::after {
+  background: linear-gradient(
+    90deg,
+    rgba(5,5,5,0.94) 0%,
+    rgba(5,5,5,0.78) 40%,
+    rgba(5,5,5,0.36) 74%,
+    rgba(5,5,5,0.08) 100%
+  );
+}
+
+.final-cta .wayout-inner {
+  max-width: 58rem;
+}
+
+.final-cta-kicker {
+  font-family: var(--font-hero);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.final-cta .wayout-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.final-cta-event {
+  font-family: var(--font-hero);
+  font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--white);
+  margin-top: 1.35rem;
+}
+
+.final-cta-copy {
+  font-family: var(--font-hero-text);
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.78);
+  max-width: 42rem;
+  margin-top: 1rem;
+}
+
+.final-cta-warning {
+  font-family: var(--font-hero);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.74);
+  margin-top: 2.4rem;
+}
+
+@media (max-width: 980px) {
+  .shift-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .shift-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shift-card {
+    min-height: auto;
+  }
+
+  .final-cta::after {
+    background: linear-gradient(
+      180deg,
+      rgba(5,5,5,0.58) 0%,
+      rgba(5,5,5,0.9) 100%
+    );
+  }
+}
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+  background: #080808;
+  color: rgba(255,255,255,0.72);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5.5rem);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.footer-brand {
+  max-width: 34rem;
+}
+
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.footer-sub {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.3rem;
+}
+
+.footer-copy {
+  font-family: var(--font-hero-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.62);
+}
+
+.footer-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.footer-detail {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.footer-detail svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--gold);
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.footer-detail strong {
+  display: block;
+  font-family: var(--font-hero);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.footer-detail span,
+.footer-detail a {
+  font-family: var(--font-hero-text);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.66);
+  text-decoration: none;
+}
+
+.footer-detail a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  max-width: 1180px;
+  margin: 2.5rem auto 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-hero-text);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.42);
+}
+
+.footer-bottom a {
+  color: rgba(255,255,255,0.56);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 820px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
 
-  <!-- Top strip -->
-  <header class="top-strip">
-    <a href="https://ethicalwealth.academy" class="top-strip__logo">
-      Ethical Wealth Academy
-      <span class="top-strip__logo-rule"></span>
-      <span class="top-strip__logo-sub">Build · Preserve · Grow</span>
-    </a>
-    <a href="tel:+447968100786" class="top-strip__phone">
-      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
-      +44 7968 100786
-    </a>
+  <!-- SECTION 1: Header only, no navigation links -->
+  <header class="solo-header" id="top">
+    <div class="top-bar">
+      <span class="quality">Quality is our standard <strong>for over 20 years</strong></span>
+      <div class="info">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          Workshop in <strong>Leeds, UK</strong>
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+          +44 7968 100786
+        </span>
+      </div>
+    </div>
+
+    <nav class="navbar" id="navbar" aria-label="Solo ad header">
+      <span class="nav-note">Village Hotel South Leeds, Capital Boulevard.</span>
+
+      <div class="logo-wrap" aria-label="Ethical Wealth Academy">
+        <span class="logo-text-group">
+          <span class="logo-name">Ethical Wealth Academy</span>
+          <span class="logo-sub">Build · Preserve · Grow</span>
+        </span>
+        <span class="logo-img-group">
+          <img src="images/goldlogo.png" alt="Ethical Wealth Academy" />
+        </span>
+      </div>
+
+      <span class="nav-note nav-note--right">Seats are strictly limited · In-person event</span>
+    </nav>
   </header>
 
-  <!-- Main content -->
-  <main class="page">
+  <!-- SECTION 2: Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <div class="hero-inner">
+        <!-- <p class="hero-eyebrow">Liberate Your Property · Live In-Person Event · Village Hotel South Leeds, Capital Boulevard · June 2026</p> -->
 
-    <!-- ── LEFT ── -->
-    <div class="left">
+        <p class="hero-attention">Attention: Landlords &amp; Property Investors!!</p>
 
-      <div class="eyebrow">
-        <span class="eyebrow__line"></span>
-        <span class="eyebrow__text">Monthly Workshop Series · Social Housing Investment</span>
+        <h1 class="hero-headline">
+          <span class="hl-muted">Has the Renters Rights Bill</span>
+          <span class="hl-bright">robbed you of control &amp; squeezed your profits?</span>
+        </h1>
+
+        <p class="hero-sub"></p>
+        <p class="hero-sub">If you're feeling worried, uncertain, or frustrated, you're not imagining it. The rules have fundamentally changed. And most landlords are haemorrhaging income without even realising it.</p>
+
+        <div class="hero-actions">
+          <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
+        </div>
+
+        <p class="hero-date">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          Village Hotel South Leeds, Capital Boulevard · June 20th, 2026
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <img src="images/ayub.jpg" alt="Liberate Your Property live in-person event" onerror="this.style.display='none'" />
+    </div>
+  </section>
+
+  <!-- SECTION 3: Partner / trust marquee (infinite carousel) -->
+  <section class="marquee" aria-label="Trusted by">
+    <div class="marquee-track">
+      <!-- visible set -->
+      <span class="marquee-item">Silks Investments</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Citywide Housing</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Nujum Sports</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Silks Investments</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Citywide Housing</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Nujum Sports</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Silks Investments</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Citywide Housing</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item">Nujum Sports</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+
+      <!-- duplicate set, hidden from screen readers, drives the seamless loop -->
+      <span class="marquee-item" aria-hidden="true">Silks Investments</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Citywide Housing</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Nujum Sports</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Silks Investments</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Citywide Housing</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Nujum Sports</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Silks Investments</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Citywide Housing</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+      <span class="marquee-item" aria-hidden="true">Nujum Sports</span>
+      <span class="marquee-dot" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- SECTION 4: The Problem (split feature) -->
+  <section class="process" id="problem" aria-label="The problem">
+    <div class="proc-media">
+      <img src="images/problem.jpg" alt="Landlords reviewing the impact of the Renters Rights Bill" onerror="this.style.display='none'" />
+      <div class="proc-caption">
+        <h2 class="proc-title">The Problem</h2>
+        <p class="proc-sub">Here's what you're up against right now.</p>
+      </div>
+    </div>
+
+    <div class="proc-content">
+      <div class="prob">
+        <span class="prob-num">01</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Section 21 Abolished</h3>
+          <p class="prob-desc">No-fault evictions are gone. Removing problem tenants is now a lengthy, expensive, court-led process.</p>
+        </div>
       </div>
 
-      <h1 class="heading">
-        Half a Morning.<br><em>A Full Strategy.</em>
-      </h1>
+      <div class="prob">
+        <span class="prob-num">02</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Rent Reviews Blocked</h3>
+          <p class="prob-desc">Your income lags behind inflation while mortgage costs keep rising.</p>
+        </div>
+      </div>
 
-      <p class="subline">
-        A focused, in-person workshop covering the Social Housing Investment model — from deal structure to guaranteed rental income. Real content, real numbers, from investors who are still doing it.
+      <div class="prob">
+        <span class="prob-num">03</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Compliance Costs Spiralling</h3>
+          <p class="prob-desc">EPC upgrades, licensing, and new requirements are eating into margins you used to rely on.</p>
+        </div>
+      </div>
+
+      <div class="prob">
+        <span class="prob-num">04</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Yields Under Pressure</h3>
+          <p class="prob-desc">High interest rates and frozen rents have many landlords running at break-even, or worse.</p>
+        </div>
+      </div>
+
+      <div class="cta-actions">
+        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- SECTION 5: Here's Your Way Out (image overlay) -->
+  <section class="wayout" aria-label="Here's your way out">
+    <img class="wayout-bg" src="images/wayout.png" alt="" onerror="this.style.display='none'" />
+    <div class="wayout-inner">
+      <h1>"</h1>
+      <h2 class="wayout-title">Join Ayub Kayat for a focused 4-hour mini workshop and discover exactly how to pivot your portfolio, and take back control.</h2>
+      <!-- <p class="wayout-sub">Join Ayub Kayat for a focused 4-hour mini workshop and discover exactly how to pivot your portfolio, and take back control.</p> -->
+      <div class="wayout-actions">
+        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-ghost">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: The Solution (split feature reversed) -->
+  <section class="solution" id="solution" aria-label="The solution">
+    <div class="proc-content">
+      <div class="solution-intro">
+        <p class="solution-kicker">The Solution</p>
+        <h2 class="solution-heading">Liberate Your Property: The Pivot to Social Housing</h2>
+        <p class="solution-copy">
+          In this intensive 4-hour session, you'll learn the exact strategy Ayub has used to build a recession-proof portfolio that generates consistent, guaranteed income, regardless of what the government throws at the market.
+        </p>
+      </div>
+
+      <div class="prob">
+        <span class="prob-num">01</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Why Social Housing is the smartest move right now</h3>
+          <p class="prob-desc">Understand the structural demand driving social housing returns, and why this isn't just a trend, it's a 20-year megatrend backed by government contracts.</p>
+        </div>
+      </div>
+
+      <div class="prob">
+        <span class="prob-num">02</span>
+        <div class="prob-body">
+          <h3 class="prob-title">How to transition your existing portfolio without selling</h3>
+          <p class="prob-desc">A clear, step-by-step pivot strategy to convert your current buy-to-let properties into social housing assets, without starting from scratch.</p>
+        </div>
+      </div>
+
+      <div class="prob">
+        <span class="prob-num">03</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Guaranteed rent, government-backed income streams</h3>
+          <p class="prob-desc">Lock in long-term lease agreements with housing providers and local authorities, protecting your income from tenant risk forever.</p>
+        </div>
+      </div>
+
+      <div class="prob">
+        <span class="prob-num">04</span>
+        <div class="prob-body">
+          <h3 class="prob-title">The numbers that make this work</h3>
+          <p class="prob-desc">Real deal breakdowns, real numbers. See how social housing compares to standard buy-to-let on yield, risk, management, and long-term wealth.</p>
+        </div>
+      </div>
+
+      <div class="prob">
+        <span class="prob-num">05</span>
+        <div class="prob-body">
+          <h3 class="prob-title">Your first steps, leave with a personalised action plan</h3>
+          <p class="prob-desc">This isn't theory. You'll leave with a clear, actionable roadmap tailored to your current portfolio and financial goals.</p>
+        </div>
+      </div>
+
+      <div class="cta-actions">
+        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
+      </div>
+    </div>
+
+    <div class="proc-media">
+      <img src="images/solution.jpg" alt="Property investors learning how to pivot into social housing" onerror="this.style.display='none'" />
+      <div class="proc-caption">
+        <h2 class="proc-title">The Solution</h2>
+        <p class="proc-sub">A smarter route to consistent income, lower stress, and long-term property security.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 7: Limited Seats CTA -->
+  <section class="wayout limited-seats" aria-label="Limited seats">
+    <img class="wayout-bg" src="images/luxurious.jpg" alt="" onerror="this.style.display='none'" />
+
+    <div class="wayout-inner">
+      <h2 class="wayout-title">Limited Seats. One Decision.</h2>
+
+      <p class="wayout-sub">
+        This is a small-room, high-impact session. Once it's full, it's full.
       </p>
 
-      <!-- Date cards -->
-      <div class="dates">
-        <div class="date-card">
-          <span class="date-card__badge">Option 1</span>
-          <span class="date-card__date">Saturday, 13th June</span>
-          <div class="date-card__row">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-            Crown House, Leeds
-          </div>
-        </div>
-        <div class="date-card__or" aria-hidden="true">or</div>
-        <div class="date-card">
-          <span class="date-card__badge">Option 2</span>
-          <span class="date-card__date">Saturday, 20th June</span>
-          <div class="date-card__row">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-            Village Hotel South Leeds
-          </div>
-        </div>
-      </div>
-
-      <!-- Shared time -->
-      <div class="shared-time">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        <span>Both sessions: <strong>9:30 AM – 1:00 PM</strong> &nbsp;·&nbsp; Tickets from <strong>£1</strong></span>
-      </div>
-
-      <!-- What to expect -->
-      <div class="what-label">What You'll Walk Away With</div>
-
-      <div class="what-grid">
-        <div class="what-item">
-          <div class="what-item__icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <div class="what-item__text">
-            <span class="what-item__title">The Social Housing Blueprint</span>
-            <span class="what-item__desc">A clear, 6-step model you can apply to your first or next deal.</span>
-          </div>
-        </div>
-        <div class="what-item">
-          <div class="what-item__icon">
-            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          </div>
-          <div class="what-item__text">
-            <span class="what-item__title">Above-Market Yields</span>
-            <span class="what-item__desc">Understand how guaranteed council rent and 8%+ yields actually work.</span>
-          </div>
-        </div>
-        <div class="what-item">
-          <div class="what-item__icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" fill="none" stroke="white" stroke-width="0"/></svg>
-          </div>
-          <div class="what-item__text">
-            <span class="what-item__title">Renters Rights Bill Clarity</span>
-            <span class="what-item__desc">What the new legislation means — and how to position for it.</span>
-          </div>
-        </div>
-        <div class="what-item">
-          <div class="what-item__icon">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          </div>
-          <div class="what-item__text">
-            <span class="what-item__title">Live Q&amp;A</span>
-            <span class="what-item__desc">Real answers from investors who've closed real deals. Nothing scripted.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mentors -->
-      <div class="mentors-row">
-        <div class="mentor-avatars">
-          <div class="mentor-avatar">
-            <img src="images/ayub.jpg" alt="Ayub Kayat" />
-          </div>
-          <div class="mentor-avatar">
-            <img src="images/moditta.png" alt="Mo Ditta" />
-          </div>
-        </div>
-        <div class="mentors-copy">
-          <span class="mentors-copy__name">Ayub Kayat &amp; Mo Ditta</span>
-          <span class="mentors-copy__role">15–20 yrs experience each · Active portfolio holders · £5M–£12M managed</span>
-        </div>
-      </div>
-
-      <!-- Trust numbers -->
-      <div class="trust-strip">
-        <div class="trust-item">
-          <span class="trust-item__num">500+</span>
-          <span class="trust-item__label">Students<br>Trained</span>
-        </div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">
-          <span class="trust-item__num">£8M+</span>
-          <span class="trust-item__label">Portfolio<br>Value</span>
-        </div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">
-          <span class="trust-item__num">22+</span>
-          <span class="trust-item__label">Years<br>Experience</span>
-        </div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">
-          <span class="trust-item__num">£1</span>
-          <span class="trust-item__label">To Reserve<br>Your Seat</span>
-        </div>
-      </div>
-
-    </div>
-    <!-- /LEFT -->
-
-    <!-- ── RIGHT — FORM ── -->
-    <div class="form-panel">
-      <div class="form-panel__header">
-        <div class="form-panel__tag">Reserve Your Seat</div>
-        <div class="form-panel__title">
-          Secure Your<br><em>£1 Place</em>
-        </div>
-        <div class="form-panel__price">
-          <span class="price-badge">£1</span>
-          <span class="price-note">One-off entry fee<br>Seats are limited — first come, first served</span>
-        </div>
-      </div>
-
-      <div class="form-panel__dates">
-        <div class="form-panel__date-row">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="white" stroke-width="2" fill="none"/><line x1="8" y1="2" x2="8" y2="6" stroke="white" stroke-width="2" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="white" stroke-width="2" fill="none"/></svg>
-          <div class="form-panel__date-row__text">
-            <span class="form-panel__date-row__date">Saturday, 13th June 2026</span>
-            <span class="form-panel__date-row__venue">Crown House, Leeds</span>
-          </div>
-        </div>
-        <div class="form-panel__date-row">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="white" stroke-width="2" fill="none"/><line x1="8" y1="2" x2="8" y2="6" stroke="white" stroke-width="2" fill="none"/><line x1="3" y1="10" x2="21" y2="10" stroke="white" stroke-width="2" fill="none"/></svg>
-          <div class="form-panel__date-row__text">
-            <span class="form-panel__date-row__date">Saturday, 20th June 2026</span>
-            <span class="form-panel__date-row__venue">Village Hotel South Leeds, Capital Boulevard</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ghl-wrap">
-        <div class="ghl-loading" id="ghlLoading">
-          <div class="ghl-spinner"></div>
-          <span class="ghl-spinner-label">Loading form…</span>
-        </div>
-
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU"
-          id="ghlIframe"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Mini Events Registration"
-          data-height="undefined"
-          data-layout-iframe-id="inline-qVIqTrssgkNQlZAdNqPU"
-          data-form-id="qVIqTrssgkNQlZAdNqPU"
-          title="Mini Events Registration"
-        ></iframe>
+      <div class="wayout-actions">
+        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-ghost">Register Now</a>
       </div>
     </div>
-    <!-- /FORM -->
+  </section>
 
-  </main>
 
-  <!-- Bottom bar -->
-  <footer class="bottom-bar">
-    <span class="bottom-bar__copy">&copy; <span id="yr"></span> Ethical Wealth Academy. All rights reserved.</span>
-    <div class="bottom-bar__links">
-      <a href="https://ethicalwealth.academy/privacy-policy" class="bottom-bar__link">Privacy Policy</a>
-      <span class="bottom-bar__sep">·</span>
-      <a href="https://ethicalwealth.academy/terms" class="bottom-bar__link">Terms of Use</a>
+  <!-- SECTION 8: Your Host -->
+<section class="host" id="host" aria-label="Your host">
+  <div class="host-media">
+    <img src="images/ayub.jpg" alt="Ayub Kayat, founder of Ethical Wealth Academy" onerror="this.style.display='none'" />
+  </div>
+
+  <div class="host-content">
+    <p class="host-kicker">Your Host</p>
+
+    <h2 class="host-name">Ayub Kayat</h2>
+
+    <p class="host-role">
+      Property Investor · Educator · Founder, Ethical Wealth Academy
+    </p>
+
+    <p class="host-copy">
+      Ayub has been investing in property for over <strong>20 years</strong> across six countries, UK, Dubai, Malaysia, Bulgaria, Turkey and New Zealand.
+    </p>
+
+    <p class="host-copy">
+      He survived the 2008 credit crunch, built an asset management business with <strong>500+ properties under management</strong>, and now specialises exclusively in social housing and supported living, completing <strong>3–4 projects per year</strong>, generating <strong>£100k+ per deal</strong>.
+    </p>
+
+    <p class="host-copy">
+      He's not teaching theory. He's showing you exactly what he does, and how you can do it too.
+    </p>
+
+    <div class="host-stats">
+  <div class="host-stat">
+    <span class="host-stat-number">20+</span>
+    <span class="host-stat-label">Years Investing</span>
+  </div>
+
+  <div class="host-stat">
+    <span class="host-stat-number">500+</span>
+    <span class="host-stat-label">Properties Managed</span>
+  </div>
+
+  <div class="host-stat">
+    <span class="host-stat-number">6</span>
+    <span class="host-stat-label">Countries</span>
+  </div>
+
+  <div class="host-stat">
+    <span class="host-stat-number">£100k+</span>
+    <span class="host-stat-label">Per Deal</span>
+  </div>
+</div>
+
+<div class="host-actions">
+  <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
+</div>
+  </div>
+</section>
+
+<!-- SECTION 9: Why Make The Shift -->
+<section class="shift" id="why-shift" aria-label="Why make the shift">
+  <div class="shift-inner">
+    <div class="shift-header">
+      <p class="shift-kicker">Why Make The Shift</p>
+
+      <h2 class="shift-title">Social Housing Isn't Just Safer. It's Smarter.</h2>
+
+      <p class="shift-intro">
+        While other landlords are selling up or scrambling to keep up with legislation, savvy investors are quietly pivoting, and building recession-proof income streams in the process.
+      </p>
     </div>
-    <p class="bottom-bar__disclaimer">Property investment carries risk. Past performance is not indicative of future results. Please seek independent financial advice before making any investment decisions.</p>
-  </footer>
 
-  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    <div class="shift-grid">
+      <div class="shift-card">
+        <div class="shift-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 20h16" />
+            <path d="M6 10h12" />
+            <path d="M7 10v10" />
+            <path d="M12 10v10" />
+            <path d="M17 10v10" />
+            <path d="M5 10l7-5 7 5" />
+          </svg>
+        </div>
+        <h3 class="shift-card-title">Government-Backed Income</h3>
+        <p class="shift-card-copy">
+          Rents paid directly by local authorities and housing associations. No arrears. No chasing. No void periods.
+        </p>
+      </div>
+
+      <div class="shift-card">
+        <div class="shift-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 3h8" />
+            <path d="M9 3v3h6V3" />
+            <rect x="6" y="5" width="12" height="16" rx="2" />
+            <path d="M9 11h6" />
+            <path d="M9 15h6" />
+          </svg>
+        </div>
+        <h3 class="shift-card-title">Long-Term Leases</h3>
+        <p class="shift-card-copy">
+          Contracts typically run 3 to 10 years with built-in rent reviews. The stability of a commercial lease with the demand of residential housing.
+        </p>
+      </div>
+
+      <div class="shift-card">
+        <div class="shift-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 19h16" />
+            <path d="M6 16l4-4 3 3 5-7" />
+            <path d="M15 8h3v3" />
+          </svg>
+        </div>
+        <h3 class="shift-card-title">Higher Net Yields</h3>
+        <p class="shift-card-copy">
+          Social housing and supported living typically generates 10 to 25%+ net yields, significantly above standard buy-to-let.
+        </p>
+      </div>
+
+      <div class="shift-card">
+        <div class="shift-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3l7 3v5c0 4.8-2.9 8.6-7 10-4.1-1.4-7-5.2-7-10V6l7-3z" />
+            <path d="M9.5 12l1.8 1.8 3.7-4" />
+          </svg>
+        </div>
+        <h3 class="shift-card-title">Renters Rights Bill Proof</h3>
+        <p class="shift-card-copy">
+          Social housing leases are held with providers, not individual tenants. The Renters Rights Bill largely doesn't apply, so you're protected.
+        </p>
+      </div>
+
+      <div class="shift-card">
+        <div class="shift-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 12l3 3 5-6" />
+            <path d="M4 12a8 8 0 0 1 14.2-5" />
+            <path d="M20 12a8 8 0 0 1-14.2 5" />
+          </svg>
+        </div>
+        <h3 class="shift-card-title">Ethical &amp; Values-Led</h3>
+        <p class="shift-card-copy">
+          Generate real wealth while solving a genuine social problem. Your property does good in the community, and delivers exceptional returns at the same time.
+        </p>
+      </div>
+
+      <div class="shift-card">
+        <div class="shift-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L4 14h7l-1 8 10-13h-7l1-7z" />
+          </svg>
+        </div>
+        <h3 class="shift-card-title">Massive Unmet Demand</h3>
+        <p class="shift-card-copy">
+          The UK needs 90,000+ supported living units. Demand from councils and housing providers is outpacing supply. The opportunity window is wide open.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: Final CTA -->
+<section class="wayout final-cta" id="final-cta" aria-label="Final call to action">
+  <img class="wayout-bg" src="images/final-cta.jpg" alt="" onerror="this.style.display='none'" />
+
+  <div class="wayout-inner">
+    <p class="final-cta-kicker">Final CTA</p>
+
+    <h2 class="wayout-title">The Time to Act is Now</h2>
+
+    <p class="final-cta-event">
+      Liberate Your Property Live In-Person Event
+    </p>
+
+    <p class="final-cta-copy">
+      Real strategies. Real numbers. Real opportunities.
+    </p>
+
+    <p class="final-cta-copy">
+      Join Ayub in Village Hotel South Leeds, Capital Boulevard on June 20th, 2026.
+    </p>
+
+    <div class="wayout-actions">
+      <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-ghost">Register Now</a>
+    </div>
+
+    <p class="final-cta-warning">
+      ⚠ Seats are strictly limited · In-person event · Village Hotel South Leeds, Capital Boulevard
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h2 class="footer-logo">Ethical Wealth Academy</h2>
+      <p class="footer-sub">Build · Preserve · Grow</p>
+
+      <p class="footer-copy">
+        Liberate Your Property is a focused live workshop for landlords and property investors who want a smarter route to consistent income, stronger protection, and long-term portfolio growth.
+      </p>
+    </div>
+
+    <div class="footer-details">
+      <div class="footer-detail">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z" />
+          <circle cx="12" cy="9" r="2.5" />
+        </svg>
+        <div>
+          <strong>Location</strong>
+          <span>Village Hotel South Leeds, Capital Boulevard</span>
+        </div>
+      </div>
+
+      <div class="footer-detail">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="5" width="16" height="15" rx="2" />
+          <path d="M8 3v4" />
+          <path d="M16 3v4" />
+          <path d="M4 10h16" />
+        </svg>
+        <div>
+          <strong>Date</strong>
+          <span>June 20th, 2026</span>
+        </div>
+      </div>
+
+      <div class="footer-detail">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2z" />
+        </svg>
+        <div>
+          <strong>Contact</strong>
+          <a href="tel:+447968100786">+44 7968 100786</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Ethical Wealth Academy. All rights reserved.</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
   <script>
-    // Hide loading spinner once iframe loads
-    const iframe = document.getElementById('ghlIframe');
-    const loading = document.getElementById('ghlLoading');
-    if (iframe) {
-      iframe.addEventListener('load', function () {
-        if (loading) loading.classList.add('hidden');
-      });
+    const navbar = document.getElementById('navbar');
+
+    function updateNavbarState() {
+      navbar.classList.toggle('scrolled', window.scrollY > 12);
     }
 
-    // Footer year
-    const yr = document.getElementById('yr');
-    if (yr) yr.textContent = new Date().getFullYear();
-
-    // Track Lead event when form loads (Meta Pixel)
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'ViewContent', {
-        content_name: 'Mini Events Landing Page',
-        content_category: 'Property Workshop'
-      });
-    }
+    window.addEventListener('scroll', updateNavbarState, { passive: true });
+    updateNavbarState();
   </script>
-
 </body>
 </html>
