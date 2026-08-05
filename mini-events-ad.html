@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Liberate Your Property — Ethical Wealth Academy</title>
+  <title>Ethical Wealth Academy</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&family=Wix+Madefor+Display:wght@400;500;600;700&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Google tag, keep or remove depending on whether you want this solo ad page tracked separately -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-22GE7PYRR9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-22GE7PYRR9');
-  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Wix+Madefor+Display:wght@400;500;600;700&family=Wix+Madefor+Text:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    *, *::before, *::after {
+    /* ===================== GENERAL STYLES ===================== */
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -34,12 +31,19 @@
       --text-nav: #2a2a2a;
       --bar-bg: #1a1a1a;
       --navy: #041832;
-      --hero-bg: #0c0c0c;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Inter', sans-serif;
-      --font-display: 'Montserrat', sans-serif;
-      --font-hero: 'Wix Madefor Display', sans-serif;
-      --font-hero-text: 'Wix Madefor Text', sans-serif;
+
+      /* Hero design tokens */
+      --hero-primary: #0d1b2a;
+      --hero-secondary: #80847f;
+      --hero-body: #5b6168;
+      --hero-gold: #b68b3c;
+      --hero-background: #f7f5f1;
+
+      --font-serif: "Cormorant Garamond", serif;
+      --font-sans: "Inter", sans-serif;
+      --font-display: "Montserrat", sans-serif;
+      --font-hero: "Wix Madefor Display", sans-serif;
+      --font-hero-text: "Wix Madefor Text", sans-serif;
     }
 
     html {
@@ -47,39 +51,48 @@
     }
 
     body {
-      font-family: var(--font-display);
-      background: var(--light-grey);
-      color: var(--navy);
       min-height: 100vh;
       padding-top: 103px;
+      overflow-x: hidden;
+      font-family: var(--font-display);
+      color: var(--navy);
+      background: var(--light-grey);
     }
-    @media (max-width: 560px) {
-  body {
-    padding-top: 68px;
-  }
-}
 
-    /* HEADER */
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    main {
+      min-height: 60vh;
+    }
+
+    /* ===================== NAVBAR ===================== */
     .solo-header {
       position: fixed;
-      z-index: 20;
+      z-index: 1000;
       top: 0;
       left: 0;
-      width: 100%;  
+      width: 100%;
     }
 
     .top-bar {
-      background: var(--bar-bg);
-      color: #ccc;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 24px;
       padding: 7px 40px;
+      background: var(--bar-bg);
+      color: #cccccc;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .top-bar .quality {
@@ -87,16 +100,16 @@
     }
 
     .top-bar strong {
+      color: var(--white);
       font-weight: 500;
-      color: #fff;
     }
 
     .top-bar .info {
       display: flex;
-      gap: 28px;
+      justify-content: flex-end;
       align-items: center;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 28px;
     }
 
     .top-bar .info span {
@@ -108,34 +121,34 @@
     .top-bar .info svg {
       width: 11px;
       height: 11px;
-      fill: var(--gold);
       flex-shrink: 0;
+      fill: var(--gold);
     }
 
     .navbar {
-      background: var(--white);
+      position: relative;
+      z-index: 1001;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 0 40px;
       height: 72px;
+      padding: 0 40px;
       border-bottom: 1px solid #e8e6e2;
-      position: relative;
-      z-index: 1000;
+      background: var(--white);
       transition: box-shadow 0.3s ease;
     }
 
     .navbar.scrolled {
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     }
 
     .nav-note {
+      color: rgba(4, 24, 50, 0.48);
       font-family: var(--font-display);
       font-size: 9px;
       font-weight: 400;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(4,24,50,0.48);
       white-space: nowrap;
     }
 
@@ -145,37 +158,16 @@
     }
 
     .logo-wrap {
+      position: relative;
+      text-decoration: none;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      line-height: 1;
+      height: 72px;
       padding: 0 32px;
       flex-shrink: 0;
-      position: relative;
-      height: 72px;
-      justify-content: center;
-    }
-
-    .logo-name {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: 0.28em;
-      color: var(--black);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .logo-sub {
-      font-family: var(--font-display);
-      font-size: 7px;
-      font-weight: 300;
-      letter-spacing: 0.5em;
-      color: #999;
-      text-transform: uppercase;
-      margin-top: 4px;
-      padding-left: 0.5em;
-      white-space: nowrap;
+      line-height: 1;
     }
 
     .logo-text-group {
@@ -185,19 +177,40 @@
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
+    .logo-name {
+      color: var(--black);
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .logo-sub {
+      margin-top: 4px;
+      padding-left: 0.5em;
+      color: #999999;
+      font-family: var(--font-display);
+      font-size: 7px;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
     .logo-img-group {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, calc(-50% + 8px));
       opacity: 0;
+      transform: translate(-50%, calc(-50% + 8px));
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .logo-img-group img {
-      height: 42px;
       width: auto;
-      display: block;
+      height: 42px;
     }
 
     .navbar.scrolled .logo-text-group {
@@ -210,438 +223,2577 @@
       transform: translate(-50%, -50%);
     }
 
-    /* ===================== HERO ===================== */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-      min-height: calc(100vh - 103px);
-      background: var(--hero-bg);
+    .navbar.scrolled .logo-img-group img {
+      height: 54px;
     }
 
-    .hero-text {
-      background: var(--hero-bg);
+    /* ===================== EVENT HERO ===================== */
+    .event-hero {
+      position: relative;
+      isolation: isolate;
       display: flex;
       align-items: center;
-      padding: clamp(2.75rem, 5vw, 5.5rem) clamp(1.75rem, 4.5vw, 5rem);
+      min-height: calc(100vh - 103px);
+      overflow: hidden;
+      background-color: var(--hero-background);
+      background-image: url("images/ewa-workshop-room.png");
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: cover;
     }
 
-    .hero-inner {
-      width: 100%;
-      max-width: 36rem;
-      display: flex;
-      flex-direction: column;
+    .event-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        rgba(247, 245, 241, 0.92) 0%,
+        rgba(247, 245, 241, 0.86) 24%,
+        rgba(247, 245, 241, 0.70) 39%,
+        rgba(247, 245, 241, 0.44) 51%,
+        rgba(247, 245, 241, 0.17) 63%,
+        rgba(247, 245, 241, 0) 74%
+      );
     }
 
-    .hero-eyebrow {
-      font-family: var(--font-hero);
-      font-size: 0.66rem;
+    .event-hero-content {
+      width: min(100%, 1536px);
+      margin: 0 auto;
+      padding: clamp(72px, 7.8vw, 120px) clamp(24px, 5.2vw, 80px);
+    }
+
+    .event-hero-copy {
+      max-width: 680px;
+    }
+
+
+    .event-heading {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(56px, 4.7vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    .event-heading-primary,
+    .event-heading-secondary {
+      display: block;
+    }
+
+    .event-heading-primary {
+      color: var(--hero-primary);
       font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 1.4rem;
+    }
+
+    .event-heading-secondary {
+      color: var(--hero-secondary);
+      font-weight: 300;
+    }
+
+    .event-intro {
+      max-width: 560px;
+      margin-top: 24px;
+      color: var(--hero-body);
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
       line-height: 1.7;
     }
 
-    .hero-attention {
-      font-family: var(--font-hero);
-      font-size: 0.7rem;
+    .event-date-picker {
+      margin-top: 40px;
+    }
+
+    .event-date-label {
+      margin-bottom: 6px;
+      color: var(--hero-primary);
+      font-family: "Montserrat", sans-serif;
+      font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      line-height: 1.4;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
-      color: var(--light-grey);
-      margin-bottom: 1.1rem;
     }
 
-    .hero-headline {
-      font-family: var(--font-hero);
-      font-weight: 500;
-      font-size: clamp(2.05rem, 3.6vw, 3.3rem);
-      line-height: 1.12;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.6rem;
-    }
-
-    .hero-headline .hl-muted {
-      display: block;
-      color: rgba(255,255,255,0.55);
-    }
-
-    .hero-headline .hl-bright {
-      display: block;
-      color: var(--white);
-    }
-
-    .hero-sub {
-      font-family: var(--font-hero-text);
+    .event-date-help {
+      margin-bottom: 18px;
+      color: var(--hero-body);
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
       font-weight: 400;
-      font-size: clamp(1rem, 1.15vw, 1.12rem);
-      line-height: 1.65;
-      color: rgba(255,255,255,0.64);
-      max-width: 31rem;
+      line-height: 1.55;
     }
 
-    .hero-sub + .hero-sub {
-      margin-top: 1rem;
-    }
-
-    .hero-actions {
-      margin-top: 2.4rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      font-family: var(--font-hero);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      text-decoration: none;
-      color: var(--navy);
-      background: var(--white);
-      padding: 1rem 2.6rem;
-      border-radius: 6px;
-      border: 1px solid var(--white);
-      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus-visible {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--black);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(201,168,76,0.28);
-    }
-
-    .cta-actions .btn-primary, .host-actions .btn-primary {
-      margin-top: 2.3rem;
-      background: var(--gold);
-    }
-    .cta-actions .btn-primary:hover, .cta-actions .btn-primary:focus-visible, .host-actions .btn-primary:hover, .host-actions .btn-primary:focus-visible {
-      background: var(--gold-dark);
-      border-color: var(--gold-dark);
-      box-shadow: 0 12px 30px rgba(168,134,58,0.3);
-    } 
-
-    .hero-date {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-top: 2.6rem;
-      font-family: var(--font-hero-text);
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.72);
-    }
-
-    .hero-date svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .hero-media {
-      position: relative;
-      overflow: hidden;
-      min-height: 320px;
-      background: linear-gradient(135deg, #1c1c1c 0%, #0c0c0c 100%);
-    }
-
-    .hero-media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* soft feather so the photo melts into the dark text panel */
-    .hero-media::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background: linear-gradient(90deg, rgba(12,12,12,0.55) 0%, rgba(12,12,12,0) 22%);
-    }
-
-    /* ===================== PARTNER MARQUEE ===================== */
-    .marquee {
-      background: var(--white);
-      border-top: 1px solid #ececec;
-      border-bottom: 1px solid #ececec;
-      padding: clamp(1.6rem, 3vw, 2.6rem) 0;
-      overflow: hidden;
-      position: relative;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-    }
-
-    .marquee-track {
-      display: flex;
-      align-items: center;
-      width: max-content;
-      gap: clamp(2.25rem, 5vw, 4.75rem);
-      animation: marquee-scroll 32s linear infinite;
-      will-change: transform;
-    }
-
-    /* hover pauses, so a reader can settle on a name */
-    .marquee:hover .marquee-track {
-      animation-play-state: paused;
-    }
-
-    .marquee-item {
-      flex: 0 0 auto;
-      font-family: var(--font-hero);
-      font-weight: 600;
-      font-size: clamp(1.15rem, 1.9vw, 1.8rem);
-      letter-spacing: -0.01em;
-      color: var(--navy);
-      white-space: nowrap;
-    }
-
-    .marquee-dot {
-      flex: 0 0 auto;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0.75;
-    }
-
-    @keyframes marquee-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ===================== THE PROBLEM (split feature) ===================== */
-    .process {
+    .event-date-options {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--white);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
     }
 
-    .proc-media {
+
+    .event-date-card {
       position: relative;
-      overflow: hidden;
-      min-height: 540px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      background: linear-gradient(160deg, #17130f 0%, #060606 100%);
-    }
-
-    .proc-media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .proc-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(6,6,6,0.12) 0%, rgba(6,6,6,0.35) 45%, rgba(6,6,6,0.8) 100%);
-    }
-
-    .proc-caption {
-      position: relative;
-      z-index: 1;
-      padding: clamp(2.25rem, 4vw, 4rem);
-    }
-
-    .proc-title {
-      font-family: var(--font-hero);
-      font-weight: 500;
-      font-size: clamp(2.6rem, 4.6vw, 4.4rem);
-      line-height: 1.02;
-      letter-spacing: -0.015em;
-      color: var(--white);
-    }
-
-    .proc-sub {
-      font-family: var(--font-hero-text);
-      font-weight: 400;
-      font-size: clamp(1.02rem, 1.3vw, 1.3rem);
-      line-height: 1.5;
-      color: rgba(255,255,255,0.82);
-      max-width: 30rem;
-      margin-top: 1.1rem;
-    }
-
-    .proc-content {
-      padding: clamp(2.5rem, 4vw, 4.75rem) clamp(1.75rem, 3.5vw, 4.25rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .prob {
-      display: flex;
-      gap: 1.15rem;
-      align-items: flex-start;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid #ececec;
-    }
-
-    .prob:first-child { padding-top: 0; }
-    .prob:last-child { padding-bottom: 0; border-bottom: none; }
-
-    .prob-num {
-      flex: 0 0 auto;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #f4f3ef;
-      color: var(--gold-dark);
-      font-family: var(--font-hero);
-      font-weight: 700;
-      font-size: 0.98rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .prob-body { min-width: 0; }
-
-    .prob-title {
-      font-family: var(--font-hero);
-      font-weight: 600;
-      font-size: 1.12rem;
-      color: var(--navy);
-      margin-bottom: 0.3rem;
-    }
-
-    .prob-desc {
-      font-family: var(--font-hero-text);
-      font-weight: 400;
-      font-size: 0.98rem;
-      line-height: 1.55;
-      color: rgba(4,24,50,0.62);
-    }
-
-    /* ===================== WAY OUT (image overlay) ===================== */
-    .wayout {
-      position: relative;
+      min-width: 0;
+      padding: 24px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      min-height: clamp(460px, 62vh, 680px);
-      background: linear-gradient(120deg, #0b0b0b 0%, #232323 100%);
-    }
-
-    .wayout-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    .wayout::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(90deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.72) 38%, rgba(5,5,5,0.28) 72%, rgba(5,5,5,0.08) 100%);
-    }
-
-    .wayout-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 52rem;
-      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.75rem, 5vw, 5.5rem);
-    }
-    .wayout-inner h1 {
-      font-size: clamp(2.25rem, 5vw, 4.5rem);
-      color: var(--white);
-      font-style: italic;
-    }
-
-    .wayout-title {
-      font-family: var(--font-hero);
-      font-weight: 400;
-      font-size: 3rem;
-      font-style: italic;
-      /* font-size: clamp(2.5rem, 5vw, 4.5rem); */
-      line-height: 1.2;
-      letter-spacing: 0.02em;
-      color: var(--white);
-    }
-
-    .wayout-sub {
-      font-family: var(--font-hero-text);
-      font-weight: 400;
-      font-size: clamp(1.05rem, 1.4vw, 1.3rem);
-      line-height: 1.55;
-      color: rgba(255,255,255,0.85);
-      max-width: 40rem;
-      margin-top: 1.4rem;
-    }
-
-    .wayout-actions {
-      margin-top: 2.3rem;
-    }
-
-    .btn-ghost {
-      display: inline-block;
-      font-family: var(--font-hero);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      border: 1px solid rgba(13, 27, 42, 0.13);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 8px 24px rgba(13, 27, 42, 0.045);
+      color: inherit;
+      cursor: pointer;
       text-decoration: none;
-      color: var(--white);
-      background: transparent;
-      padding: 1rem 2.6rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.65);
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .btn-ghost:hover,
-    .btn-ghost:focus-visible {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--navy);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(201,168,76,0.3);
+    .event-date-card:hover,
+    .event-date-card:focus-visible {
+      border-color: rgba(182, 139, 60, 0.72);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 8px 24px rgba(13, 27, 42, 0.075);
+    }
+
+    .event-date-card:focus-visible {
+      outline: 3px solid rgba(182, 139, 60, 0.24);
+      outline-offset: 3px;
+    }
+
+    .event-date-day,
+    .event-date-city {
+      display: block;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .event-date-day {
+      color: var(--hero-primary);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .event-date-city {
+      margin-top: 4px;
+      color: var(--hero-gold);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .event-date-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(13, 27, 42, 0.1);
+      color: var(--hero-primary);
+      font-family: "Montserrat", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .event-date-arrow {
+      color: var(--hero-gold);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    @media (max-width: 1120px) {
+      .event-hero {
+        background-position: 60% center;
+      }
+
+      .event-hero::before {
+        background: linear-gradient(
+          90deg,
+          rgba(247, 245, 241, 0.93) 0%,
+          rgba(247, 245, 241, 0.86) 34%,
+          rgba(247, 245, 241, 0.68) 49%,
+          rgba(247, 245, 241, 0.38) 62%,
+          rgba(247, 245, 241, 0.08) 76%,
+          rgba(247, 245, 241, 0) 86%
+        );
+      }
+    }
+
+    @media (max-width: 900px) {
+      .event-hero {
+        min-height: auto;
+        background-position: center top;
+      }
+
+      .event-hero::before {
+        background: linear-gradient(
+          180deg,
+          rgba(247, 245, 241, 0.98) 0%,
+          rgba(247, 245, 241, 0.97) 58%,
+          rgba(247, 245, 241, 0.88) 76%,
+          rgba(247, 245, 241, 0.58) 100%
+        );
+      }
+
+      .event-hero-content {
+        padding: 60px 40px;
+      }
+
+      .event-hero-copy {
+        max-width: 640px;
+      }
+
+      .event-heading {
+        font-size: 48px;
+      }
+
+      .event-date-options {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+      }
+
+      .event-date-card {
+        padding: 20px 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .event-hero {
+        min-height: calc(100vh - 68px);
+      }
+
+      .event-hero-content {
+        padding: 60px 24px;
+      }
+
+
+      .event-heading {
+        font-size: 36px;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .event-intro {
+        margin-top: 22px;
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .event-date-picker {
+        margin-top: 34px;
+      }
+
+      .event-date-label {
+        font-size: 12px;
+      }
+
+      .event-date-options {
+        gap: 14px;
+      }
+
+      .event-date-day {
+        font-size: 17px;
+      }
+
+      .event-date-city {
+        font-size: 15px;
+      }
+
+    }
+
+
+    /* ===================== PROBLEM SECTION ===================== */
+    .problem-section {
+      background: var(--hero-background);
+      padding: clamp(84px, 8vw, 124px) clamp(24px, 4.2vw, 64px);
+    }
+
+    .problem-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(420px, 0.88fr);
+      align-items: stretch;
+      gap: clamp(48px, 5vw, 72px);
+      width: min(100%, 1408px);
+      margin: 0 auto;
+    }
+
+    .problem-content {
+      min-width: 0;
+    }
+
+    .problem-kicker {
+      color: var(--hero-gold);
+      font-family: "Montserrat", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .problem-rule {
+      width: 50px;
+      height: 2px;
+      margin: 25px 0 18px;
+      border: 0;
+      background: var(--hero-gold);
+    }
+
+    .problem-heading {
+      max-width: 780px;
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(54px, 5vw, 78px);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+
+    .problem-heading-muted {
+      color: var(--hero-secondary);
+      font-weight: 400;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: clamp(52px, 5vw, 72px);
+    }
+
+    .problem-item {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      align-items: start;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .problem-item:nth-child(odd) {
+      padding-right: clamp(24px, 3vw, 40px);
+      border-right: 1px solid rgba(13, 27, 42, 0.13);
+    }
+
+    .problem-item:nth-child(even) {
+      padding-left: clamp(24px, 3vw, 40px);
+    }
+
+    .problem-item:nth-child(-n + 2) {
+      padding-bottom: clamp(32px, 3.5vw, 46px);
+      border-bottom: 1px solid rgba(13, 27, 42, 0.13);
+    }
+
+    .problem-item:nth-child(n + 3) {
+      padding-top: clamp(32px, 3.5vw, 46px);
+    }
+
+    .problem-icon {
+      display: grid;
+      place-items: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: #f0ece5;
+      color: var(--hero-gold);
+    }
+
+    .problem-icon img {
+      display: block;
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .problem-icon svg {
+      width: 42px;
+      height: 42px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .problem-item-number {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--hero-gold);
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .problem-item-title {
+      color: var(--hero-primary);
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(18px, 1.45vw, 21px);
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .problem-item-copy {
+      max-width: 270px;
+      margin-top: 16px;
+      color: var(--hero-body);
+      font-family: "Montserrat", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.62;
+    }
+
+    .problem-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+      min-width: 294px;
+      margin-top: 48px;
+      padding: 21px 30px 21px 38px;
+      border-radius: 6px;
+      background: linear-gradient(105deg, #ca9637 0%, #b47700 100%);
+      box-shadow: 0 12px 30px rgba(182, 139, 60, 0.19);
+      color: var(--white);
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .problem-action:hover,
+    .problem-action:focus-visible {
+      background: #a86f05;
+    }
+
+    .problem-action:focus-visible {
+      outline: 3px solid rgba(182, 139, 60, 0.28);
+      outline-offset: 4px;
+    }
+
+    .problem-action-arrow {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .problem-visual {
+      min-height: 760px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #d8d1c7;
+    }
+
+    .problem-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 1180px) {
+      .problem-inner {
+        grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+        gap: 44px;
+      }
+
+      .problem-item {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 17px;
+      }
+
+      .problem-icon {
+        width: 68px;
+        height: 68px;
+      }
+
+      .problem-icon img,
+      .problem-icon svg {
+        width: 34px;
+        height: 34px;
+      }
+
+      .problem-visual {
+        min-height: 690px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .problem-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-content {
+        max-width: 780px;
+      }
+
+      .problem-visual {
+        min-height: 560px;
+      }
     }
 
     @media (max-width: 700px) {
-      .wayout {
+      .problem-section {
+        padding: 72px 24px;
+      }
+
+      .problem-kicker {
+        font-size: 13px;
+      }
+
+      .problem-rule {
+        margin: 20px 0 16px;
+      }
+
+      .problem-heading {
+        font-size: clamp(43px, 12vw, 58px);
+        line-height: 1.04;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+        margin-top: 44px;
+      }
+
+      .problem-item,
+      .problem-item:nth-child(odd),
+      .problem-item:nth-child(even),
+      .problem-item:nth-child(-n + 2),
+      .problem-item:nth-child(n + 3) {
+        padding: 28px 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(13, 27, 42, 0.13);
+      }
+
+      .problem-item:first-child {
+        padding-top: 0;
+      }
+
+      .problem-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .problem-item-copy {
+        max-width: none;
+      }
+
+      .problem-action {
+        width: 100%;
+        min-width: 0;
+        margin-top: 42px;
+      }
+
+      .problem-visual {
+        min-height: 430px;
+        border-radius: 9px;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .problem-item {
+        grid-template-columns: 62px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .problem-icon {
+        width: 58px;
+        height: 58px;
+      }
+
+      .problem-icon img,
+      .problem-icon svg {
+        width: 29px;
+        height: 29px;
+      }
+
+      .problem-item-title {
+        font-size: 18px;
+      }
+
+      .problem-item-copy {
+        margin-top: 11px;
+        font-size: 15px;
+      }
+
+      .problem-visual {
+        min-height: 360px;
+      }
+    }
+
+    /* ===================== BLUEPRINT CTA SECTION ===================== */
+    .blueprint-section {
+      background: var(--hero-background);
+      padding: clamp(62px, 6vw, 96px) clamp(24px, 3.3vw, 50px) clamp(82px, 8vw, 122px);
+    }
+
+    .blueprint-card {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      width: min(100%, 1438px);
+      min-height: clamp(650px, 62vw, 900px);
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #171614;
+    }
+
+    .blueprint-card::before {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      z-index: -2;
+      background-image: url("images/building-section.png");
+      background-position: center center;
+      background-size: cover;
+      filter: blur(2.4px) saturate(0.82) contrast(0.96);
+      transform: scale(1.025);
+    }
+
+    .blueprint-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10, 10, 9, 0.96) 0%,
+          rgba(10, 10, 9, 0.88) 34%,
+          rgba(10, 10, 9, 0.65) 57%,
+          rgba(10, 10, 9, 0.26) 80%,
+          rgba(10, 10, 9, 0.12) 100%
+        );
+    }
+
+    .blueprint-content {
+      width: min(100%, 760px);
+      padding: clamp(64px, 7vw, 108px) clamp(28px, 6vw, 92px);
+    }
+
+    .blueprint-rule {
+      display: block;
+      width: 66px;
+      height: 3px;
+      margin-bottom: 36px;
+      background: var(--hero-gold);
+    }
+
+    .blueprint-heading {
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: clamp(52px, 5.15vw, 78px);
+      font-weight: 500;
+      line-height: 1.03;
+      letter-spacing: -0.035em;
+    }
+
+    .blueprint-heading-accent {
+      display: block;
+      color: #c18a31;
+      font-weight: 400;
+    }
+
+    .blueprint-divider {
+      display: block;
+      width: 120px;
+      height: 1px;
+      margin: 44px 0 28px;
+      background: rgba(201, 168, 76, 0.95);
+    }
+
+    .blueprint-copy {
+      max-width: 640px;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(18px, 1.5vw, 22px);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .blueprint-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 44px;
+      min-width: 334px;
+      margin-top: 46px;
+      padding: 22px 34px 22px 42px;
+      border-radius: 6px;
+      background: linear-gradient(105deg, #ca9637 0%, #b47700 100%);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+      color: var(--white);
+      font-family: "Montserrat", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .blueprint-action:hover,
+    .blueprint-action:focus-visible {
+      background: #a86f05;
+    }
+
+    .blueprint-action:focus-visible {
+      outline: 3px solid rgba(201, 168, 76, 0.38);
+      outline-offset: 4px;
+    }
+
+    .blueprint-action-arrow {
+      font-size: 31px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    @media (max-width: 960px) {
+      .blueprint-card {
+        min-height: 680px;
+      }
+
+      .blueprint-card::before {
+        background-position: 60% center;
+      }
+
+      .blueprint-card::after {
+        background: linear-gradient(
+          90deg,
+          rgba(10, 10, 9, 0.96) 0%,
+          rgba(10, 10, 9, 0.88) 48%,
+          rgba(10, 10, 9, 0.52) 76%,
+          rgba(10, 10, 9, 0.26) 100%
+        );
+      }
+    }
+
+    @media (max-width: 700px) {
+      .blueprint-section {
+        padding: 56px 18px 78px;
+      }
+
+      .blueprint-card {
+        min-height: 650px;
+        border-radius: 10px;
+      }
+
+      .blueprint-card::before {
+        background-position: 64% center;
+        filter: blur(1.8px) saturate(0.78) contrast(0.92);
+      }
+
+      .blueprint-card::after {
+        background: linear-gradient(
+          180deg,
+          rgba(7, 8, 9, 0.9) 0%,
+          rgba(7, 8, 9, 0.82) 42%,
+          rgba(7, 8, 9, 0.9) 100%
+        );
+      }
+
+      .blueprint-content {
+        align-self: flex-end;
+        width: 100%;
+        padding: 54px 24px 42px;
+      }
+
+      .blueprint-rule {
+        width: 52px;
+        height: 2px;
+        margin-bottom: 28px;
+      }
+
+      .blueprint-heading {
+        font-size: clamp(43px, 12.2vw, 58px);
+        line-height: 1.04;
+      }
+
+      .blueprint-divider {
+        width: 88px;
+        margin: 34px 0 22px;
+      }
+
+      .blueprint-copy {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .blueprint-action {
+        width: 100%;
+        min-width: 0;
+        margin-top: 34px;
+        padding: 19px 24px 19px 28px;
+        font-size: 18px;
+      }
+    }
+
+
+
+    /* ===================== MASTER METHOD SECTION ===================== */
+    .master-section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(76px, 8vw, 126px) clamp(22px, 6vw, 96px) clamp(92px, 9vw, 142px);
+      background:
+        radial-gradient(circle at 7% 92%, rgba(182, 139, 60, 0.08), transparent 22%),
+        radial-gradient(circle at 94% 12%, rgba(182, 139, 60, 0.06), transparent 24%),
+        var(--hero-background);
+    }
+
+    .master-inner {
+      width: min(100%, 1344px);
+      margin: 0 auto;
+    }
+
+    .master-header {
+      max-width: 1100px;
+      margin: 0 auto clamp(34px, 4vw, 54px);
+      text-align: center;
+    }
+
+    .master-kicker {
+      margin-bottom: 10px;
+      color: var(--hero-gold);
+      font-family: var(--font-display);
+      font-size: clamp(13px, 1vw, 16px);
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .master-title {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(54px, 6.6vw, 100px);
+      font-weight: 500;
+      line-height: 0.96;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+    }
+
+    .master-title-accent {
+      color: #bf8c32;
+    }
+
+    .master-subtitle {
+      margin-top: 16px;
+      color: var(--hero-primary);
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.45vw, 22px);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .master-methods {
+      overflow: hidden;
+      border: 1px solid rgba(182, 139, 60, 0.16);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: 0 16px 44px rgba(13, 27, 42, 0.045);
+    }
+
+    .master-method-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .master-method-row + .master-method-row {
+      border-top: 1px solid rgba(182, 139, 60, 0.16);
+    }
+
+    .master-method {
+      position: relative;
+      display: grid;
+      grid-template-columns: 146px minmax(0, 1fr);
+      align-items: center;
+      min-height: 236px;
+      padding: 28px 32px 28px 22px;
+    }
+
+    .master-method + .master-method {
+      border-left: 1px solid rgba(182, 139, 60, 0.16);
+    }
+
+    .master-letter-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 136px;
+      height: 136px;
+      border: 1px dotted rgba(182, 139, 60, 0.9);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 11px 24px rgba(13, 27, 42, 0.08);
+    }
+
+    .master-letter {
+      color: #b47a12;
+      font-family: var(--font-serif);
+      font-size: 90px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .master-method-content {
+      position: relative;
+      z-index: 1;
+      padding-left: 24px;
+    }
+
+    .master-method-icon {
+      display: flex;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 8px;
+      color: #b47a12;
+    }
+
+    .master-method-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .master-method-title {
+      color: #111b2a;
+      font-family: var(--font-display);
+      font-size: clamp(19px, 1.45vw, 24px);
+      font-weight: 600;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .master-method-copy {
+      max-width: 250px;
+      margin-top: 13px;
+      color: #2c3540;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .master-offer {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.08fr 0.95fr 1fr;
+      min-height: 205px;
+      margin-top: 18px;
+      margin-bottom: 52px;
+      overflow: visible;
+      border: 1px solid rgba(182, 139, 60, 0.22);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 18px 45px rgba(13, 27, 42, 0.055);
+    }
+
+    .master-offer-block {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+      padding: 28px clamp(22px, 3vw, 42px) 42px;
+      text-align: center;
+    }
+
+    .master-offer-block + .master-offer-block {
+      border-left: 1px solid rgba(182, 139, 60, 0.18);
+    }
+
+    .master-offer-value {
+      overflow: hidden;
+      border-radius: 15px 0 0 15px;
+      isolation: isolate;
+    }
+
+    .master-offer-value::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url("images/building-section.png");
+      background-position: left 74%;
+      background-size: cover;
+      filter: saturate(0.72);
+    }
+
+    .master-offer-value::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(247, 245, 241, 0.18) 0%, rgba(247, 245, 241, 0.72) 48%, rgba(247, 245, 241, 0.96) 100%);
+    }
+
+    .master-offer-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 36px;
+      margin-bottom: 7px;
+      color: #b47a12;
+    }
+
+    .master-offer-icon svg {
+      width: 34px;
+      height: 34px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .master-offer-heading {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(31px, 3vw, 46px);
+      font-weight: 500;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .master-offer-heading small {
+      display: block;
+      margin-top: 8px;
+      color: #ad7511;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .master-offer-copy {
+      max-width: 270px;
+      margin: 8px auto 0;
+      color: #2b3540;
+      font-family: var(--font-display);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .master-offer-price-wrap {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-width: 240px;
+    }
+
+    .master-price {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(86px, 8vw, 126px);
+      font-weight: 500;
+      line-height: 0.78;
+      letter-spacing: -0.05em;
+    }
+
+    .master-rate-badge {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 86px;
+      height: 86px;
+      margin-top: -8px;
+      margin-left: -7px;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 50%;
+      outline: 1px dotted rgba(182, 139, 60, 0.9);
+      outline-offset: 3px;
+      background: #bc8b38;
+      box-shadow: 0 9px 20px rgba(89, 59, 8, 0.2);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .master-rate-label {
+      margin-top: 14px;
+      color: #ad7511;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .master-time {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(29px, 2.7vw, 42px);
+      font-weight: 500;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .master-day {
+      margin-top: 7px;
+      color: #ad7511;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .master-offer-action {
+      position: absolute;
+      left: 50%;
+      bottom: -31px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      width: min(468px, calc(100% - 40px));
+      min-height: 64px;
+      padding: 15px 30px;
+      border: 1px solid #c28c2d;
+      border-radius: 13px;
+      background: linear-gradient(180deg, #082743 0%, #021a31 100%);
+      box-shadow: 0 13px 28px rgba(4, 24, 50, 0.24);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: clamp(16px, 1.45vw, 21px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+    }
+
+    .master-offer-action svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      fill: none;
+      stroke: #c49337;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .master-offer-arrow {
+      color: #c49337;
+      font-size: 31px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .master-limited {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin-top: 6px;
+      color: #2f3236;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .master-limited svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--hero-gold);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 1120px) {
+      .master-method {
+        grid-template-columns: 112px minmax(0, 1fr);
+        min-height: 224px;
+        padding: 24px 22px 24px 16px;
+      }
+
+      .master-letter-wrap {
+        width: 106px;
+        height: 106px;
+      }
+
+      .master-letter {
+        font-size: 70px;
+      }
+
+      .master-method-content {
+        padding-left: 18px;
+      }
+
+      .master-method-copy {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .master-method-row {
+        grid-template-columns: 1fr;
+      }
+
+      .master-method-row + .master-method-row {
+        border-top: 0;
+      }
+
+      .master-method + .master-method,
+      .master-method-row + .master-method-row .master-method:first-child {
+        border-top: 1px solid rgba(182, 139, 60, 0.16);
+        border-left: 0;
+      }
+
+      .master-method {
+        grid-template-columns: 136px minmax(0, 1fr);
+        min-height: 208px;
+        padding: 28px 34px;
+      }
+
+      .master-letter-wrap {
+        width: 118px;
+        height: 118px;
+      }
+
+      .master-letter {
+        font-size: 78px;
+      }
+
+      .master-offer {
+        grid-template-columns: 1fr;
+        margin-bottom: 54px;
+      }
+
+      .master-offer-block {
+        min-height: 190px;
+        padding: 28px 24px 38px;
+      }
+
+      .master-offer-block + .master-offer-block {
+        border-top: 1px solid rgba(182, 139, 60, 0.18);
+        border-left: 0;
+      }
+
+      .master-offer-value {
+        border-radius: 15px 15px 0 0;
+      }
+
+      .master-offer-value::before {
+        background-position: center 72%;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .master-section {
+        padding: 68px 16px 92px;
+      }
+
+      .master-header {
+        margin-bottom: 30px;
+      }
+
+      .master-title {
+        font-size: clamp(47px, 14vw, 70px);
+      }
+
+      .master-subtitle {
+        font-size: 16px;
+      }
+
+      .master-methods {
+        border-radius: 12px;
+      }
+
+      .master-method {
+        grid-template-columns: 82px minmax(0, 1fr);
+        min-height: 0;
+        padding: 24px 18px;
+      }
+
+      .master-letter-wrap {
+        width: 72px;
+        height: 72px;
+      }
+
+      .master-letter {
+        font-size: 49px;
+      }
+
+      .master-method-content {
+        padding-left: 16px;
+      }
+
+      .master-method-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 6px;
+      }
+
+      .master-method-icon img {
+        width: 33px;
+        height: 33px;
+      }
+
+      .master-method-title {
+        font-size: 18px;
+      }
+
+      .master-method-copy {
+        max-width: none;
+        font-size: 13px;
+      }
+
+      .master-offer {
+        margin-top: 14px;
+        border-radius: 12px;
+      }
+
+      .master-offer-block {
+        min-height: 175px;
+      }
+
+      .master-price {
+        font-size: 92px;
+      }
+
+      .master-rate-badge {
+        width: 72px;
+        height: 72px;
+        font-size: 10px;
+      }
+
+      .master-time {
+        font-size: 31px;
+        white-space: normal;
+      }
+
+      .master-offer-action {
+        bottom: -29px;
+        min-height: 59px;
+        padding: 13px 18px;
+        gap: 12px;
+        font-size: 15px;
+      }
+
+      .master-offer-action svg {
+        width: 23px;
+        height: 23px;
+      }
+
+      .master-limited {
+        margin-top: 4px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    /* Mobile hero treatment */
+    @media (max-width: 700px) {
+      .event-hero {
+        background-position: 66% center;
+      }
+
+      .event-hero::before {
+        background: linear-gradient(
+          180deg,
+          rgba(4, 11, 20, 0.74) 0%,
+          rgba(4, 11, 20, 0.84) 58%,
+          rgba(4, 11, 20, 0.94) 100%
+        );
+      }
+
+      .event-heading-primary {
+        color: var(--white);
+      }
+
+      .event-heading-secondary {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .event-intro,
+      .event-date-help {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .event-date-label {
+        color: var(--white);
+      }
+
+      .event-date-card {
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(7, 16, 28, 0.76);
+        box-shadow: none;
+      }
+
+      .event-date-card:hover,
+      .event-date-card:focus-visible {
+        border-color: rgba(201, 168, 76, 0.78);
+        background: rgba(7, 16, 28, 0.86);
+        box-shadow: none;
+      }
+
+      .event-date-day,
+      .event-date-cta {
+        color: var(--white);
+      }
+
+      .event-date-cta {
+        border-top-color: rgba(255, 255, 255, 0.16);
+      }
+
+      .event-date-city,
+      .event-date-arrow {
+        color: #d8ad55;
+      }
+    }
+
+
+    /* ===================== HOST SECTION ===================== */
+    .host-section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(78px, 8vw, 126px) clamp(22px, 6vw, 96px);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(182, 139, 60, 0.06), transparent 24%),
+        radial-gradient(circle at 92% 86%, rgba(182, 139, 60, 0.05), transparent 22%),
+        var(--hero-background);
+    }
+
+    .host-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+      align-items: center;
+      gap: clamp(48px, 7vw, 96px);
+      width: min(100%, 1344px);
+      margin: 0 auto;
+    }
+
+    .host-content {
+      min-width: 0;
+    }
+
+    .host-kicker {
+      margin-bottom: 24px;
+      color: var(--hero-gold);
+      font-family: var(--font-display);
+      font-size: clamp(14px, 1.1vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .host-name {
+      margin-bottom: 20px;
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(70px, 7vw, 112px);
+      font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+    }
+
+    .host-name-accent {
+      color: #b78428;
+    }
+
+    .host-role {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      margin-bottom: 34px;
+      color: #222b35;
+      font-family: var(--font-display);
+      font-size: clamp(13px, 1.1vw, 17px);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .host-role-dot {
+      color: var(--hero-gold);
+      font-size: 0.8em;
+    }
+
+    .host-copy {
+      max-width: 690px;
+      color: #252a31;
+      font-family: var(--font-display);
+      font-size: clamp(16px, 1.3vw, 20px);
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .host-copy + .host-copy {
+      margin-top: 20px;
+    }
+
+    .host-copy strong {
+      color: #111925;
+      font-weight: 700;
+    }
+
+    .host-copy .host-gold {
+      color: #a87926;
+    }
+
+    .host-quote {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+      max-width: 690px;
+      margin-top: 30px;
+      padding-left: 20px;
+      border-left: 1px solid rgba(182, 139, 60, 0.72);
+    }
+
+    .host-quote-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #06152c;
+      color: #d2a24d;
+      font-family: Georgia, serif;
+      font-size: 58px;
+      line-height: 1;
+    }
+
+    .host-quote-text {
+      color: #111b2d;
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.4vw, 21px);
+      line-height: 1.48;
+    }
+
+    .host-quote-text strong {
+      display: block;
+      font-weight: 700;
+    }
+
+    .host-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 750px;
+      margin-top: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(182, 139, 60, 0.2);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.36);
+    }
+
+    .host-stat {
+      min-width: 0;
+      padding: 27px 18px 25px;
+      text-align: center;
+    }
+
+    .host-stat + .host-stat {
+      border-left: 1px solid rgba(182, 139, 60, 0.16);
+    }
+
+    .host-stat-number {
+      display: block;
+      margin-bottom: 13px;
+      color: #b27d20;
+      font-family: var(--font-serif);
+      font-size: clamp(42px, 4vw, 62px);
+      font-weight: 500;
+      line-height: 0.92;
+      white-space: nowrap;
+    }
+
+    .host-stat-label {
+      display: block;
+      color: #152036;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .host-action {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 34px;
+      min-width: min(100%, 388px);
+      margin-top: 26px;
+      padding: 20px 34px;
+      border: 1px solid #07172f;
+      border-radius: 7px;
+      background: #07172f;
+      color: #d5a34d;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .host-action:hover,
+    .host-action:focus-visible {
+      border-color: #b98427;
+      background: #0b203e;
+      color: #efc16d;
+    }
+
+    .host-action-arrow {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .host-media {
+      position: relative;
+      min-height: clamp(620px, 64vw, 900px);
+      overflow: hidden;
+      border: 1px solid rgba(182, 139, 60, 0.76);
+      border-radius: 36px;
+      background: #111b2a;
+      box-shadow: 0 24px 54px rgba(13, 27, 42, 0.14);
+    }
+
+    .host-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    @media (max-width: 1100px) {
+      .host-inner {
+        grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+        gap: 50px;
+      }
+
+      .host-name {
+        font-size: clamp(64px, 7vw, 88px);
+      }
+
+      .host-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .host-stat:nth-child(3) {
+        border-left: 0;
+      }
+
+      .host-stat:nth-child(n + 3) {
+        border-top: 1px solid rgba(182, 139, 60, 0.16);
+      }
+    }
+
+    @media (max-width: 840px) {
+      .host-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .host-media {
+        grid-row: 1;
+        width: min(100%, 620px);
+        min-height: min(118vw, 760px);
+        margin: 0 auto;
+        border-radius: 26px;
+      }
+
+      .host-content {
+        grid-row: 2;
+      }
+
+      .host-name {
+        font-size: clamp(64px, 14vw, 96px);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .host-section {
+        padding: 66px 16px 76px;
+      }
+
+      .host-inner {
+        gap: 38px;
+      }
+
+      .host-media {
+        min-height: 122vw;
+        border-radius: 20px;
+      }
+
+      .host-kicker {
+        margin-bottom: 18px;
+        font-size: 13px;
+      }
+
+      .host-name {
+        margin-bottom: 16px;
+        font-size: clamp(58px, 17vw, 82px);
+      }
+
+      .host-role {
+        gap: 7px 10px;
+        margin-bottom: 25px;
+        font-size: 12px;
+      }
+
+      .host-copy {
+        font-size: 15px;
+      }
+
+      .host-quote {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 25px;
+        padding-left: 13px;
+      }
+
+      .host-quote-mark {
+        width: 56px;
+        height: 56px;
+        font-size: 45px;
+      }
+
+      .host-quote-text {
+        font-size: 15px;
+      }
+
+      .host-stats {
+        margin-top: 28px;
+        border-radius: 14px;
+      }
+
+      .host-stat {
+        padding: 22px 10px 20px;
+      }
+
+      .host-stat-number {
+        margin-bottom: 9px;
+        font-size: 43px;
+      }
+
+      .host-stat-label {
+        font-size: 10px;
+        letter-spacing: 0.07em;
+      }
+
+      .host-action {
+        width: 100%;
+        min-width: 0;
+        padding: 18px 22px;
+        font-size: 15px;
+      }
+    }
+
+
+
+    /* ===================== WHY MAKE THE SHIFT ===================== */
+    .shift-section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(80px, 8vw, 126px) clamp(22px, 5vw, 76px) clamp(84px, 8vw, 126px);
+      background:
+        radial-gradient(circle at 6% 12%, rgba(182, 139, 60, 0.055), transparent 24%),
+        radial-gradient(circle at 94% 82%, rgba(182, 139, 60, 0.045), transparent 22%),
+        var(--hero-background);
+    }
+
+    .shift-inner {
+      width: min(100%, 1440px);
+      margin: 0 auto;
+    }
+
+    .shift-intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(430px, 0.95fr);
+      align-items: center;
+      gap: clamp(44px, 6vw, 86px);
+    }
+
+    .shift-kicker {
+      color: var(--hero-gold);
+      font-family: var(--font-display);
+      font-size: clamp(14px, 1.1vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .shift-rule {
+      display: block;
+      width: 66px;
+      height: 2px;
+      margin: 22px 0 24px;
+      background: var(--hero-gold);
+    }
+
+    .shift-title {
+      max-width: 760px;
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(58px, 5.7vw, 88px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+
+    .shift-title-accent {
+      color: #b78328;
+    }
+
+    .shift-copy {
+      max-width: 720px;
+      margin-top: 28px;
+      color: #28313c;
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.4vw, 21px);
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    .shift-image {
+      min-height: 380px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #d9d1c7;
+      box-shadow: 0 18px 42px rgba(13, 27, 42, 0.08);
+    }
+
+    .shift-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .shift-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: clamp(52px, 5vw, 72px);
+    }
+
+    .shift-benefit {
+      display: grid;
+      grid-template-columns: 122px minmax(0, 1fr);
+      align-items: start;
+      gap: 20px;
+      min-height: 218px;
+      padding: 36px 30px;
+      border: 1px solid rgba(182, 139, 60, 0.19);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.34);
+    }
+
+    .shift-benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: #f0ebe3;
+      color: #b27e22;
+    }
+
+    .shift-benefit-icon svg {
+      width: 56px;
+      height: 56px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .shift-benefit-title {
+      color: #101a2c;
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 1.65vw, 28px);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .shift-benefit-rule {
+      display: block;
+      width: 34px;
+      height: 1px;
+      margin: 14px 0 15px;
+      background: #b27e22;
+    }
+
+    .shift-benefit-copy {
+      color: #26303d;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .shift-action-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .shift-action {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 38px;
+      min-width: min(100%, 396px);
+      padding: 20px 34px;
+      border-radius: 8px;
+      background: #07172f;
+      color: #d2a04a;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .shift-action:hover,
+    .shift-action:focus-visible {
+      background: #0b213f;
+      color: #efc16d;
+    }
+
+    .shift-action:focus-visible {
+      outline: 3px solid rgba(182, 139, 60, 0.28);
+      outline-offset: 4px;
+    }
+
+    .shift-action-arrow {
+      font-size: 31px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    @media (max-width: 1120px) {
+      .shift-intro-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+        gap: 46px;
+      }
+
+      .shift-benefits {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .shift-intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shift-image {
+        grid-row: 1;
         min-height: 440px;
       }
 
-      .wayout::after {
-        background: linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.82) 100%);
+      .shift-image img {
+        min-height: 440px;
       }
 
-      .btn-ghost {
-        display: block;
-        text-align: center;
-      }
-    }
-
-    
-    @media (max-width: 900px) {
-      .process { grid-template-columns: 1fr; }
-      .proc-media { order: 1; min-height: 340px; }
-      .proc-content { order: 2; }
-    }
-
-    @media (max-width: 1024px) {
-      .hero {
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      .shift-copy-block {
+        grid-row: 2;
       }
     }
 
+    @media (max-width: 680px) {
+      .shift-section {
+        padding: 68px 16px 78px;
+      }
+
+      .shift-title {
+        font-size: clamp(50px, 14.3vw, 72px);
+        line-height: 1;
+      }
+
+      .shift-copy {
+        margin-top: 22px;
+        font-size: 16px;
+      }
+
+      .shift-image,
+      .shift-image img {
+        min-height: 330px;
+      }
+
+      .shift-benefits {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 42px;
+      }
+
+      .shift-benefit {
+        grid-template-columns: 84px minmax(0, 1fr);
+        min-height: 0;
+        padding: 26px 20px;
+      }
+
+      .shift-benefit-icon {
+        width: 82px;
+        height: 82px;
+      }
+
+      .shift-benefit-icon svg {
+        width: 40px;
+        height: 40px;
+      }
+
+      .shift-benefit-title {
+        font-size: 23px;
+      }
+
+      .shift-action {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
+    /* ===================== SECURE YOUR PLACE ===================== */
+    .secure-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(76px, 7.6vw, 116px) clamp(20px, 5vw, 76px) 0;
+      background:
+        radial-gradient(circle at 50% 8%, rgba(182, 139, 60, 0.07), transparent 27%),
+        var(--hero-background);
+    }
+
+    .secure-section::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 66px;
+      left: 0;
+      z-index: -1;
+      height: min(290px, 28vw);
+      opacity: 0.78;
+      background-image: url("images/city-skyline.png");
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      pointer-events: none;
+    }
+
+    .secure-inner {
+      width: min(100%, 1280px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .secure-kicker {
+      color: var(--hero-gold);
+      font-family: var(--font-display);
+      font-size: clamp(14px, 1.1vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .secure-rule {
+      display: block;
+      width: 70px;
+      height: 1px;
+      margin: 20px auto 24px;
+      background: var(--hero-gold);
+    }
+
+    .secure-title {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(58px, 6.1vw, 94px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+
+    .secure-title-accent {
+      color: #b78328;
+    }
+
+    .secure-subtitle {
+      margin-top: 18px;
+      color: #172236;
+      font-family: var(--font-display);
+      font-size: clamp(21px, 2vw, 29px);
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .secure-copy {
+      max-width: 930px;
+      margin: 15px auto 0;
+      color: #25303e;
+      font-family: var(--font-display);
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.6;
+    }
+
+    .secure-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 940px;
+      margin: 38px auto 42px;
+    }
+
+    .secure-fact {
+      padding: 0 28px;
+    }
+
+    .secure-fact + .secure-fact {
+      border-left: 1px solid rgba(13, 27, 42, 0.16);
+    }
+
+    .secure-fact-value {
+      display: block;
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 4.2vw, 66px);
+      font-weight: 500;
+      line-height: 0.95;
+    }
+
+    .secure-fact-value--time {
+      font-size: clamp(34px, 3vw, 48px);
+      white-space: nowrap;
+    }
+
+    .secure-fact-label {
+      display: block;
+      margin-top: 12px;
+      color: #a97621;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .secure-choice-heading,
+    .secure-final-heading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      color: #111e33;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.27em;
+      text-transform: uppercase;
+    }
+
+    .secure-choice-heading::before,
+    .secure-choice-heading::after,
+    .secure-final-heading::before,
+    .secure-final-heading::after {
+      content: "";
+      width: 108px;
+      height: 1px;
+      background: rgba(13, 27, 42, 0.24);
+    }
+
+    .secure-choice-copy {
+      margin-top: 10px;
+      color: #26303d;
+      font-family: var(--font-display);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .secure-locations {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .secure-location {
+      padding: 27px 28px 25px;
+      border: 1px solid rgba(182, 139, 60, 0.22);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.34);
+    }
+
+    .secure-location-city {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(31px, 2.7vw, 42px);
+      font-weight: 500;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .secure-location-date {
+      display: block;
+      margin-top: 10px;
+      color: #a97621;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .secure-location-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      width: 100%;
+      margin-top: 18px;
+      padding: 17px 24px;
+      border-radius: 5px;
+      background: #07172f;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .secure-location-action:hover,
+    .secure-location-action:focus-visible {
+      background: #0b213f;
+      color: #efc16d;
+    }
+
+    .secure-location-action:focus-visible {
+      outline: 3px solid rgba(182, 139, 60, 0.28);
+      outline-offset: 3px;
+    }
+
+    .secure-location-arrow {
+      color: #d2a04a;
+      font-size: 27px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .secure-final {
+      position: relative;
+      max-width: 1000px;
+      margin: 35px auto 0;
+      padding: 0 18px 74px;
+    }
+
+    .secure-final-heading {
+      color: #a97621;
+    }
+
+    .secure-final-heading::before,
+    .secure-final-heading::after {
+      background: rgba(182, 139, 60, 0.34);
+    }
+
+    .secure-final-title {
+      margin-top: 20px;
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 3.7vw, 54px);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .secure-final-copy {
+      max-width: 820px;
+      margin: 13px auto 0;
+      color: #26303d;
+      font-family: var(--font-display);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .secure-final-signoff {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 30px;
+      color: #a97621;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.31em;
+      text-transform: uppercase;
+    }
+
+    .secure-final-signoff::before,
+    .secure-final-signoff::after {
+      content: "";
+      width: 58px;
+      height: 1px;
+      background: rgba(182, 139, 60, 0.52);
+    }
+
+    .secure-strip {
+      margin-right: calc(50% - 50vw);
+      margin-left: calc(50% - 50vw);
+      padding: 22px 24px;
+      background: #06172d;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .secure-strip-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .secure-strip-dot {
+      color: #d2a04a;
+    }
+
+    @media (max-width: 880px) {
+      .secure-locations {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .secure-section {
+        padding: 66px 16px 0;
+      }
+
+      .secure-title {
+        font-size: clamp(51px, 14.6vw, 73px);
+      }
+
+      .secure-subtitle {
+        font-size: 20px;
+      }
+
+      .secure-copy {
+        font-size: 15px;
+      }
+
+      .secure-facts {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-top: 32px;
+      }
+
+      .secure-fact {
+        padding: 22px 0;
+      }
+
+      .secure-fact + .secure-fact {
+        border-top: 1px solid rgba(13, 27, 42, 0.16);
+        border-left: 0;
+      }
+
+      .secure-choice-heading,
+      .secure-final-heading {
+        gap: 14px;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+      }
+
+      .secure-choice-heading::before,
+      .secure-choice-heading::after,
+      .secure-final-heading::before,
+      .secure-final-heading::after {
+        width: 46px;
+      }
+
+      .secure-location {
+        padding: 24px 18px 20px;
+      }
+
+      .secure-location-city {
+        font-size: 34px;
+      }
+
+      .secure-final {
+        padding: 0 0 62px;
+      }
+
+      .secure-final-title {
+        font-size: 39px;
+      }
+
+      .secure-final-signoff {
+        gap: 14px;
+        font-size: 9px;
+        letter-spacing: 0.2em;
+      }
+
+      .secure-final-signoff::before,
+      .secure-final-signoff::after {
+        width: 30px;
+      }
+
+      .secure-strip-inner {
+        gap: 10px 14px;
+        font-size: 9px;
+        letter-spacing: 0.19em;
+      }
+    }
+
+    /* ===================== FOOTER ===================== */
+    .site-footer {
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5.5rem);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--navy);
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+      gap: clamp(2rem, 5vw, 4rem);
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      max-width: 34rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 0.6rem;
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .footer-sub {
+      margin-bottom: 1.3rem;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.62);
+      font-family: var(--font-hero-text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-details {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .footer-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .footer-detail svg {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      color: var(--gold);
+    }
+
+    .footer-detail strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--white);
+      font-family: var(--font-hero);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-detail span,
+    .footer-detail a {
+      color: rgba(255, 255, 255, 0.66);
+      font-family: var(--font-hero-text);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      text-decoration: none;
+    }
+
+    .footer-detail a:hover,
+    .footer-detail a:focus-visible {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1180px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.42);
+      font-family: var(--font-hero-text);
+      font-size: 0.82rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.56);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover,
+    .footer-bottom a:focus-visible {
+      color: var(--gold);
+    }
+
+    /* ===================== RESPONSIVE STYLES ===================== */
     @media (max-width: 900px) {
       .top-bar {
         padding: 7px 24px;
@@ -666,43 +2818,33 @@
       .nav-note {
         display: none;
       }
+    }
 
-      .hero {
+    @media (max-width: 820px) {
+      .footer-inner {
         grid-template-columns: 1fr;
-        min-height: 0;
-      }
-
-      .hero-text {
-        order: 1;
-        padding: clamp(2.5rem, 7vw, 3.5rem) clamp(1.5rem, 6vw, 2.5rem);
-      }
-
-      .hero-inner {
-        max-width: 38rem;
-        margin: 0 auto;
-      }
-
-      .hero-media {
-        order: 2;
-        min-height: 360px;
-      }
-
-      .hero-media::before {
-        background: linear-gradient(0deg, rgba(12,12,12,0.5) 0%, rgba(12,12,12,0) 30%);
       }
     }
 
     @media (max-width: 560px) {
+      body {
+        padding-top: 68px;
+      }
+
       .top-bar {
         display: none;
       }
 
-      .navbar {
+      .navbar,
+      .logo-wrap {
         height: 68px;
       }
 
+      .navbar {
+        padding: 0 16px;
+      }
+
       .logo-wrap {
-        height: 68px;
         padding: 0 12px;
       }
 
@@ -720,1195 +2862,696 @@
         height: 36px;
       }
 
-      .hero-media {
-        min-height: 300px;
-      }
-
-      .btn-primary {
-        display: block;
-        text-align: center;
+      .navbar.scrolled .logo-img-group img {
+        height: 46px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
         transition: none !important;
       }
-
-      /* no auto-scroll, let people scroll the strip themselves */
-      .marquee-track {
-        animation: none !important;
-      }
-
-      .marquee {
-        overflow-x: auto;
-        -webkit-mask-image: none;
-                mask-image: none;
-      }
     }
-
-    /* ===================== THE SOLUTION (split feature) ===================== */
-    .solution {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--white);
-    }
-
-    .solution .proc-content {
-      order: 1;
-    }
-
-    .solution .proc-media {
-      order: 2;
-    }
-
-    .solution-intro {
-      margin-bottom: 1.7rem;
-      max-width: 42rem;
-    }
-
-    .solution-kicker {
-      font-family: var(--font-hero);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    .solution-heading {
-      font-family: var(--font-hero);
-      font-weight: 600;
-      font-size: clamp(1.9rem, 3vw, 3rem);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      color: var(--navy);
-      margin-bottom: 1rem;
-    }
-
-    .solution-copy {
-      font-family: var(--font-hero-text);
-      font-size: 1rem;
-      line-height: 1.7;
-      color: rgba(4,24,50,0.68);
-    }
-
-    .solution-copy strong {
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    .solution .proc-media::after {
-      background: linear-gradient(to bottom, rgba(6,6,6,0.08) 0%, rgba(6,6,6,0.35) 48%, rgba(6,6,6,0.82) 100%);
-    }
-
-    @media (max-width: 900px) {
-      .solution {
-        grid-template-columns: 1fr;
-      }
-
-      .solution .proc-content {
-        order: 2;
-      }
-
-      .solution .proc-media {
-        order: 1;
-        min-height: 340px;
-      }
-
-      /* ===================== LIMITED SEATS CTA ===================== */
-    .limited-seats {
-      min-height: clamp(420px, 58vh, 620px);
-    }
-
-    .limited-seats::after {
-      background: linear-gradient(
-        90deg,
-        rgba(5,5,5,0.9) 0%,
-        rgba(5,5,5,0.72) 42%,
-        rgba(5,5,5,0.32) 75%,
-        rgba(5,5,5,0.08) 100%
-      );
-    }
-
-    .limited-seats .wayout-title {
-      font-size: clamp(2.6rem, 6vw, 5.3rem);
-      font-style: normal;
-      font-weight: 600;
-      max-width: 46rem;
-    }
-
-    .limited-seats .wayout-sub {
-      max-width: 34rem;
-      font-size: clamp(1.05rem, 1.45vw, 1.35rem);
-    }
-
-    }
-
-    /* ===================== HOST SECTION ===================== */
-    .host {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      background: var(--white);
-      min-height: 620px;
-    }
-
-    .host-media {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(160deg, #17130f 0%, #060606 100%);
-    }
-
-    .host-media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .host-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(6,6,6,0.05) 0%,
-        rgba(6,6,6,0.25) 45%,
-        rgba(6,6,6,0.72) 100%
-      );
-    }
-
-    .host-content {
-      padding: clamp(3rem, 5vw, 5.5rem) clamp(1.75rem, 5vw, 5rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .host-kicker {
-      font-family: var(--font-hero);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 1rem;
-    }
-
-    .host-name {
-      font-family: var(--font-hero);
-      font-weight: 600;
-      font-size: clamp(2.7rem, 5vw, 5rem);
-      line-height: 1;
-      letter-spacing: -0.035em;
-      color: var(--navy);
-      margin-bottom: 1rem;
-    }
-
-    .host-role {
-      font-family: var(--font-hero);
-      font-size: clamp(1rem, 1.35vw, 1.25rem);
-      font-weight: 600;
-      line-height: 1.55;
-      color: var(--gold-dark);
-      margin-bottom: 2rem;
-    }
-
-    .host-copy {
-      font-family: var(--font-hero-text);
-      font-size: clamp(1rem, 1.18vw, 1.12rem);
-      line-height: 1.75;
-      color: rgba(4,24,50,0.68);
-      max-width: 43rem;
-    }
-
-    .host-copy + .host-copy {
-      margin-top: 1.2rem;
-    }
-
-    .host-copy strong {
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    
-
-    @media (max-width: 900px) {
-      .host {
-        grid-template-columns: 1fr;
-      }
-
-      .host-media {
-        min-height: 420px;
-        order: 1;
-      }
-
-      .host-content {
-        order: 2;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .host-media {
-        min-height: 340px;
-      }
-
-      .host-actions .btn-primary {
-        display: block;
-        text-align: center;
-      }
-    }
-
-    /* ===================== HOST STATS ===================== */
-.host-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-top: 2.4rem;
-}
-
-.host-stat {
-  background: #f4f3ef;
-  border: 1px solid #ece8dc;
-  border-radius: 10px;
-  padding: 1.25rem 1rem;
-}
-
-.host-stat-number {
-  display: block;
-  font-family: var(--font-hero);
-  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
-  font-weight: 800;
-  line-height: 1;
-  color: var(--gold-dark);
-  margin-bottom: 0.4rem;
-}
-
-.host-stat-label {
-  display: block;
-  font-family: var(--font-hero-text);
-  font-size: 0.86rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--navy);
-}
-
-@media (max-width: 900px) {
-  .host-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 460px) {
-  .host-stats {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===================== WHY MAKE THE SHIFT ===================== */
-.shift {
-  background: var(--light-grey);
-  padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.5rem, 5vw, 5.5rem);
-}
-
-.shift-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.shift-header {
-  max-width: 760px;
-  margin-bottom: clamp(2.5rem, 4vw, 4rem);
-}
-
-.shift-kicker {
-  font-family: var(--font-hero);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 0.9rem;
-}
-
-.shift-title {
-  font-family: var(--font-hero);
-  font-weight: 600;
-  font-size: clamp(2.1rem, 4vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  color: var(--navy);
-  margin-bottom: 1.2rem;
-}
-
-.shift-intro {
-  font-family: var(--font-hero-text);
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
-  line-height: 1.75;
-  color: rgba(4,24,50,0.68);
-}
-
-.shift-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.15rem;
-}
-
-.shift-card {
-  background: var(--white);
-  border: 1px solid #ece8dc;
-  border-radius: 14px;
-  padding: clamp(1.35rem, 2.2vw, 2rem);
-  min-height: 250px;
-  box-shadow: 0 18px 45px rgba(4,24,50,0.045);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.shift-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201,168,76,0.48);
-  box-shadow: 0 24px 55px rgba(4,24,50,0.08);
-}
-
-.shift-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: #f4f3ef;
-  color: var(--gold-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.15rem;
-  border: 1px solid rgba(201,168,76,0.28);
-}
-
-.shift-icon svg {
-  width: 25px;
-  height: 25px;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.shift-card-title {
-  font-family: var(--font-hero);
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 0.75rem;
-}
-
-.shift-card-copy {
-  font-family: var(--font-hero-text);
-  font-size: 0.98rem;
-  line-height: 1.65;
-  color: rgba(4,24,50,0.64);
-}
-
-/* ===================== FINAL CTA ===================== */
-.final-cta {
-  min-height: clamp(520px, 70vh, 760px);
-}
-
-.final-cta::after {
-  background: linear-gradient(
-    90deg,
-    rgba(5,5,5,0.94) 0%,
-    rgba(5,5,5,0.78) 40%,
-    rgba(5,5,5,0.36) 74%,
-    rgba(5,5,5,0.08) 100%
-  );
-}
-
-.final-cta .wayout-inner {
-  max-width: 58rem;
-}
-
-.final-cta-kicker {
-  font-family: var(--font-hero);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
-
-.final-cta .wayout-title {
-  font-style: normal;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-}
-
-.final-cta-event {
-  font-family: var(--font-hero);
-  font-size: clamp(1.15rem, 1.8vw, 1.65rem);
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--white);
-  margin-top: 1.35rem;
-}
-
-.final-cta-copy {
-  font-family: var(--font-hero-text);
-  font-size: clamp(1rem, 1.25vw, 1.18rem);
-  line-height: 1.7;
-  color: rgba(255,255,255,0.78);
-  max-width: 42rem;
-  margin-top: 1rem;
-}
-
-.final-cta-warning {
-  font-family: var(--font-hero);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.74);
-  margin-top: 2.4rem;
-}
-
-@media (max-width: 980px) {
-  .shift-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .shift-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .shift-card {
-    min-height: auto;
-  }
-
-  .final-cta::after {
-    background: linear-gradient(
-      180deg,
-      rgba(5,5,5,0.58) 0%,
-      rgba(5,5,5,0.9) 100%
-    );
-  }
-}
-
-/* ===================== FOOTER ===================== */
-.site-footer {
-  background: #080808;
-  color: rgba(255,255,255,0.72);
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5.5rem);
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.footer-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-}
-
-.footer-brand {
-  max-width: 34rem;
-}
-
-.footer-logo {
-  font-family: var(--font-serif);
-  font-size: clamp(1.35rem, 2vw, 2rem);
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 0.6rem;
-}
-
-.footer-sub {
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.3rem;
-}
-
-.footer-copy {
-  font-family: var(--font-hero-text);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.62);
-}
-
-.footer-details {
-  display: grid;
-  gap: 1rem;
-}
-
-.footer-detail {
-  display: flex;
-  gap: 0.85rem;
-  align-items: flex-start;
-}
-
-.footer-detail svg {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  color: var(--gold);
-  stroke: currentColor;
-  stroke-width: 1.8;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
-.footer-detail strong {
-  display: block;
-  font-family: var(--font-hero);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 0.25rem;
-}
-
-.footer-detail span,
-.footer-detail a {
-  font-family: var(--font-hero-text);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.66);
-  text-decoration: none;
-}
-
-.footer-detail a:hover {
-  color: var(--gold);
-}
-
-.footer-bottom {
-  max-width: 1180px;
-  margin: 2.5rem auto 0;
-  padding-top: 1.4rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-family: var(--font-hero-text);
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.42);
-}
-
-.footer-bottom a {
-  color: rgba(255,255,255,0.56);
-  text-decoration: none;
-}
-
-.footer-bottom a:hover {
-  color: var(--gold);
-}
-
-@media (max-width: 820px) {
-  .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-
-}
-
-/* ===================== MOBILE HERO IMAGE OVERLAY ===================== */
-@media (max-width: 900px) {
-  .hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    min-height: calc(100vh - 68px);
-    background:
-      linear-gradient(
-        180deg,
-        rgba(5,5,5,0.42) 0%,
-        rgba(5,5,5,0.78) 48%,
-        rgba(5,5,5,0.94) 100%
-      ),
-      url("images/hero-property.jpg") center center / cover no-repeat;
-  }
-
-  .hero-text {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    min-height: calc(100vh - 68px);
-    background: transparent;
-    display: flex;
-    align-items: flex-end;
-    padding: clamp(4rem, 12vw, 6rem) 1.35rem 2.2rem;
-  }
-
-  .hero-inner {
-    max-width: 100%;
-    margin: 0;
-  }
-
-  .hero-media {
-    display: none;
-  }
-
-  .hero-headline {
-    font-size: clamp(2.1rem, 10vw, 3.4rem);
-    line-height: 1.05;
-    margin-bottom: 1.2rem;
-  }
-
-  .hero-headline .hl-muted {
-    color: rgba(255,255,255,0.74);
-  }
-
-  .hero-headline .hl-bright {
-    color: var(--white);
-  }
-
-  .hero-sub {
-    color: rgba(255,255,255,0.82);
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .hero-actions {
-    margin-top: 1.8rem;
-  }
-
-  .hero-date {
-    color: rgba(255,255,255,0.82);
-    align-items: flex-start;
-    line-height: 1.5;
-    margin-top: 1.8rem;
-  }
-}
   </style>
 </head>
 <body>
-
-  <!-- SECTION 1: Header only, no navigation links -->
+  <!-- NAVBAR -->
   <header class="solo-header" id="top">
     <div class="top-bar">
       <span class="quality">Quality is our standard <strong>for over 20 years</strong></span>
+
       <div class="info">
         <span>
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-          Workshop in <strong>Leeds, UK</strong>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+          </svg>
+          Workshop in <strong>Leicester, UK</strong>
         </span>
+
         <span>
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
+          </svg>
           +44 7968 100786
         </span>
       </div>
     </div>
 
-    <nav class="navbar" id="navbar" aria-label="Solo ad header">
-      <span class="nav-note">Village Hotel South Leeds, Capital Boulevard.</span>
+    <nav class="navbar" id="navbar" aria-label="Ethical Wealth Academy header">
+      <span class="nav-note">Liberate Your Property</span>
 
-      <div class="logo-wrap" aria-label="Ethical Wealth Academy">
+      <a class="logo-wrap" href="#top" aria-label="Ethical Wealth Academy home">
         <span class="logo-text-group">
           <span class="logo-name">Ethical Wealth Academy</span>
           <span class="logo-sub">Build · Preserve · Grow</span>
         </span>
+
         <span class="logo-img-group">
           <img src="images/goldlogo.png" alt="Ethical Wealth Academy" />
         </span>
-      </div>
+      </a>
 
       <span class="nav-note nav-note--right">Seats are strictly limited · In-person event</span>
     </nav>
   </header>
 
-  <!-- SECTION 2: Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-text">
-      <div class="hero-inner">
-        <!-- <p class="hero-eyebrow">Liberate Your Property · Live In-Person Event · Village Hotel South Leeds, Capital Boulevard · June 2026</p> -->
+  <!-- HERO -->
+  <main>
+    <section class="event-hero" aria-labelledby="event-hero-title">
+      <div class="event-hero-content">
+        <div class="event-hero-copy">
 
-        <p class="hero-attention">Attention: Landlords &amp; Property Investors!!</p>
+          <h1 class="event-heading" id="event-hero-title">
+            <span class="event-heading-primary">Has the Renters<br />Rights Bill</span>
+            <span class="event-heading-secondary">robbed you of control &amp;<br />squeezed your profits?</span>
+          </h1>
 
-        <h1 class="hero-headline">
-          <span class="hl-muted">Has the Renters Rights Bill</span>
-          <span class="hl-bright">robbed you of control &amp; squeezed your profits?</span>
-        </h1>
+          <p class="event-intro">
+            If you’re feeling worried, uncertain, or frustrated, you’re not imagining it. The rules have fundamentally changed. And most landlords are haemorrhaging income without even realising it.
+          </p>
 
-        <p class="hero-sub"></p>
-        <p class="hero-sub">If you're feeling worried, uncertain, or frustrated, you're not imagining it. The rules have fundamentally changed. And most landlords are haemorrhaging income without even realising it.</p>
+          <div class="event-date-picker" id="event-dates" aria-labelledby="event-date-label" aria-describedby="event-date-help">
+            <p class="event-date-label" id="event-date-label">Choose the date that works for you</p>
+            <p class="event-date-help" id="event-date-help">Click your preferred date to open its registration form.</p>
 
-        <div class="hero-actions">
-          <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
+            <div class="event-date-options">
+              <a
+                class="event-date-card"
+                href="https://api.leadconnectorhq.com/widget/form/KdBXQFJQghZHqtrKPf82?notrack=true"
+                aria-label="Register for the Leicester event on Saturday 12 September 2026"
+              >
+                <time class="event-date-day" datetime="2026-09-12">Sat 12 Sept</time>
+                <span class="event-date-city">Leicester</span>
+                <span class="event-date-cta">
+                  <span>Select this date</span>
+                  <span class="event-date-arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+
+              <a
+                class="event-date-card"
+                href="https://api.leadconnectorhq.com/widget/form/PC6QkIhfq5WDv9ukjkDW?notrack=true"
+                aria-label="Register for the Huddersfield event on Saturday 19 September 2026"
+              >
+                <time class="event-date-day" datetime="2026-09-19">Sat 19 Sept</time>
+                <span class="event-date-city">Huddersfield</span>
+                <span class="event-date-cta">
+                  <span>Select this date</span>
+                  <span class="event-date-arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+
+              <a
+                class="event-date-card"
+                href="https://api.leadconnectorhq.com/widget/form/UzhjLmSK2iJQJ3Kf1ukH?notrack=true"
+                aria-label="Register for the Birmingham event on Saturday 3 October 2026"
+              >
+                <time class="event-date-day" datetime="2026-10-03">Sat 3 Oct</time>
+                <span class="event-date-city">Birmingham</span>
+                <span class="event-date-cta">
+                  <span>Select this date</span>
+                  <span class="event-date-arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem-section" aria-labelledby="problem-title">
+      <div class="problem-inner">
+        <div class="problem-content">
+          <p class="problem-kicker">The Problem</p>
+          <hr class="problem-rule" />
+
+          <h2 class="problem-heading" id="problem-title">
+            Here’s what you’re<br />
+            up against <span class="problem-heading-muted">right now.</span>
+          </h2>
+
+          <div class="problem-grid">
+            <article class="problem-item">
+              <span class="problem-icon" aria-hidden="true">
+                <img src="images/hammer.png" alt="" loading="lazy" />
+              </span>
+              <div>
+                <span class="problem-item-number">01</span>
+                <h3 class="problem-item-title">Section 21 Abolished</h3>
+                <p class="problem-item-copy">
+                  No-fault evictions are gone. Removing problem tenants is now a lengthy, expensive, court-led process.
+                </p>
+              </div>
+            </article>
+
+            <article class="problem-item">
+              <span class="problem-icon" aria-hidden="true">
+                <img src="images/lock.png" alt="" loading="lazy" />
+              </span>
+              <div>
+                <span class="problem-item-number">02</span>
+                <h3 class="problem-item-title">Rent Reviews Blocked</h3>
+                <p class="problem-item-copy">
+                  Your income lags behind inflation while mortgage costs keep rising.
+                </p>
+              </div>
+            </article>
+
+            <article class="problem-item">
+              <span class="problem-icon" aria-hidden="true">
+                <img src="images/list.png" alt="" loading="lazy" />
+              </span>
+              <div>
+                <span class="problem-item-number">03</span>
+                <h3 class="problem-item-title">Compliance Costs Spiralling</h3>
+                <p class="problem-item-copy">
+                  EPC upgrades, licensing, and new requirements are eating into margins you used to rely on.
+                </p>
+              </div>
+            </article>
+
+            <article class="problem-item">
+              <span class="problem-icon" aria-hidden="true">
+                <img src="images/yields.png" alt="" loading="lazy" />
+              </span>
+              <div>
+                <span class="problem-item-number">04</span>
+                <h3 class="problem-item-title">Yields Under Pressure</h3>
+                <p class="problem-item-copy">
+                  High interest rates and frozen rents have many landlords running at break-even, or worse.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <a class="problem-action" href="#event-dates" aria-label="Go to the event dates and register">
+            <span>Register Now</span>
+            <span class="problem-action-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <p class="hero-date">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-          Village Hotel South Leeds, Capital Boulevard · June 20th, 2026
+        <figure class="problem-visual">
+          <img
+            src="images/building-section.png"
+            alt="Ethical Wealth Academy workshop room prepared for attendees"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="blueprint-section" aria-labelledby="blueprint-title">
+      <div class="blueprint-card">
+        <div class="blueprint-content">
+          <span class="blueprint-rule" aria-hidden="true"></span>
+
+          <h2 class="blueprint-heading" id="blueprint-title">
+            The quickest way<br />
+            for chief success is
+            <span class="blueprint-heading-accent">to model someone else.</span>
+          </h2>
+
+          <span class="blueprint-divider" aria-hidden="true"></span>
+
+          <p class="blueprint-copy">
+            We are here to show you tried and proven mode;<br />
+            supported housing investment blueprint.
+          </p>
+
+          <a class="blueprint-action" href="#event-dates" aria-label="Go to the event dates and register">
+            <span>Register Now</span>
+            <span class="blueprint-action-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="master-section" aria-labelledby="master-title">
+      <div class="master-inner">
+        <header class="master-header">
+          <p class="master-kicker">The Solution</p>
+          <h2 class="master-title" id="master-title">
+            The <span class="master-title-accent">Master</span> Method
+          </h2>
+          <p class="master-subtitle">A proven 6-step system for building resilient property income</p>
+        </header>
+
+        <div class="master-methods">
+          <div class="master-method-row">
+            <article class="master-method">
+              <div class="master-letter-wrap" aria-hidden="true"><span class="master-letter">M</span></div>
+              <div class="master-method-content">
+                <span class="master-method-icon" aria-hidden="true">
+
+                  <img src="images/bulb.png" alt="" />
+
+                </span>
+
+                <h3 class="master-method-title">Mindset</h3>
+                <p class="master-method-copy">Build the thinking and decision-making framework required to invest with clarity and confidence.</p>
+              </div>
+            </article>
+
+            <article class="master-method">
+              <div class="master-letter-wrap" aria-hidden="true"><span class="master-letter">A</span></div>
+              <div class="master-method-content">
+                <span class="master-method-icon" aria-hidden="true">
+
+                  <img src="images/analytics.png" alt="" />
+
+                </span>
+
+                <h3 class="master-method-title">Analytics</h3>
+                <p class="master-method-copy">Know the numbers before you commit capital. Analyse deals, markets and risk properly.</p>
+              </div>
+            </article>
+
+            <article class="master-method">
+              <div class="master-letter-wrap" aria-hidden="true"><span class="master-letter">S</span></div>
+              <div class="master-method-content">
+                <span class="master-method-icon" aria-hidden="true">
+
+                  <img src="images/list.png" alt="" />
+
+                </span>
+
+                <h3 class="master-method-title">Strategies</h3>
+                <p class="master-method-copy">Identify the property strategies that fit your goals, capital and the current market.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="master-method-row">
+            <article class="master-method">
+              <div class="master-letter-wrap" aria-hidden="true"><span class="master-letter">T</span></div>
+              <div class="master-method-content">
+                <span class="master-method-icon" aria-hidden="true">
+
+                  <img src="images/lock.png" alt="" />
+
+                </span>
+
+                <h3 class="master-method-title">Tenancies</h3>
+                <p class="master-method-copy">Understand how to structure and manage tenancies for stability, compliance and long-term income.</p>
+              </div>
+            </article>
+
+            <article class="master-method">
+              <div class="master-letter-wrap" aria-hidden="true"><span class="master-letter">E</span></div>
+              <div class="master-method-content">
+                <span class="master-method-icon" aria-hidden="true">
+
+                  <img src="images/hammer.png" alt="" />
+
+                </span>
+
+                <h3 class="master-method-title">Execution</h3>
+                <p class="master-method-copy">Turn the strategy into action with a clear, repeatable investment process that drives results.</p>
+              </div>
+            </article>
+
+            <article class="master-method">
+              <div class="master-letter-wrap" aria-hidden="true"><span class="master-letter">R</span></div>
+              <div class="master-method-content">
+                <span class="master-method-icon" aria-hidden="true">
+
+                  <img src="images/yields.png" alt="" />
+
+                </span>
+
+                <h3 class="master-method-title">Resilience</h3>
+                <p class="master-method-copy">Build a portfolio that can withstand changing regulations, interest rates and market conditions.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="master-offer">
+          <div class="master-offer-block master-offer-value">
+            <div>
+              <span class="master-offer-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M14 6v8M34 6v8M7 19h34"/><path d="m16 29 5-5 5 5 7-8"/></svg>
+              </span>
+              <p class="master-offer-heading">3 Hours<small>of Value</small></p>
+              <p class="master-offer-copy">Packed with practical clarity you can implement immediately.</p>
+            </div>
+          </div>
+
+          <div class="master-offer-block">
+            <div>
+              <div class="master-offer-price-wrap">
+                <span class="master-price">£17</span>
+                <span class="master-rate-badge">Special<br />Workshop<br />Rate</span>
+              </div>
+              <p class="master-rate-label">Subsidised Rate</p>
+            </div>
+          </div>
+
+          <div class="master-offer-block">
+            <div>
+              <span class="master-offer-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M24 13v12l8 5"/></svg>
+              </span>
+              <p class="master-time">10:00 AM &ndash; 1:00 PM</p>
+              <p class="master-day">Saturday Workshop</p>
+              <p class="master-offer-copy">Three powerful hours that could change your property future.</p>
+            </div>
+          </div>
+
+          <a class="master-offer-action" href="#event-dates" aria-label="Choose a date and reserve your seventeen pound place">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M14 6v8M34 6v8M7 19h34"/><circle cx="23" cy="29" r="5"/><path d="m27 33 5 5M23 26v6M20 29h6"/></svg>
+            <span>Reserve Your £17 Place</span>
+            <span class="master-offer-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <p class="master-limited">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 2 6 3 9 3v6c0 5-3.5 8-9 10-5.5-2-9-5-9-10V6c3 0 6-1 9-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>
+          Limited spaces available
         </p>
       </div>
-    </div>
+    </section>
 
-    <div class="hero-media">
-      <img src="images/ayub.jpg" alt="Liberate Your Property live in-person event" onerror="this.style.display='none'" />
-    </div>
-  </section>
 
-  <!-- SECTION 3: Partner / trust marquee (infinite carousel) -->
-  <section class="marquee" aria-label="Trusted by">
-    <div class="marquee-track">
-      <!-- visible set -->
-      <span class="marquee-item">Silks Investments</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Citywide Housing</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Nujum Sports</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Silks Investments</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Citywide Housing</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Nujum Sports</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Silks Investments</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Citywide Housing</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item">Nujum Sports</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
+    <section class="host-section" aria-labelledby="host-name">
+      <div class="host-inner">
+        <div class="host-content">
+          <p class="host-kicker">Your Host</p>
 
-      <!-- duplicate set, hidden from screen readers, drives the seamless loop -->
-      <span class="marquee-item" aria-hidden="true">Silks Investments</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Citywide Housing</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Nujum Sports</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Silks Investments</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Citywide Housing</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Nujum Sports</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Silks Investments</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Citywide Housing</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-      <span class="marquee-item" aria-hidden="true">Nujum Sports</span>
-      <span class="marquee-dot" aria-hidden="true"></span>
-    </div>
-  </section>
+          <h2 class="host-name" id="host-name">Ayub <span class="host-name-accent">Kayat</span></h2>
 
-  <!-- SECTION 4: The Problem (split feature) -->
-  <section class="process" id="problem" aria-label="The problem">
-    <div class="proc-media">
-      <img src="images/problem.jpg" alt="Landlords reviewing the impact of the Renters Rights Bill" onerror="this.style.display='none'" />
-      <div class="proc-caption">
-        <h2 class="proc-title">The Problem</h2>
-        <p class="proc-sub">Here's what you're up against right now.</p>
-      </div>
-    </div>
+          <p class="host-role">
+            <span>Property Investor</span>
+            <span class="host-role-dot" aria-hidden="true">•</span>
+            <span>Educator</span>
+            <span class="host-role-dot" aria-hidden="true">•</span>
+            <span>Founder, Ethical Wealth Academy</span>
+          </p>
 
-    <div class="proc-content">
-      <div class="prob">
-        <span class="prob-num">01</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Section 21 Abolished</h3>
-          <p class="prob-desc">No-fault evictions are gone. Removing problem tenants is now a lengthy, expensive, court-led process.</p>
+          <p class="host-copy">
+            Ayub has been investing in property for over 20 years across <strong>six countries</strong>, UK, Dubai, Malaysia, Bulgaria, Turkey and New Zealand.
+          </p>
+
+          <p class="host-copy">
+            He survived the 2008 credit crunch, built an asset management business with <strong>500+ properties</strong> under management, and now specialises exclusively in social housing and supported living, completing 3–4 projects per year, generating <strong class="host-gold">£100k+ per deal.</strong>
+          </p>
+
+          <div class="host-quote">
+            <span class="host-quote-mark" aria-hidden="true">“</span>
+            <p class="host-quote-text">
+              <strong>He's not teaching theory.</strong>
+              He's showing you exactly what he does, and how you can do it too.
+            </p>
+          </div>
+
+          <div class="host-stats" aria-label="Ayub Kayat's property investing experience">
+            <div class="host-stat">
+              <span class="host-stat-number">20+</span>
+              <span class="host-stat-label">Years Investing</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-number">500+</span>
+              <span class="host-stat-label">Properties Managed</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-number">6</span>
+              <span class="host-stat-label">Countries</span>
+            </div>
+            <div class="host-stat">
+              <span class="host-stat-number">£100k+</span>
+              <span class="host-stat-label">Per Deal</span>
+            </div>
+          </div>
+
+          <a class="host-action" href="#event-dates">
+            <span>Register Now</span>
+            <span class="host-action-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="host-media">
+          <img src="images/ayub.jpg" alt="Ayub Kayat, founder of Ethical Wealth Academy" />
         </div>
       </div>
+    </section>
 
-      <div class="prob">
-        <span class="prob-num">02</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Rent Reviews Blocked</h3>
-          <p class="prob-desc">Your income lags behind inflation while mortgage costs keep rising.</p>
+
+    <section class="shift-section" id="why-shift" aria-labelledby="shift-title">
+      <div class="shift-inner">
+        <div class="shift-intro-grid">
+          <div class="shift-copy-block">
+            <p class="shift-kicker">Why Make the Shift</p>
+            <span class="shift-rule" aria-hidden="true"></span>
+
+            <h2 class="shift-title" id="shift-title">
+              Social Housing<br />
+              Isn’t Just Safer. It’s <span class="shift-title-accent">Smarter.</span>
+            </h2>
+
+            <p class="shift-copy">
+              While other landlords are selling up or scrambling to keep up with legislation, savvy investors are quietly pivoting, and building recession-proof income streams in the process.
+            </p>
+          </div>
+
+          <figure class="shift-image">
+            <img
+              src="images/social-housing-section.png"
+              alt="A comfortable, professionally managed social housing interior"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='images/building-section.png';"
+            />
+          </figure>
+        </div>
+
+        <div class="shift-benefits">
+          <article class="shift-benefit">
+            <span class="shift-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M32 6 51 14v14c0 13-8 23-19 29C21 51 13 41 13 28V14l19-8Z"/><path d="m23 31 6 6 13-15"/></svg>
+            </span>
+            <div>
+              <h3 class="shift-benefit-title">1. Government-Backed Income</h3>
+              <span class="shift-benefit-rule" aria-hidden="true"></span>
+              <p class="shift-benefit-copy">Rents paid directly by local authorities and housing associations. No arrears. No chasing. No void periods.</p>
+            </div>
+          </article>
+
+          <article class="shift-benefit">
+            <span class="shift-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><rect x="15" y="8" width="34" height="48" rx="3"/><path d="M23 23h18M23 31h13M23 43h7l4-5 4 7 5-4"/></svg>
+            </span>
+            <div>
+              <h3 class="shift-benefit-title">2. Long-Term Leases</h3>
+              <span class="shift-benefit-rule" aria-hidden="true"></span>
+              <p class="shift-benefit-copy">Contracts typically run 3 to 10 years with built-in rent reviews. The stability of a commercial lease with the demand of residential housing.</p>
+            </div>
+          </article>
+
+          <article class="shift-benefit">
+            <span class="shift-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M10 51h44"/><rect x="14" y="40" width="9" height="11"/><rect x="29" y="31" width="9" height="20"/><rect x="44" y="22" width="9" height="29"/><path d="m14 32 12-10 9 5 16-18"/><path d="M43 9h8v8"/></svg>
+            </span>
+            <div>
+              <h3 class="shift-benefit-title">3. Higher Net Yields</h3>
+              <span class="shift-benefit-rule" aria-hidden="true"></span>
+              <p class="shift-benefit-copy">Social housing and supported living typically generates 10 to 25%+ net yields, significantly above standard buy-to-let.</p>
+            </div>
+          </article>
+
+          <article class="shift-benefit">
+            <span class="shift-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="m17 18 10-10 21 21-10 10z"/><path d="m32 13 7-7 12 12-7 7M12 47l18-18M7 51h24M4 57h31"/></svg>
+            </span>
+            <div>
+              <h3 class="shift-benefit-title">4. Renters Rights Bill Proof</h3>
+              <span class="shift-benefit-rule" aria-hidden="true"></span>
+              <p class="shift-benefit-copy">Social housing leases are held with providers, not individual tenants. The Renters Rights Bill largely doesn’t apply, so you’re protected.</p>
+            </div>
+          </article>
+
+          <article class="shift-benefit">
+            <span class="shift-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M32 54S8 40 8 22C8 12 20 7 28 16l4 5 4-5c8-9 20-4 20 6 0 18-24 32-24 32Z"/></svg>
+            </span>
+            <div>
+              <h3 class="shift-benefit-title">5. Ethical &amp; Values-Led</h3>
+              <span class="shift-benefit-rule" aria-hidden="true"></span>
+              <p class="shift-benefit-copy">Generate real wealth while solving a genuine social problem. Your property does good in the community, and delivers exceptional returns at the same time.</p>
+            </div>
+          </article>
+
+          <article class="shift-benefit">
+            <span class="shift-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="32" cy="21" r="8"/><circle cx="14" cy="25" r="6"/><circle cx="50" cy="25" r="6"/><path d="M19 52c0-9 5-16 13-16s13 7 13 16M3 51c0-7 4-12 11-12 3 0 6 1 8 4M61 51c0-7-4-12-11-12-3 0-6 1-8 4"/></svg>
+            </span>
+            <div>
+              <h3 class="shift-benefit-title">6. Massive Unmet Demand</h3>
+              <span class="shift-benefit-rule" aria-hidden="true"></span>
+              <p class="shift-benefit-copy">The UK needs 90,000+ supported living units. Demand from councils and housing providers is outpacing supply. The opportunity window is wide open.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="shift-action-wrap">
+          <a class="shift-action" href="#event-dates" aria-label="Go to the event dates and register">
+            <span>Register Now</span>
+            <span class="shift-action-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="prob">
-        <span class="prob-num">03</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Compliance Costs Spiralling</h3>
-          <p class="prob-desc">EPC upgrades, licensing, and new requirements are eating into margins you used to rely on.</p>
+    <section class="secure-section" id="secure-place" aria-labelledby="secure-title">
+      <div class="secure-inner">
+        <p class="secure-kicker">Secure Your Place</p>
+        <span class="secure-rule" aria-hidden="true"></span>
+
+        <h2 class="secure-title" id="secure-title">
+          Your Next Move <span class="secure-title-accent">Starts Here</span>
+        </h2>
+
+        <p class="secure-subtitle">Get practical. Get clarity. Get ahead.</p>
+        <p class="secure-copy">
+          For just £17, spend 3 hours with Ayub and walk away with a proven, step-by-step blueprint for building resilient, high-yield income through social housing and supported living.
+        </p>
+
+        <div class="secure-facts" aria-label="Workshop details">
+          <div class="secure-fact">
+            <span class="secure-fact-value">£17</span>
+            <span class="secure-fact-label">Subsidised Rate</span>
+          </div>
+          <div class="secure-fact">
+            <span class="secure-fact-value">3 Hours</span>
+            <span class="secure-fact-label">of High-Value Training</span>
+          </div>
+          <div class="secure-fact">
+            <span class="secure-fact-value secure-fact-value--time">10:00 AM – 1:00 PM</span>
+            <span class="secure-fact-label">Saturday Workshop</span>
+          </div>
+        </div>
+
+        <p class="secure-choice-heading">Choose Your Date and Location</p>
+        <p class="secure-choice-copy">Select the event you’ll be attending to secure your place.</p>
+
+        <div class="secure-locations">
+          <article class="secure-location">
+            <h3 class="secure-location-city">Leicester</h3>
+            <time class="secure-location-date" datetime="2026-09-12">Sat 12th September 2026</time>
+            <a class="secure-location-action" href="https://api.leadconnectorhq.com/widget/form/KdBXQFJQghZHqtrKPf82?notrack=true" aria-label="Secure a place at the Leicester workshop on 12 September 2026">
+              <span>Secure My Place</span>
+              <span class="secure-location-arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="secure-location">
+            <h3 class="secure-location-city">Huddersfield</h3>
+            <time class="secure-location-date" datetime="2026-09-19">Sat 19th September 2026</time>
+            <a class="secure-location-action" href="https://api.leadconnectorhq.com/widget/form/PC6QkIhfq5WDv9ukjkDW?notrack=true" aria-label="Secure a place at the Huddersfield workshop on 19 September 2026">
+              <span>Secure My Place</span>
+              <span class="secure-location-arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="secure-location">
+            <h3 class="secure-location-city">Birmingham</h3>
+            <time class="secure-location-date" datetime="2026-10-03">Sat 3rd October 2026</time>
+            <a class="secure-location-action" href="https://api.leadconnectorhq.com/widget/form/UzhjLmSK2iJQJ3Kf1ukH?notrack=true" aria-label="Secure a place at the Birmingham workshop on 3 October 2026">
+              <span>Secure My Place</span>
+              <span class="secure-location-arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+
+        <div class="secure-final">
+          <p class="secure-final-heading">Final Words</p>
+          <h3 class="secure-final-title">Knowledge creates options. Action creates freedom.</h3>
+          <p class="secure-final-copy">The market is changing. Regulations are tightening. But for those who are informed and prepared, there has never been a better time to make the shift.</p>
+          <p class="secure-final-copy">We’ll show you the way. The rest is up to you.</p>
+          <p class="secure-final-signoff">Learn. Invest. Make a Difference.</p>
+        </div>
+
+        <div class="secure-strip">
+          <div class="secure-strip-inner">
+            <span>Build Wealth</span>
+            <span class="secure-strip-dot" aria-hidden="true">•</span>
+            <span>Support Communities</span>
+            <span class="secure-strip-dot" aria-hidden="true">•</span>
+            <span>Secure Your Future</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="prob">
-        <span class="prob-num">04</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Yields Under Pressure</h3>
-          <p class="prob-desc">High interest rates and frozen rents have many landlords running at break-even, or worse.</p>
-        </div>
-      </div>
+  </main>
 
-      <div class="cta-actions">
-        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
-      </div>
-    </div>
-  </section>
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h2 class="footer-logo">Ethical Wealth Academy</h2>
+        <p class="footer-sub">Build · Preserve · Grow</p>
 
- 
-
-  <!-- SECTION 5: Here's Your Way Out (image overlay) -->
-  <section class="wayout" aria-label="Here's your way out">
-    <img class="wayout-bg" src="images/wayout.png" alt="" onerror="this.style.display='none'" />
-    <div class="wayout-inner">
-      <h1>"</h1>
-      <h2 class="wayout-title">Join Ayub Kayat for a focused 4-hour mini workshop and discover exactly how to pivot your portfolio, and take back control.</h2>
-      <!-- <p class="wayout-sub">Join Ayub Kayat for a focused 4-hour mini workshop and discover exactly how to pivot your portfolio, and take back control.</p> -->
-      <div class="wayout-actions">
-        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-ghost">Register Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 6: The Solution (split feature reversed) -->
-  <section class="solution" id="solution" aria-label="The solution">
-    <div class="proc-content">
-      <div class="solution-intro">
-        <p class="solution-kicker">The Solution</p>
-        <h2 class="solution-heading">Liberate Your Property: The Pivot to Social Housing</h2>
-        <p class="solution-copy">
-          In this intensive 4-hour session, you'll learn the exact strategy Ayub has used to build a recession-proof portfolio that generates consistent, guaranteed income, regardless of what the government throws at the market.
+        <p class="footer-copy">
+          Liberate Your Property is a focused live workshop for landlords and property investors who want a smarter route to consistent income, stronger protection, and long-term portfolio growth.
         </p>
       </div>
 
-      <div class="prob">
-        <span class="prob-num">01</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Why Social Housing is the smartest move right now</h3>
-          <p class="prob-desc">Understand the structural demand driving social housing returns, and why this isn't just a trend, it's a 20-year megatrend backed by government contracts.</p>
-        </div>
-      </div>
-
-      <div class="prob">
-        <span class="prob-num">02</span>
-        <div class="prob-body">
-          <h3 class="prob-title">How to transition your existing portfolio without selling</h3>
-          <p class="prob-desc">A clear, step-by-step pivot strategy to convert your current buy-to-let properties into social housing assets, without starting from scratch.</p>
-        </div>
-      </div>
-
-      <div class="prob">
-        <span class="prob-num">03</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Guaranteed rent, government-backed income streams</h3>
-          <p class="prob-desc">Lock in long-term lease agreements with housing providers and local authorities, protecting your income from tenant risk forever.</p>
-        </div>
-      </div>
-
-      <div class="prob">
-        <span class="prob-num">04</span>
-        <div class="prob-body">
-          <h3 class="prob-title">The numbers that make this work</h3>
-          <p class="prob-desc">Real deal breakdowns, real numbers. See how social housing compares to standard buy-to-let on yield, risk, management, and long-term wealth.</p>
-        </div>
-      </div>
-
-      <div class="prob">
-        <span class="prob-num">05</span>
-        <div class="prob-body">
-          <h3 class="prob-title">Your first steps, leave with a personalised action plan</h3>
-          <p class="prob-desc">This isn't theory. You'll leave with a clear, actionable roadmap tailored to your current portfolio and financial goals.</p>
-        </div>
-      </div>
-
-      <div class="cta-actions">
-        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
-      </div>
-    </div>
-
-    <div class="proc-media">
-      <img src="images/solution.jpg" alt="Property investors learning how to pivot into social housing" onerror="this.style.display='none'" />
-      <div class="proc-caption">
-        <h2 class="proc-title">The Solution</h2>
-        <p class="proc-sub">A smarter route to consistent income, lower stress, and long-term property security.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- SECTION 7: Limited Seats CTA -->
-  <section class="wayout limited-seats" aria-label="Limited seats">
-    <img class="wayout-bg" src="images/luxurious.jpg" alt="" onerror="this.style.display='none'" />
-
-    <div class="wayout-inner">
-      <h2 class="wayout-title">Limited Seats. One Decision.</h2>
-
-      <p class="wayout-sub">
-        This is a small-room, high-impact session. Once it's full, it's full.
-      </p>
-
-      <div class="wayout-actions">
-        <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-ghost">Register Now</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- SECTION 8: Your Host -->
-<section class="host" id="host" aria-label="Your host">
-  <div class="host-media">
-    <img src="images/ayub.jpg" alt="Ayub Kayat, founder of Ethical Wealth Academy" onerror="this.style.display='none'" />
-  </div>
-
-  <div class="host-content">
-    <p class="host-kicker">Your Host</p>
-
-    <h2 class="host-name">Ayub Kayat</h2>
-
-    <p class="host-role">
-      Property Investor · Educator · Founder, Ethical Wealth Academy
-    </p>
-
-    <p class="host-copy">
-      Ayub has been investing in property for over <strong>20 years</strong> across six countries, UK, Dubai, Malaysia, Bulgaria, Turkey and New Zealand.
-    </p>
-
-    <p class="host-copy">
-      He survived the 2008 credit crunch, built an asset management business with <strong>500+ properties under management</strong>, and now specialises exclusively in social housing and supported living, completing <strong>3–4 projects per year</strong>, generating <strong>£100k+ per deal</strong>.
-    </p>
-
-    <p class="host-copy">
-      He's not teaching theory. He's showing you exactly what he does, and how you can do it too.
-    </p>
-
-    <div class="host-stats">
-  <div class="host-stat">
-    <span class="host-stat-number">20+</span>
-    <span class="host-stat-label">Years Investing</span>
-  </div>
-
-  <div class="host-stat">
-    <span class="host-stat-number">500+</span>
-    <span class="host-stat-label">Properties Managed</span>
-  </div>
-
-  <div class="host-stat">
-    <span class="host-stat-number">6</span>
-    <span class="host-stat-label">Countries</span>
-  </div>
-
-  <div class="host-stat">
-    <span class="host-stat-number">£100k+</span>
-    <span class="host-stat-label">Per Deal</span>
-  </div>
-</div>
-
-<div class="host-actions">
-  <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-primary">Register Now</a>
-</div>
-  </div>
-</section>
-
-<!-- SECTION 9: Why Make The Shift -->
-<section class="shift" id="why-shift" aria-label="Why make the shift">
-  <div class="shift-inner">
-    <div class="shift-header">
-      <p class="shift-kicker">Why Make The Shift</p>
-
-      <h2 class="shift-title">Social Housing Isn't Just Safer. It's Smarter.</h2>
-
-      <p class="shift-intro">
-        While other landlords are selling up or scrambling to keep up with legislation, savvy investors are quietly pivoting, and building recession-proof income streams in the process.
-      </p>
-    </div>
-
-    <div class="shift-grid">
-      <div class="shift-card">
-        <div class="shift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 20h16" />
-            <path d="M6 10h12" />
-            <path d="M7 10v10" />
-            <path d="M12 10v10" />
-            <path d="M17 10v10" />
-            <path d="M5 10l7-5 7 5" />
+      <div class="footer-details">
+        <div class="footer-detail">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z" />
+            <circle cx="12" cy="9" r="2.5" />
           </svg>
+          <div>
+            <strong>Location</strong>
+            <span>The Grand Hotel, Granby Place, Leicester LE1 6ES</span>
+          </div>
         </div>
-        <h3 class="shift-card-title">Government-Backed Income</h3>
-        <p class="shift-card-copy">
-          Rents paid directly by local authorities and housing associations. No arrears. No chasing. No void periods.
-        </p>
-      </div>
 
-      <div class="shift-card">
-        <div class="shift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 3h8" />
-            <path d="M9 3v3h6V3" />
-            <rect x="6" y="5" width="12" height="16" rx="2" />
-            <path d="M9 11h6" />
-            <path d="M9 15h6" />
+        <div class="footer-detail">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="5" width="16" height="15" rx="2" />
+            <path d="M8 3v4" />
+            <path d="M16 3v4" />
+            <path d="M4 10h16" />
           </svg>
+          <div>
+            <strong>Date</strong>
+            <span>12th September 2026</span>
+          </div>
         </div>
-        <h3 class="shift-card-title">Long-Term Leases</h3>
-        <p class="shift-card-copy">
-          Contracts typically run 3 to 10 years with built-in rent reviews. The stability of a commercial lease with the demand of residential housing.
-        </p>
-      </div>
 
-      <div class="shift-card">
-        <div class="shift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 19h16" />
-            <path d="M6 16l4-4 3 3 5-7" />
-            <path d="M15 8h3v3" />
+        <div class="footer-detail">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2z" />
           </svg>
-        </div>
-        <h3 class="shift-card-title">Higher Net Yields</h3>
-        <p class="shift-card-copy">
-          Social housing and supported living typically generates 10 to 25%+ net yields, significantly above standard buy-to-let.
-        </p>
-      </div>
-
-      <div class="shift-card">
-        <div class="shift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 3l7 3v5c0 4.8-2.9 8.6-7 10-4.1-1.4-7-5.2-7-10V6l7-3z" />
-            <path d="M9.5 12l1.8 1.8 3.7-4" />
-          </svg>
-        </div>
-        <h3 class="shift-card-title">Renters Rights Bill Proof</h3>
-        <p class="shift-card-copy">
-          Social housing leases are held with providers, not individual tenants. The Renters Rights Bill largely doesn't apply, so you're protected.
-        </p>
-      </div>
-
-      <div class="shift-card">
-        <div class="shift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 12l3 3 5-6" />
-            <path d="M4 12a8 8 0 0 1 14.2-5" />
-            <path d="M20 12a8 8 0 0 1-14.2 5" />
-          </svg>
-        </div>
-        <h3 class="shift-card-title">Ethical &amp; Values-Led</h3>
-        <p class="shift-card-copy">
-          Generate real wealth while solving a genuine social problem. Your property does good in the community, and delivers exceptional returns at the same time.
-        </p>
-      </div>
-
-      <div class="shift-card">
-        <div class="shift-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M13 2L4 14h7l-1 8 10-13h-7l1-7z" />
-          </svg>
-        </div>
-        <h3 class="shift-card-title">Massive Unmet Demand</h3>
-        <p class="shift-card-copy">
-          The UK needs 90,000+ supported living units. Demand from councils and housing providers is outpacing supply. The opportunity window is wide open.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 10: Final CTA -->
-<section class="wayout final-cta" id="final-cta" aria-label="Final call to action">
-  <img class="wayout-bg" src="images/final-cta.jpg" alt="" onerror="this.style.display='none'" />
-
-  <div class="wayout-inner">
-    <p class="final-cta-kicker">Final CTA</p>
-
-    <h2 class="wayout-title">The Time to Act is Now</h2>
-
-    <p class="final-cta-event">
-      Liberate Your Property Live In-Person Event
-    </p>
-
-    <p class="final-cta-copy">
-      Real strategies. Real numbers. Real opportunities.
-    </p>
-
-    <p class="final-cta-copy">
-      Join Ayub in Village Hotel South Leeds, Capital Boulevard on June 20th, 2026.
-    </p>
-
-    <div class="wayout-actions">
-      <a href="https://api.leadconnectorhq.com/widget/form/qVIqTrssgkNQlZAdNqPU" class="btn-ghost">Register Now</a>
-    </div>
-
-    <p class="final-cta-warning">
-      ⚠ Seats are strictly limited · In-person event · Village Hotel South Leeds, Capital Boulevard
-    </p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer" aria-label="Footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <h2 class="footer-logo">Ethical Wealth Academy</h2>
-      <p class="footer-sub">Build · Preserve · Grow</p>
-
-      <p class="footer-copy">
-        Liberate Your Property is a focused live workshop for landlords and property investors who want a smarter route to consistent income, stronger protection, and long-term portfolio growth.
-      </p>
-    </div>
-
-    <div class="footer-details">
-      <div class="footer-detail">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z" />
-          <circle cx="12" cy="9" r="2.5" />
-        </svg>
-        <div>
-          <strong>Location</strong>
-          <span>Village Hotel South Leeds, Capital Boulevard</span>
-        </div>
-      </div>
-
-      <div class="footer-detail">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="4" y="5" width="16" height="15" rx="2" />
-          <path d="M8 3v4" />
-          <path d="M16 3v4" />
-          <path d="M4 10h16" />
-        </svg>
-        <div>
-          <strong>Date</strong>
-          <span>June 20th, 2026</span>
-        </div>
-      </div>
-
-      <div class="footer-detail">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2z" />
-        </svg>
-        <div>
-          <strong>Contact</strong>
-          <a href="tel:+447968100786">+44 7968 100786</a>
+          <div>
+            <strong>Contact</strong>
+            <a href="tel:+447968100786">+44 7968 100786</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="footer-bottom">
-    <span>© 2026 Ethical Wealth Academy. All rights reserved.</span>
-    <a href="#top">Back to top</a>
-  </div>
-</footer>
+    <div class="footer-bottom">
+      <span>© 2026 Ethical Wealth Academy. All rights reserved.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
 
   <script>
-    const navbar = document.getElementById('navbar');
+    const navbar = document.getElementById("navbar");
 
     function updateNavbarState() {
-      navbar.classList.toggle('scrolled', window.scrollY > 12);
+      navbar.classList.toggle("scrolled", window.scrollY > 12);
     }
 
-    window.addEventListener('scroll', updateNavbarState, { passive: true });
+    window.addEventListener("scroll", updateNavbarState, { passive: true });
     updateNavbarState();
   </script>
 </body>
