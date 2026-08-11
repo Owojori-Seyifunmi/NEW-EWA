@@ -3237,8 +3237,9 @@
     }
 
     .time-variant .event-date-card {
-      border-top: 3px solid rgba(182, 139, 60, 0.7);
+      /* border-top: 3px solid rgba(182, 139, 60, 0.7); */
       background: rgba(255,255,255,0.86);
+      border-color: rgba(13, 27, 42, 0.14);
     }
 
     .time-variant .video-feature-section {
@@ -3312,6 +3313,24 @@
         color: rgba(255,255,255,0.82);
         font-size: 15px;
       }
+
+      @media (max-width: 700px) {
+ 
+
+  .time-variant .event-date-day,
+  .time-variant .event-date-cta {
+    color: var(--hero-primary);
+  }
+
+  .time-variant .event-date-city,
+  .time-variant .event-date-arrow {
+    color: #a97621;
+  }
+
+  .time-variant .event-date-cta {
+    border-top-color: rgba(13, 27, 42, 0.12);
+  }
+}
     }
 </style>
 </head>
