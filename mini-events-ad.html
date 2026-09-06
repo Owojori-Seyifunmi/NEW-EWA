@@ -3155,6 +3155,272 @@
 
 
 
+
+    /* ===================== FREE FUNNEL ADDITIONS ===================== */
+    .video-feature-scarcity {
+      max-width: 620px;
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-left: 2px solid #c99a42;
+      background: rgba(255, 255, 255, 0.055);
+      color: rgba(255, 255, 255, 0.9);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .faq-section {
+      padding: clamp(76px, 8vw, 118px) clamp(22px, 6vw, 96px);
+      background: var(--hero-background);
+    }
+
+    .faq-inner {
+      width: min(100%, 1040px);
+      margin: 0 auto;
+    }
+
+    .faq-header {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .faq-kicker,
+    .registration-kicker {
+      color: var(--hero-gold);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .faq-rule {
+      display: block;
+      width: 56px;
+      height: 2px;
+      margin: 20px 0 22px;
+      background: var(--hero-gold);
+    }
+
+    .faq-title {
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 5vw, 74px);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .faq-intro {
+      max-width: 670px;
+      margin-top: 20px;
+      color: var(--hero-body);
+      font-family: var(--font-display);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .faq-list {
+      border-top: 1px solid rgba(13, 27, 42, 0.14);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(13, 27, 42, 0.14);
+    }
+
+    .faq-item summary {
+      position: relative;
+      padding: 25px 54px 25px 0;
+      cursor: pointer;
+      list-style: none;
+      color: var(--hero-primary);
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.5vw, 20px);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      top: 50%;
+      right: 6px;
+      color: var(--hero-gold);
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 400;
+      transform: translateY(-50%);
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      max-width: 840px;
+      padding: 0 54px 26px 0;
+      color: var(--hero-body);
+      font-family: var(--font-display);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .registration-modal[hidden] {
+      display: none;
+    }
+
+    .registration-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .registration-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(1, 10, 22, 0.82);
+      backdrop-filter: blur(5px);
+    }
+
+    .registration-dialog {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 760px);
+      max-height: calc(100vh - 48px);
+      overflow: auto;
+      border: 1px solid rgba(201, 168, 76, 0.42);
+      border-radius: 16px;
+      background: #f7f5f1;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+    }
+
+    .registration-dialog-header {
+      padding: 34px 38px 18px;
+    }
+
+    .registration-title {
+      margin-top: 8px;
+      color: var(--hero-primary);
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5vw, 62px);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .registration-copy {
+      margin-top: 14px;
+      color: var(--hero-body);
+      font-family: var(--font-display);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .registration-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(13, 27, 42, 0.15);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--hero-primary);
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .registration-frame-wrap {
+      margin: 0 24px;
+      overflow: hidden;
+      border: 1px solid rgba(13, 27, 42, 0.12);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .registration-frame {
+      display: block;
+      width: 100%;
+      height: min(760px, 68vh);
+      min-height: 620px;
+      border: 0;
+      background: #fff;
+    }
+
+    .registration-note {
+      padding: 17px 30px 25px;
+      color: #5b6168;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    body.registration-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 620px) {
+      .faq-section {
+        padding: 68px 18px 78px;
+      }
+
+      .faq-header {
+        margin-bottom: 30px;
+      }
+
+      .faq-item summary {
+        padding: 22px 46px 22px 0;
+      }
+
+      .faq-item p {
+        padding-right: 28px;
+      }
+
+      .registration-modal {
+        padding: 0;
+        align-items: end;
+      }
+
+      .registration-dialog {
+        width: 100%;
+        max-height: 94vh;
+        border-right: 0;
+        border-bottom: 0;
+        border-left: 0;
+        border-radius: 18px 18px 0 0;
+      }
+
+      .registration-dialog-header {
+        padding: 30px 22px 15px;
+      }
+
+      .registration-frame-wrap {
+        margin: 0 12px;
+      }
+
+      .registration-frame {
+        min-height: 610px;
+        height: 72vh;
+      }
+    }
+
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -3172,7 +3438,7 @@
   <!-- NAVBAR -->
   <header class="solo-header" id="top">
     <div class="top-bar">
-      <span class="quality">Quality is our standard <strong>for over 20 years</strong></span>
+      <span class="quality"><strong>20+ Years Investing</strong> · 500+ Properties Managed · 6 Countries · £100k+ Per Deal</span>
 
       <div class="info">
         <span>
@@ -3205,7 +3471,7 @@
         </span>
       </a>
 
-      <span class="nav-note nav-note--right">Seats are strictly limited · In-person event</span>
+      <span class="nav-note nav-note--right">Free to attend · Strictly capped at 30 seats per event</span>
     </nav>
   </header>
 
@@ -3225,7 +3491,7 @@
               allowfullscreen
             ></iframe>
           </div>
-          <p class="video-feature-caption">A glimpse inside the Ethical Wealth Academy approach</p>
+          <p class="video-feature-caption">Watch: what actually happens in the room, from people who've been in it.</p>
         </div>
 
         <div class="video-feature-content">
@@ -3238,7 +3504,10 @@
           </h2>
 
           <p class="video-feature-copy">
-If you’re feeling worried, uncertain, or frustrated, you’re not imagining it. The rules have fundamentally changed. And most landlords are haemorrhaging income without even realising it.
+            The Renters' Rights Act has changed the rules for every landlord in the UK. This free 3-hour workshop shows you the model experienced investors are switching to, and how to make the move without the guesswork.
+          </p>
+          <p class="video-feature-scarcity">
+            Free to attend. Strictly capped at 30 seats per event so Ayub can work with every room personally.
           </p>
 
           <!-- <p class="video-feature-copy">
@@ -3252,7 +3521,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           </div>
 
           <a class="video-feature-action" href="#event-dates" aria-label="View workshop dates and register">
-            <span>View Workshop Dates</span>
+            <span>Claim Your Free Seat</span>
             <span class="video-feature-action-arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -3265,54 +3534,66 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
         <div class="event-hero-copy">
 
           <h1 class="event-heading" id="event-hero-title">
-            <span class="event-heading-primary">Has the Renters<br />Rights Bill</span>
-            <span class="event-heading-secondary">robbed you of control &amp;<br />squeezed your profits?</span>
+            <span class="event-heading-primary">Choose Your Free</span>
+            <span class="event-heading-secondary">Workshop Date</span>
           </h1>
 
-          <!-- <p class="event-intro">
-            If you’re feeling worried, uncertain, or frustrated, you’re not imagining it. The rules have fundamentally changed. And most landlords are haemorrhaging income without even realising it.
-          </p> -->
+          <p class="event-intro">
+            Three hours of high-value property training, completely free. Choose your preferred city below and register without leaving this page.
+          </p>
 
           <div class="event-date-picker" id="event-dates" aria-labelledby="event-date-label" aria-describedby="event-date-help">
             <p class="event-date-label" id="event-date-label">Choose the date that works for you</p>
-            <p class="event-date-help" id="event-date-help">Click your preferred date to open its registration form.</p>
+            <p class="event-date-help" id="event-date-help">Choose your preferred date to open the free registration form on this page.</p>
 
             <div class="event-date-options">
               <a
                 class="event-date-card"
-                href="https://api.leadconnectorhq.com/widget/form/KdBXQFJQghZHqtrKPf82?notrack=true"
+                href="#registration-modal"
+                data-city="Leicester"
+                data-source-tag="free-landing-leicester"
+                data-form-url="https://api.leadconnectorhq.com/widget/form/KdBXQFJQghZHqtrKPf82"
+                aria-haspopup="dialog"
                 aria-label="Register for the Leicester event on Saturday 12 September 2026"
               >
                 <time class="event-date-day" datetime="2026-09-12">Sat 12 Sept</time>
                 <span class="event-date-city">Leicester</span>
                 <span class="event-date-cta">
-                  <span>Select this date</span>
+                  <span>Claim free seat</span>
                   <span class="event-date-arrow" aria-hidden="true">→</span>
                 </span>
               </a>
 
               <a
                 class="event-date-card"
-                href="https://api.leadconnectorhq.com/widget/form/PC6QkIhfq5WDv9ukjkDW?notrack=true"
+                href="#registration-modal"
+                data-city="Huddersfield"
+                data-source-tag="free-landing-huddersfield"
+                data-form-url="https://api.leadconnectorhq.com/widget/form/PC6QkIhfq5WDv9ukjkDW"
+                aria-haspopup="dialog"
                 aria-label="Register for the Huddersfield event on Saturday 19 September 2026"
               >
                 <time class="event-date-day" datetime="2026-09-19">Sat 19 Sept</time>
                 <span class="event-date-city">Huddersfield</span>
                 <span class="event-date-cta">
-                  <span>Select this date</span>
+                  <span>Claim free seat</span>
                   <span class="event-date-arrow" aria-hidden="true">→</span>
                 </span>
               </a>
 
               <a
                 class="event-date-card"
-                href="https://api.leadconnectorhq.com/widget/form/UzhjLmSK2iJQJ3Kf1ukH?notrack=true"
+                href="#registration-modal"
+                data-city="Batley"
+                data-source-tag="free-landing-batley"
+                data-form-url="https://api.leadconnectorhq.com/widget/form/UzhjLmSK2iJQJ3Kf1ukH"
+                aria-haspopup="dialog"
                 aria-label="Register for the Batley event on Saturday 3 October 2026"
               >
                 <time class="event-date-day" datetime="2026-10-03">Sat 3 Oct</time>
                 <span class="event-date-city">Batley</span>
                 <span class="event-date-cta">
-                  <span>Select this date</span>
+                  <span>Claim free seat</span>
                   <span class="event-date-arrow" aria-hidden="true">→</span>
                 </span>
               </a>
@@ -3331,8 +3612,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           <hr class="problem-rule" />
 
           <h2 class="problem-heading" id="problem-title">
-            Here’s what you’re<br />
-            up against <span class="problem-heading-muted">right now.</span>
+            Has the Renters' Rights Bill robbed you of control and squeezed your profits?
           </h2>
 
           <div class="problem-grid">
@@ -3344,7 +3624,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
                 <span class="problem-item-number">01</span>
                 <h3 class="problem-item-title">Section 21 Abolished</h3>
                 <p class="problem-item-copy">
-                  No-fault evictions are gone. Removing problem tenants is now a lengthy, expensive, court-led process.
+                  No-fault evictions are gone. Removing a problem tenant is now a lengthy, expensive, court-led process.
                 </p>
               </div>
             </article>
@@ -3357,7 +3637,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
                 <span class="problem-item-number">02</span>
                 <h3 class="problem-item-title">Rent Reviews Blocked</h3>
                 <p class="problem-item-copy">
-                  Your income lags behind inflation while mortgage costs keep rising.
+                  Your income lags inflation while mortgage costs keep rising.
                 </p>
               </div>
             </article>
@@ -3370,7 +3650,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
                 <span class="problem-item-number">03</span>
                 <h3 class="problem-item-title">Compliance Costs Spiralling</h3>
                 <p class="problem-item-copy">
-                  EPC upgrades, licensing, and new requirements are eating into margins you used to rely on.
+                  EPC upgrades, licensing and new requirements are eating into margins you used to rely on.
                 </p>
               </div>
             </article>
@@ -3390,7 +3670,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           </div>
 
           <a class="problem-action" href="#event-dates" aria-label="Go to the event dates and register">
-            <span>Register Now</span>
+            <span>See The Alternative</span>
             <span class="problem-action-arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -3410,20 +3690,18 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           <span class="blueprint-rule" aria-hidden="true"></span>
 
           <h2 class="blueprint-heading" id="blueprint-title">
-            The quickest way<br />
-            to acheive success is
-            <span class="blueprint-heading-accent">to model someone else.</span>
+            The quickest way to achieve success is
+            <span class="blueprint-heading-accent">to model someone who's already done it.</span>
           </h2>
 
           <span class="blueprint-divider" aria-hidden="true"></span>
 
           <p class="blueprint-copy">
-            We are here to show you tried and proven mode;<br />
-            supported housing investment blueprint.
+            We'll show you the tried and proven model: the supported housing investment blueprint Ayub uses himself.
           </p>
 
-          <a class="blueprint-action" href="#event-dates" aria-label="Go to the event dates and register">
-            <span>Register Now</span>
+          <a class="blueprint-action" href="#event-dates" aria-label="Go to the event dates and reserve a free seat">
+            <span>Reserve Your Free Seat</span>
             <span class="blueprint-action-arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -3545,10 +3823,10 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           <div class="master-offer-block">
             <div>
               <div class="master-offer-price-wrap">
-                <span class="master-price">£17</span>
-                <span class="master-rate-badge">Special<br />Workshop<br />Rate</span>
+                <span class="master-price">FREE</span>
+                <span class="master-rate-badge">TO<br />ATTEND</span>
               </div>
-              <p class="master-rate-label">Subsidised Rate</p>
+              <p class="master-rate-label">No charge · No obligation</p>
             </div>
           </div>
 
@@ -3563,16 +3841,16 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             </div>
           </div>
 
-          <a class="master-offer-action" href="#event-dates" aria-label="Choose a date and reserve your seventeen pound place">
+          <a class="master-offer-action" href="#event-dates" aria-label="Choose a date and reserve your free seat">
             <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M14 6v8M34 6v8M7 19h34"/><circle cx="23" cy="29" r="5"/><path d="m27 33 5 5M23 26v6M20 29h6"/></svg>
-            <span>Reserve Your £17 Place</span>
+            <span>Reserve My Free Seat</span>
             <span class="master-offer-arrow" aria-hidden="true">→</span>
           </a>
         </div>
 
         <p class="master-limited">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 2 6 3 9 3v6c0 5-3.5 8-9 10-5.5-2-9-5-9-10V6c3 0 6-1 9-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>
-          Limited spaces available
+          Capped at 30 seats per event · A genuine workshop, not a sales floor
         </p>
       </div>
     </section>
@@ -3629,7 +3907,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           </div>
 
           <a class="host-action" href="#event-dates">
-            <span>Register Now</span>
+            <span>Reserve My Free Seat</span>
             <span class="host-action-arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -3698,7 +3976,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <div>
               <h3 class="shift-benefit-title">3. Higher Net Yields</h3>
               <span class="shift-benefit-rule" aria-hidden="true"></span>
-              <p class="shift-benefit-copy">Social housing and supported living typically generates 10 to 25%+ net yields, significantly above standard buy-to-let.</p>
+              <p class="shift-benefit-copy">Social housing and supported living typically generates 10–25%+ net yields, well above standard buy-to-let.</p>
             </div>
           </article>
 
@@ -3709,7 +3987,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <div>
               <h3 class="shift-benefit-title">4. Renters Rights Bill Proof</h3>
               <span class="shift-benefit-rule" aria-hidden="true"></span>
-              <p class="shift-benefit-copy">Social housing leases are held with providers, not individual tenants. The Renters Rights Bill largely doesn’t apply, so you’re protected.</p>
+              <p class="shift-benefit-copy">Social housing leases are held with providers, not individual tenants, so most of the Bill doesn’t apply.</p>
             </div>
           </article>
 
@@ -3720,7 +3998,7 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <div>
               <h3 class="shift-benefit-title">5. Ethical &amp; Values-Led</h3>
               <span class="shift-benefit-rule" aria-hidden="true"></span>
-              <p class="shift-benefit-copy">Generate real wealth while solving a genuine social problem. Your property does good in the community, and delivers exceptional returns at the same time.</p>
+              <p class="shift-benefit-copy">Generate real wealth while solving a genuine social problem.</p>
             </div>
           </article>
 
@@ -3731,23 +4009,71 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <div>
               <h3 class="shift-benefit-title">6. Massive Unmet Demand</h3>
               <span class="shift-benefit-rule" aria-hidden="true"></span>
-              <p class="shift-benefit-copy">The UK needs 90,000+ supported living units. Demand from councils and housing providers is outpacing supply. The opportunity window is wide open.</p>
+              <p class="shift-benefit-copy">The UK needs 90,000+ supported living units. Demand from councils is outpacing supply.</p>
             </div>
           </article>
         </div>
 
         <div class="shift-action-wrap">
-          <a class="shift-action" href="#event-dates" aria-label="Go to the event dates and register">
-            <span>Register Now</span>
+          <a class="shift-action" href="#event-dates" aria-label="Go to the event dates and reserve a free seat">
+            <span>Reserve My Free Seat</span>
             <span class="shift-action-arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
     </section>
 
+
+    <!--
+      TESTIMONIALS
+      Intentionally hidden until 3–4 real attendee testimonials, names/details, and written consent are supplied.
+      Do not publish invented or placeholder testimonials.
+    -->
+    <section class="testimonials-section" id="testimonials" hidden aria-label="Attendee testimonials">
+      <!-- Approved testimonial cards should be added here before unhiding this section. -->
+    </section>
+
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="faq-inner">
+        <header class="faq-header">
+          <p class="faq-kicker">Frequently Asked Questions</p>
+          <span class="faq-rule" aria-hidden="true"></span>
+          <h2 class="faq-title" id="faq-title">Before You Book Your Free Seat</h2>
+          <p class="faq-intro">A few straight answers to the questions landlords usually ask before attending.</p>
+        </header>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Is this really free?</summary>
+            <p>Yes. There's no cost to attend. We built this workshop to help landlords understand their options under the new rules, full stop.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Will you be selling me something at the workshop?</summary>
+            <p>We'll show you real numbers and a real model. If it's a fit and you want more support afterwards, we'll tell you what that looks like, no pressure, no hard sell.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What if I can't make the date I book?</summary>
+            <p>Let us know and we'll move you to one of the other dates, Leicester, Huddersfield or Batley, subject to space.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>I'm new to property, is this for me?</summary>
+            <p>Yes. The workshop is built for existing landlords feeling the squeeze from the Renters' Rights Act, but the model applies whether you have one property or fifty.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What happens after the workshop?</summary>
+            <p>You'll leave with a clear next step. If you want to go further, we'll explain the options, there's no obligation to take them.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="secure-section" id="secure-place" aria-labelledby="secure-title">
       <div class="secure-inner">
-        <p class="secure-kicker">Secure Your Place</p>
+        <p class="secure-kicker">Your Next Move Starts Here</p>
         <span class="secure-rule" aria-hidden="true"></span>
 
         <h2 class="secure-title" id="secure-title">
@@ -3756,13 +4082,13 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
 
         <p class="secure-subtitle">Get practical. Get clarity. Get ahead.</p>
         <p class="secure-copy">
-          For just £17, spend 3 hours with Ayub and walk away with a proven, step-by-step blueprint for building resilient, high-yield income through social housing and supported living.
+          Spend 3 free hours with Ayub and walk away with a step-by-step blueprint for building resilient, high-yield income through social housing and supported living.
         </p>
 
         <div class="secure-facts" aria-label="Workshop details">
           <div class="secure-fact">
-            <span class="secure-fact-value">£17</span>
-            <span class="secure-fact-label">Subsidised Rate</span>
+            <span class="secure-fact-value">FREE</span>
+            <span class="secure-fact-label">To Attend</span>
           </div>
           <div class="secure-fact">
             <span class="secure-fact-value">3 Hours</span>
@@ -3774,8 +4100,8 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
           </div>
         </div>
 
-        <p class="secure-choice-heading">Choose Your Date and Location</p>
-        <p class="secure-choice-copy">Select the event you’ll be attending to secure your place.</p>
+        <p class="secure-choice-heading">Choose the date that works for you</p>
+        <p class="secure-choice-copy">Choose the date that works for you. Registration opens here on the page, with no external redirect.</p>
 
         <div class="secure-locations">
           <article class="secure-location">
@@ -3783,8 +4109,8 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <time class="secure-location-date" datetime="2026-09-12">Saturday 12th September 2026</time>
             <p class="secure-location-venue">The Grand Hotel</p>
             <p class="secure-location-address">Granby Place, Leicester LE1 6ES</p>
-            <a class="secure-location-action" href="https://api.leadconnectorhq.com/widget/form/KdBXQFJQghZHqtrKPf82?notrack=true" aria-label="Secure a place at the Leicester workshop on 12 September 2026">
-              <span>Secure My Place</span>
+            <a class="secure-location-action" href="#registration-modal" data-city="Leicester" data-source-tag="free-landing-leicester" data-form-url="https://api.leadconnectorhq.com/widget/form/KdBXQFJQghZHqtrKPf82" aria-haspopup="dialog" aria-label="Reserve a free seat at the Leicester workshop on 12 September 2026">
+              <span>Reserve My Free Seat</span>
               <span class="secure-location-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -3794,8 +4120,8 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <time class="secure-location-date" datetime="2026-09-19">Saturday 19th September 2026</time>
             <p class="secure-location-venue">Cedar Court Hotel</p>
             <p class="secure-location-address">Ainley Top, Lindley Moor Rd, Elland, Huddersfield HD3 3RH</p>
-            <a class="secure-location-action" href="https://api.leadconnectorhq.com/widget/form/PC6QkIhfq5WDv9ukjkDW?notrack=true" aria-label="Secure a place at the Huddersfield workshop on 19 September 2026">
-              <span>Secure My Place</span>
+            <a class="secure-location-action" href="#registration-modal" data-city="Huddersfield" data-source-tag="free-landing-huddersfield" data-form-url="https://api.leadconnectorhq.com/widget/form/PC6QkIhfq5WDv9ukjkDW" aria-haspopup="dialog" aria-label="Reserve a free seat at the Huddersfield workshop on 19 September 2026">
+              <span>Reserve My Free Seat</span>
               <span class="secure-location-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -3805,8 +4131,8 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
             <time class="secure-location-date" datetime="2026-10-03">Saturday 3rd October 2026</time>
             <p class="secure-location-venue">Al Rumi Room, Rabiah Basri Hall</p>
             <p class="secure-location-address">Al Hikmah Centre, Batley, WF17 7AA</p>
-            <a class="secure-location-action" href="https://api.leadconnectorhq.com/widget/form/UzhjLmSK2iJQJ3Kf1ukH?notrack=true" aria-label="Secure a place at the Batley workshop on 3 October 2026">
-              <span>Secure My Place</span>
+            <a class="secure-location-action" href="#registration-modal" data-city="Batley" data-source-tag="free-landing-batley" data-form-url="https://api.leadconnectorhq.com/widget/form/UzhjLmSK2iJQJ3Kf1ukH" aria-haspopup="dialog" aria-label="Reserve a free seat at the Batley workshop on 3 October 2026">
+              <span>Reserve My Free Seat</span>
               <span class="secure-location-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -3833,6 +4159,30 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
     </section>
 
   </main>
+
+
+  <div class="registration-modal" id="registration-modal" hidden role="dialog" aria-modal="true" aria-labelledby="registration-modal-title">
+    <div class="registration-modal-backdrop" data-close-registration></div>
+    <div class="registration-dialog" role="document">
+      <button class="registration-close" type="button" data-close-registration aria-label="Close registration form">×</button>
+      <div class="registration-dialog-header">
+        <p class="registration-kicker">FREE WORKSHOP REGISTRATION</p>
+        <h2 class="registration-title" id="registration-modal-title">Reserve Your Free Seat</h2>
+        <p class="registration-copy" id="registration-modal-copy">Complete the form below. You will stay on this page.</p>
+      </div>
+      <div class="registration-frame-wrap">
+        <iframe
+          class="registration-frame"
+          id="registration-frame"
+          title="Ethical Wealth Academy free workshop registration"
+          loading="lazy"
+          src="about:blank"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+      <p class="registration-note">Free to attend. Each event is strictly capped at 30 seats.</p>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer" aria-label="Footer">
@@ -3907,6 +4257,94 @@ If you’re feeling worried, uncertain, or frustrated, you’re not imagining it
 
     window.addEventListener("scroll", updateNavbarState, { passive: true });
     updateNavbarState();
+
+    const registrationModal = document.getElementById("registration-modal");
+    const registrationFrame = document.getElementById("registration-frame");
+    const registrationTitle = document.getElementById("registration-modal-title");
+    const registrationCopy = document.getElementById("registration-modal-copy");
+    const registrationTriggers = document.querySelectorAll("[data-form-url]");
+    const registrationClosers = document.querySelectorAll("[data-close-registration]");
+    let lastRegistrationTrigger = null;
+
+    function buildRegistrationUrl(baseUrl, city, sourceTag) {
+      const url = new URL(baseUrl);
+      const currentParams = new URLSearchParams(window.location.search);
+
+      url.searchParams.set("utm_source", currentParams.get("utm_source") || "free-landing-page");
+      url.searchParams.set("utm_medium", currentParams.get("utm_medium") || "website");
+      url.searchParams.set("utm_campaign", currentParams.get("utm_campaign") || "free-workshop");
+      url.searchParams.set("utm_content", currentParams.get("utm_content") || city.toLowerCase());
+      url.searchParams.set("ewa_source", sourceTag);
+
+      ["gclid", "fbclid", "utm_term"].forEach((key) => {
+        if (currentParams.get(key)) url.searchParams.set(key, currentParams.get(key));
+      });
+
+      return url.toString();
+    }
+
+    function openRegistration(trigger) {
+      const city = trigger.dataset.city || "your chosen city";
+      const sourceTag = trigger.dataset.sourceTag || "free-landing";
+      const formUrl = trigger.dataset.formUrl;
+
+      if (!formUrl) return;
+
+      lastRegistrationTrigger = trigger;
+      registrationTitle.textContent = `Reserve Your Free Seat, ${city}`;
+      registrationCopy.textContent = `Complete the ${city} registration form below. You will stay on this page.`;
+      registrationFrame.title = `${city} free workshop registration`;
+      registrationFrame.src = buildRegistrationUrl(formUrl, city, sourceTag);
+
+      registrationModal.hidden = false;
+      document.body.classList.add("registration-open");
+      registrationModal.querySelector(".registration-close").focus();
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "ewa_registration_form_open",
+        city,
+        source: sourceTag
+      });
+
+      if (typeof window.fbq === "function") {
+        window.fbq("trackCustom", "EWARegistrationFormOpen", {
+          city,
+          source: sourceTag
+        });
+      }
+    }
+
+    function closeRegistration() {
+      registrationModal.hidden = true;
+      document.body.classList.remove("registration-open");
+      registrationFrame.src = "about:blank";
+      if (lastRegistrationTrigger) lastRegistrationTrigger.focus();
+    }
+
+    registrationTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openRegistration(trigger);
+      });
+    });
+
+    registrationClosers.forEach((closer) => {
+      closer.addEventListener("click", closeRegistration);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !registrationModal.hidden) {
+        closeRegistration();
+      }
+    });
+
+    /*
+      GHL build note:
+      Configure each city form/workflow to apply its matching contact tag:
+      free-landing-leicester, free-landing-huddersfield, free-landing-batley.
+      Verify GHL form conversion tracking and Meta Pixel events in the live environment.
+    */
   </script>
 </body>
 </html>
